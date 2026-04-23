@@ -61,7 +61,7 @@
         /* PAGE HERO */
         .page-hero {
             min-height: 60vh; display: flex; align-items: flex-end;
-            padding-top: var(--nav-h); background: var(--dark);
+            padding-top: calc(var(--nav-h) + 36px); background: var(--dark);
             position: relative; overflow: hidden;
         }
         .page-hero::before {
@@ -221,24 +221,27 @@
 </head>
 <body>
 
-<nav class="luxury-nav" id="navbar">
-    <div class="nav-inner">
-        <a href="index.html" class="nav-stamp">
-            <img src="eonelogo.png" alt="Eone">
-        </a>
-        <ul class="nav-links">
-            <li><a href="index.html"    class="nav-link">Home</a></li>
-            <li><a href="services.html" class="nav-link">Properties</a></li>
-            <li><a href="watches.html"  class="nav-link active">Watches</a></li>
-            <li><a href="about.html"    class="nav-link">About</a></li>
-            <li><a href="contact.html"  class="nav-link">Contact</a></li>
+<nav class="site-nav" id="navbar">
+    <div class="site-nav-inner">
+        <ul class="nav-left">
+            <li><a href="index.html"    class="snl">Home</a></li>
+            <li><a href="services.html" class="snl">Properties</a></li>
+            <li><a href="watches.html"  class="snl active">Watches</a></li>
         </ul>
-        <a href="contact.html" class="nav-cta">Enquire</a>
-        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        <div class="nav-logo-centre">
+            <a href="index.html" class="nav-logo-link">
+                <img src="eonelogo.png" alt="Eone Exclusive Properties" class="nav-logo-img">
+            </a>
+        </div>
+        <ul class="nav-right">
+            <li><a href="about.html"   class="snl">About</a></li>
+            <li><a href="contact.html" class="snl">Contact</a></li>
+            <li><a href="contact.html" class="site-nav-enquire">Enquire</a></li>
+        </ul>
+        <button class="site-nav-burger" id="burger"><span></span><span></span><span></span></button>
     </div>
 </nav>
-
-<div class="mobile-menu" id="mobileMenu">
+<div class="mobile-drawer" id="drawer">
     <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="services.html">Properties</a></li>
@@ -437,10 +440,10 @@
 </footer>
 
 <script>
-    const nav = document.getElementById('navbar');
-    window.addEventListener('scroll', () => nav?.classList.toggle('scrolled', window.scrollY > 40));
-    document.getElementById('hamburger')?.addEventListener('click', () => document.getElementById('mobileMenu')?.classList.toggle('open'));
-    document.getElementById('mobileMenu')?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open')));
+    const _nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => _nav.classList.toggle('scrolled', window.scrollY > 40));
+    document.getElementById('burger')?.addEventListener('click', () => document.getElementById('drawer')?.classList.toggle('open'));
+    document.querySelectorAll('.mobile-drawer a').forEach(a => a.addEventListener('click', () => document.getElementById('drawer')?.classList.remove('open')));
 </script>
 </body>
 </html>
