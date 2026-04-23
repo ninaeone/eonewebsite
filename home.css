@@ -19,6 +19,18 @@
 html { scroll-behavior: smooth; }
 .home-body { font-family: var(--sans); background: #fff; color: var(--dark); overflow-x: hidden; }
 
+
+/* Hero background image element — loaded via JS */
+.hero-bg-img {
+    position: absolute; inset: 0;
+    z-index: 0;
+    background-size: cover;
+    background-position: center 35%;
+    transition: opacity 1.2s ease;
+    opacity: 0;
+}
+.hero-bg-img.loaded { opacity: 1; }
+
 /* ═══════════════════════════════════════════════
    NAV — Rolex/Patek style
    Left: menu links  |  Centre: logo  |  Right: enquire
@@ -38,7 +50,7 @@ html { scroll-behavior: smooth; }
     box-shadow: 0 2px 20px rgba(0,0,0,.06);
 }
 /* Nav links — white when over hero photo */
-.site-nav:not(.scrolled) .snl { color: rgba(255,255,255,.75); }
+.site-nav:not(.scrolled) .snl { color: rgba(255,255,255,.8); }
 .site-nav:not(.scrolled) .snl:hover,
 .site-nav:not(.scrolled) .snl.active { color: #fff; }
 .site-nav:not(.scrolled) .snl.active { border-bottom-color: var(--gold); }
@@ -197,6 +209,7 @@ html { scroll-behavior: smooth; }
     text-transform: uppercase; color: var(--gold);
     font-weight: 400;
     text-shadow: 0 1px 8px rgba(0,0,0,.4);
+    color: var(--gold) !important;
 }
 .home-eyebrow::after {
     content: '';
@@ -215,8 +228,8 @@ html { scroll-behavior: smooth; }
     display: flex;
     flex-direction: column;
     gap: 0;
-    color: #fff;
-    text-shadow: 0 2px 24px rgba(0,0,0,.3);
+    color: #ffffff !important;
+    text-shadow: 0 2px 32px rgba(0,0,0,.5);
 }
 .home-h1 .line { display: block; }
 .home-h1 em {
@@ -231,7 +244,7 @@ html { scroll-behavior: smooth; }
     max-width: 380px;
     font-size: 12px;
     line-height: 2;
-    color: rgba(255,255,255,.65);
+    color: rgba(255,255,255,.7) !important;
     margin-bottom: 52px;
     letter-spacing: .5px;
     font-weight: 300;
