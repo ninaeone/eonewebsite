@@ -51,8 +51,8 @@ function buildCard(r) {
     const ref      = esc(r['Reference'] || '');
     const beds     = r['# Bed']        || '';
     const baths    = r['# Bath']       || '';
-    const size     = r['Size']         || '';
-    const furnish  = r['Furnishing']   || '';
+    const size     = r['Size']         || r['Size sqft'] || '';
+    const furnish  = r['Furnishing']   || r['Furnishing Type'] || '';
     const photo    = r['Photo URL']    || '';
 
     const photoHtml = photo
