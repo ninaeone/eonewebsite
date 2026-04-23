@@ -9,7 +9,7 @@ const API = 'https://script.google.com/macros/s/AKfycbyHrwwVKhXNwAV54j051pdQcXRf
 // ── WORLD CARD PHOTOS — load reliably ────────
 (function() {
   const worlds = [
-    { sel: '.world-re', url: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80', fallback: 'https://images.unsplash.com/photo-1582407947304-fd86f28f3e75?auto=format&fit=crop&w=1200&q=80' },
+    { sel: '.world-re', url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80', fallback: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1200&q=80' },
     { sel: '.world-wa', url: 'https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=1200&q=80', fallback: 'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=1200&q=80' },
   ];
   worlds.forEach(({sel, url, fallback}) => {
