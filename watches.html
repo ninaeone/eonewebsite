@@ -61,7 +61,7 @@
         /* PAGE HERO */
         .page-hero {
             min-height: 60vh; display: flex; align-items: flex-end;
-            padding-top: calc(var(--nav-h) + 20px); background: var(--dark);
+            padding-top: calc(var(--nav-h) + 30px); background: var(--dark);
             position: relative; overflow: hidden;
         }
         .page-hero::before {
@@ -228,9 +228,9 @@
             <li><a href="services.html" class="snl">Properties</a></li>
             <li><a href="watches.html"  class="snl active">Watches</a></li>
         </ul>
-        <div class="nav-logo-centre">
+        <div class="nav-centre">
             <a href="index.html" class="nav-logo-link">
-                <img src="eonelogo.png" alt="Eone Exclusive Properties" class="nav-logo-img">
+                <img src="eonelogo.png" alt="Eone" class="nav-logo-img">
             </a>
         </div>
         <ul class="nav-right">
@@ -440,8 +440,8 @@
 </footer>
 
 <script>
-    const _nav = document.getElementById('navbar');
-    window.addEventListener('scroll', () => _nav.classList.toggle('scrolled', window.scrollY > 40));
+    const _nb = document.getElementById('navbar');
+    window.addEventListener('scroll', () => _nb?.classList.toggle('scrolled', window.scrollY > 40));
     document.getElementById('burger')?.addEventListener('click', () => document.getElementById('drawer')?.classList.toggle('open'));
     document.querySelectorAll('.mobile-drawer a').forEach(a => a.addEventListener('click', () => document.getElementById('drawer')?.classList.remove('open')));
 </script>
