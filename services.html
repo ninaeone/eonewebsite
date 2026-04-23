@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services — MAISON</title>
+    <title>Properties — Eone Exclusive Properties</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
@@ -11,13 +11,12 @@
 
 <nav class="luxury-nav" id="navbar">
     <div class="nav-inner">
-        <div class="nav-brand">
-            <span class="brand-mark">M</span>
-            <span class="brand-name">MAISON</span>
-        </div>
+        <a href="index.html" class="nav-brand">
+            <img src="eonelogo.png" alt="Eone Exclusive Properties" class="nav-logo-img">
+        </a>
         <ul class="nav-links">
             <li><a href="index.html" class="nav-link">Home</a></li>
-            <li><a href="services.html" class="nav-link active">Services</a></li>
+            <li><a href="services.html" class="nav-link active">Properties</a></li>
             <li><a href="about.html" class="nav-link">About</a></li>
             <li><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
@@ -30,7 +29,7 @@
 <div class="mobile-menu" id="mobileMenu">
     <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
+        <li><a href="services.html">Properties</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
     </ul>
@@ -39,231 +38,108 @@
 <!-- PAGE HERO -->
 <section class="page-hero">
     <div class="page-hero-content">
-        <p class="hero-pre-title">Our Offerings</p>
-        <h1>What We <em>Curate</em></h1>
-        <p>Two distinct worlds. One standard of excellence.</p>
+        <p class="hero-pre-title">Est. 2026 · Dubai</p>
+        <h1>Our <em>Properties</em></h1>
+        <p>Every listing verified and live on Property Finder. Click any card to view the full listing.</p>
     </div>
 </section>
 
-<!-- REAL ESTATE SECTION -->
-<section class="service-block" id="realestate">
-    <div class="service-block-header">
-        <div class="service-index">01</div>
+<!-- FILTER BAR -->
+<div class="filter-bar" id="filterBar">
+    <div class="filter-inner">
+        <!-- Type tabs -->
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-tab="all">All</button>
+            <button class="filter-tab" data-tab="sale">For Sale</button>
+            <button class="filter-tab" data-tab="rent">For Rent</button>
+            <button class="filter-tab exclusive-tab" data-tab="exclusive">⭑ Exclusive</button>
+        </div>
+
+        <!-- Search + filters -->
+        <div class="filter-controls">
+            <div class="filter-search-wrap">
+                <input type="text" id="propSearch" class="filter-input" placeholder="Search location, building…">
+            </div>
+            <select id="propBeds" class="filter-select">
+                <option value="">All Beds</option>
+                <option>Studio</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5+</option>
+            </select>
+            <select id="propFurnish" class="filter-select">
+                <option value="">Any Furnishing</option>
+                <option>Furnished</option>
+                <option>Unfurnished</option>
+                <option>Semi-Furnished</option>
+            </select>
+            <span class="filter-count" id="propCount">Loading…</span>
+        </div>
+    </div>
+</div>
+
+<!-- LISTINGS GRID -->
+<section class="properties-page-section">
+    <div class="pf-listings-grid pf-listings-grid-full" id="allPFGrid">
+        <!-- JS populates these -->
+        <div class="pf-placeholder-card"><div class="pf-placeholder-img"></div><div class="pf-placeholder-body"><div class="pf-placeholder-line short"></div><div class="pf-placeholder-line"></div><div class="pf-placeholder-line medium"></div></div></div>
+        <div class="pf-placeholder-card"><div class="pf-placeholder-img"></div><div class="pf-placeholder-body"><div class="pf-placeholder-line short"></div><div class="pf-placeholder-line"></div><div class="pf-placeholder-line medium"></div></div></div>
+        <div class="pf-placeholder-card"><div class="pf-placeholder-img"></div><div class="pf-placeholder-body"><div class="pf-placeholder-line short"></div><div class="pf-placeholder-line"></div><div class="pf-placeholder-line medium"></div></div></div>
+        <div class="pf-placeholder-card"><div class="pf-placeholder-img"></div><div class="pf-placeholder-body"><div class="pf-placeholder-line short"></div><div class="pf-placeholder-line"></div><div class="pf-placeholder-line medium"></div></div></div>
+        <div class="pf-placeholder-card"><div class="pf-placeholder-img"></div><div class="pf-placeholder-body"><div class="pf-placeholder-line short"></div><div class="pf-placeholder-line"></div><div class="pf-placeholder-line medium"></div></div></div>
+        <div class="pf-placeholder-card"><div class="pf-placeholder-img"></div><div class="pf-placeholder-body"><div class="pf-placeholder-line short"></div><div class="pf-placeholder-line"></div><div class="pf-placeholder-line medium"></div></div></div>
+    </div>
+
+    <!-- Empty state -->
+    <div class="empty-state" id="propEmpty" style="display:none;">
+        <div class="empty-icon">🔍</div>
+        <p>No properties match your search. Try adjusting the filters.</p>
+        <button class="btn-ghost" onclick="resetFilters()">Clear Filters</button>
+    </div>
+</section>
+
+<!-- PF CTA -->
+<section class="pf-cta-strip">
+    <div class="pf-cta-inner">
         <div>
-            <p class="section-pre">Residential & Investment</p>
-            <h2>Exclusive <em>Real Estate</em></h2>
+            <p class="section-pre">All properties verified</p>
+            <h3>View our full portfolio on <em>Property Finder</em></h3>
         </div>
-    </div>
-    <p class="service-intro">We operate exclusively in Dubai's ultra-prime residential market — properties that never appear on public portals, transacted with absolute discretion between select parties.</p>
-
-    <div class="service-features">
-        <div class="service-feature">
-            <div class="feature-num">—</div>
-            <h3>Off-Market Acquisitions</h3>
-            <p>Access to properties before they ever reach the market. Our network spans the full spectrum of Dubai's private ownership community.</p>
-        </div>
-        <div class="service-feature">
-            <div class="feature-num">—</div>
-            <h3>Portfolio Investment</h3>
-            <p>Strategic acquisition and management of residential and commercial portfolios for family offices and institutional buyers.</p>
-        </div>
-        <div class="service-feature">
-            <div class="feature-num">—</div>
-            <h3>International Relocation</h3>
-            <p>White-glove relocation packages for UHNW individuals and families establishing residency in the UAE.</p>
-        </div>
-        <div class="service-feature">
-            <div class="feature-num">—</div>
-            <h3>Development Partnerships</h3>
-            <p>Co-investment structures with Dubai's most distinguished developers for early-stage premium projects.</p>
-        </div>
-    </div>
-
-    <!-- Property Listings -->
-    <div class="listings-grid listings-grid-full">
-        <div class="listing-card">
-            <div class="listing-img listing-1"></div>
-            <div class="listing-info">
-                <span class="listing-type">Villa · Palm Jumeirah</span>
-                <h3>Signature Frond Estate</h3>
-                <div class="listing-meta"><span>6 BR · 12,000 sqft</span><span class="listing-price">AED 68,000,000</span></div>
-            </div>
-        </div>
-        <div class="listing-card">
-            <div class="listing-img listing-2"></div>
-            <div class="listing-info">
-                <span class="listing-type">Penthouse · Downtown</span>
-                <h3>Burj Khalifa Boulevard</h3>
-                <div class="listing-meta"><span>4 BR · 6,800 sqft</span><span class="listing-price">AED 42,500,000</span></div>
-            </div>
-        </div>
-        <div class="listing-card">
-            <div class="listing-img listing-3"></div>
-            <div class="listing-info">
-                <span class="listing-type">Mansion · Emirates Hills</span>
-                <h3>Signature Golf Estate</h3>
-                <div class="listing-meta"><span>8 BR · 18,000 sqft</span><span class="listing-price">AED 125,000,000</span></div>
-            </div>
-        </div>
-        <div class="listing-card">
-            <div class="listing-img listing-4"></div>
-            <div class="listing-info">
-                <span class="listing-type">Apartment · DIFC</span>
-                <h3>The Index Tower</h3>
-                <div class="listing-meta"><span>3 BR · 3,400 sqft</span><span class="listing-price">AED 18,000,000</span></div>
-            </div>
-        </div>
-        <div class="listing-card">
-            <div class="listing-img listing-5"></div>
-            <div class="listing-info">
-                <span class="listing-type">Villa · Jumeirah Bay</span>
-                <h3>Waterfront Reserve</h3>
-                <div class="listing-meta"><span>7 BR · 14,500 sqft</span><span class="listing-price">AED 95,000,000</span></div>
-            </div>
-        </div>
-        <div class="listing-card listing-enquire">
-            <div class="listing-enquire-inner">
-                <p class="section-pre">Private Portfolio</p>
-                <h3>Off-Market<br><em>Listings</em></h3>
-                <p>An additional 40+ properties available exclusively to qualified buyers.</p>
-                <a href="contact.html" class="btn-primary">Request Access</a>
-            </div>
-        </div>
+        <a href="https://www.propertyfinder.ae" target="_blank" class="btn-primary">Open Property Finder ↗</a>
     </div>
 </section>
 
-<!-- WATCHES SECTION -->
-<section class="service-block service-block-dark" id="watches">
-    <div class="service-block-header">
-        <div class="service-index service-index-gold">02</div>
-        <div>
-            <p class="section-pre" style="color:#C5A059">Horological Excellence</p>
-            <h2 style="color:#fff">Luxury <em>Timepieces</em></h2>
-        </div>
-    </div>
-    <p class="service-intro" style="color:#aaa">Our watch division sources, authenticates, and presents only the most exceptional examples from the world's great maisons. Every piece is verified by our in-house horological experts.</p>
-
-    <div class="service-features">
-        <div class="service-feature service-feature-dark">
-            <div class="feature-num" style="color:#C5A059">—</div>
-            <h3 style="color:#fff">Acquisition & Sourcing</h3>
-            <p style="color:#aaa">We source specific references globally. If a piece exists, we can find it — at fair market value, with full authentication.</p>
-        </div>
-        <div class="service-feature service-feature-dark">
-            <div class="feature-num" style="color:#C5A059">—</div>
-            <h3 style="color:#fff">Collection Valuation</h3>
-            <p style="color:#aaa">Expert valuation reports for existing collections — for insurance, estate planning, or private sale.</p>
-        </div>
-        <div class="service-feature service-feature-dark">
-            <div class="feature-num" style="color:#C5A059">—</div>
-            <h3 style="color:#fff">Private Brokerage</h3>
-            <p style="color:#aaa">Discreet peer-to-peer transactions between collectors, without public listing or auction house fees.</p>
-        </div>
-        <div class="service-feature service-feature-dark">
-            <div class="feature-num" style="color:#C5A059">—</div>
-            <h3 style="color:#fff">Investment Advisory</h3>
-            <p style="color:#aaa">Guidance on timepieces as alternative investments — with historical performance data and market insight.</p>
-        </div>
-    </div>
-
-    <div class="watches-grid watches-grid-full">
-        <div class="watch-card-full">
-            <div class="watch-img-full watch-1"></div>
-            <div class="watch-details">
-                <span class="watch-brand">Patek Philippe</span>
-                <h3>Nautilus 5711/1A-010</h3>
-                <p>Steel · Blue Dial · 2021 · Full Set</p>
-                <span class="watch-price-full">AED 420,000</span>
-            </div>
-        </div>
-        <div class="watch-card-full">
-            <div class="watch-img-full watch-2"></div>
-            <div class="watch-details">
-                <span class="watch-brand">Richard Mille</span>
-                <h3>RM 011 Felipe Massa</h3>
-                <p>Titanium · Flyback Chronograph · 2019</p>
-                <span class="watch-price-full">AED 1,200,000</span>
-            </div>
-        </div>
-        <div class="watch-card-full">
-            <div class="watch-img-full watch-3"></div>
-            <div class="watch-details">
-                <span class="watch-brand">Rolex</span>
-                <h3>Daytona 116500LN</h3>
-                <p>Oystersteel · Black Ceramic · 2022</p>
-                <span class="watch-price-full">AED 185,000</span>
-            </div>
-        </div>
-        <div class="watch-card-full">
-            <div class="watch-img-full watch-4"></div>
-            <div class="watch-details">
-                <span class="watch-brand">Audemars Piguet</span>
-                <h3>Royal Oak 15500ST</h3>
-                <p>Steel · Blue Dial · 2023 · Unworn</p>
-                <span class="watch-price-full">AED 280,000</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="watch-disclaimer">
-        <p>All timepieces are verified authentic. Certificates of authenticity provided with every transaction. <a href="contact.html" style="color:#C5A059">Enquire privately →</a></p>
-    </div>
-</section>
-
-<!-- CONCIERGE -->
-<section class="service-block" id="concierge">
-    <div class="service-block-header">
-        <div class="service-index">03</div>
-        <div>
-            <p class="section-pre">Beyond the Transaction</p>
-            <h2>Concierge <em>Services</em></h2>
-        </div>
-    </div>
-    <p class="service-intro">For our most valued clients, the relationship extends well beyond the sale. Our concierge division manages the full lifecycle of luxury ownership.</p>
-    <div class="concierge-grid">
-        <div class="concierge-item"><span>Private Aviation Arrangements</span></div>
-        <div class="concierge-item"><span>Interior Design & Fit-Out</span></div>
-        <div class="concierge-item"><span>Yacht Charter & Acquisition</span></div>
-        <div class="concierge-item"><span>Staff Recruitment (Household)</span></div>
-        <div class="concierge-item"><span>Art & Collectibles Advisory</span></div>
-        <div class="concierge-item"><span>Golden Visa Facilitation</span></div>
-    </div>
-</section>
-
-<!-- FOOTER -->
 <footer class="luxury-footer">
     <div class="footer-inner">
         <div class="footer-brand">
-            <div class="footer-logo">
-                <span class="brand-mark">M</span>
-                <span class="brand-name">MAISON</span>
-            </div>
-            <p>Exclusive Real Estate & Luxury Timepieces<br>Dubai · Geneva · London</p>
+            <img src="eonelogo.png" alt="Eone Exclusive Properties" class="footer-logo-img">
+            <p style="line-height:2;">
+                Eone Exclusive Properties — Real Estate<br>
+                Eone Luxury Watches — Watches<br>
+                <span style="font-size:9px;letter-spacing:2px;color:#444;">Est. 2026 · Business Bay, Dubai, UAE</span>
+            </p>
         </div>
         <div class="footer-links">
             <div class="footer-col">
                 <h4>Navigation</h4>
                 <a href="index.html">Home</a>
-                <a href="services.html">Services</a>
+                <a href="services.html">Properties</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
             </div>
             <div class="footer-col">
-                <h4>Services</h4>
-                <a href="services.html">Real Estate</a>
-                <a href="services.html#watches">Timepieces</a>
-                <a href="services.html#concierge">Concierge</a>
-            </div>
-            <div class="footer-col">
                 <h4>Connect</h4>
-                <a href="tel:+97144000000">+971 4 400 0000</a>
-                <a href="mailto:private@maison.ae">private@maison.ae</a>
+                <a href="tel:+97142566517">04 566 5176</a>
+                <a href="mailto:info@eoneproperties.com">info@eoneproperties.com</a>
+                <a href="https://wa.me/97142566517" target="_blank">WhatsApp ↗</a>
             </div>
         </div>
     </div>
     <div class="footer-bottom">
-        <span>© 2025 Maison. All rights reserved.</span>
-        <span>RERA Registered · DED Licensed</span>
+        <span>© 2026 Eone Exclusive Properties & Eone Luxury Watches. All rights reserved.</span>
+        <span>RERA Registered · DED Licensed · Business Bay, Dubai · Business Bay, Dubai, UAE</span>
     </div>
 </footer>
 
