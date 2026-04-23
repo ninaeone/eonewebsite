@@ -10,6 +10,38 @@ function getApiUrl() {
     return HOME_API;
 }
 
+// ── Hero background image — loaded with fade ────
+(function() {
+    const HERO_PHOTOS = [
+        'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1920&q=85',
+        'https://images.unsplash.com/photo-1579033461380-adb47c3eb938?auto=format&fit=crop&w=1920&q=85',
+        'https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1920&q=85',
+    ];
+    const bg = document.getElementById('heroBgImg');
+    if (!bg) return;
+    const url = HERO_PHOTOS[0];
+    const img = new Image();
+    img.onload = function() {
+        bg.style.backgroundImage = 'url(' + url + ')';
+        setTimeout(() => bg.classList.add('loaded'), 50);
+    };
+    img.onerror = function() {
+        // Try next photo
+        const img2 = new Image();
+        img2.onload = function() {
+            bg.style.backgroundImage = 'url(' + HERO_PHOTOS[1] + ')';
+            setTimeout(() => bg.classList.add('loaded'), 50);
+        };
+        img2.onerror = function() {
+            // Beautiful CSS fallback — no image needed
+            bg.style.background = 'linear-gradient(135deg, #0d1b2a 0%, #1a2a1a 40%, #1a1500 100%)';
+            setTimeout(() => bg.classList.add('loaded'), 50);
+        };
+        img2.src = HERO_PHOTOS[1];
+    };
+    img.src = url;
+})();
+
 // ── Nav scroll ──────────────────────────────────
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
