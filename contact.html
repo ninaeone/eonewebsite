@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact — MAISON</title>
+    <title>Contact — Eone Exclusive Properties</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
@@ -11,13 +11,12 @@
 
 <nav class="luxury-nav" id="navbar">
     <div class="nav-inner">
-        <div class="nav-brand">
-            <span class="brand-mark">M</span>
-            <span class="brand-name">MAISON</span>
-        </div>
+        <a href="index.html" class="nav-brand">
+            <img src="eonelogo.png" alt="Eone Exclusive Properties" class="nav-logo-img">
+        </a>
         <ul class="nav-links">
             <li><a href="index.html" class="nav-link">Home</a></li>
-            <li><a href="services.html" class="nav-link">Services</a></li>
+            <li><a href="services.html" class="nav-link">Properties</a></li>
             <li><a href="about.html" class="nav-link">About</a></li>
             <li><a href="contact.html" class="nav-link active">Contact</a></li>
         </ul>
@@ -30,48 +29,52 @@
 <div class="mobile-menu" id="mobileMenu">
     <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
+        <li><a href="services.html">Properties</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
     </ul>
 </div>
 
-<!-- PAGE HERO -->
 <section class="page-hero">
     <div class="page-hero-content">
         <p class="hero-pre-title">Private Enquiries</p>
         <h1>Get in <em>Touch</em></h1>
-        <p>All conversations are held in strictest confidence.</p>
+        <p>All conversations held in strict confidence.</p>
     </div>
 </section>
 
-<!-- CONTACT LAYOUT -->
 <section class="contact-layout">
     <div class="contact-info">
         <p class="section-pre">Direct Lines</p>
         <h2>Reach <em>Us</em></h2>
-
         <div class="contact-item">
-            <span class="contact-label">Dubai (HQ)</span>
-            <span class="contact-value">+971 4 400 0000</span>
-            <span class="contact-sub">Gate Avenue, DIFC, Dubai</span>
+            <span class="contact-label">Address</span>
+            <span class="contact-value" style="font-size:0.95rem;line-height:1.5;">Office B1503, The Opus By Omniyat<br>Al Amaal Street, Business Bay<br>Dubai, UAE</span>
         </div>
         <div class="contact-item">
-            <span class="contact-label">Geneva</span>
-            <span class="contact-value">+41 22 000 0000</span>
-            <span class="contact-sub">Rue du Rhône, 1204 Geneva</span>
+            <span class="contact-label">Phone</span>
+            <span class="contact-value"><a href="tel:+97142566517" style="text-decoration:none;color:inherit;">04 566 5176</a></span>
+            <span class="contact-sub">Sun – Thu, 9:00 – 18:00 GST</span>
         </div>
         <div class="contact-item">
             <span class="contact-label">Email</span>
-            <span class="contact-value">private@maison.ae</span>
+            <span class="contact-value"><a href="mailto:info@eoneproperties.com" style="text-decoration:none;color:inherit;">info@eoneproperties.com</a></span>
             <span class="contact-sub">Response within 4 hours</span>
         </div>
         <div class="contact-item">
             <span class="contact-label">WhatsApp</span>
-            <span class="contact-value">+971 50 000 0000</span>
+            <span class="contact-value"><a href="https://wa.me/97142566517" target="_blank" style="text-decoration:none;color:inherit;">04 566 5176</a></span>
             <span class="contact-sub">For urgent enquiries</span>
         </div>
-
+        <div class="contact-item">
+            <span class="contact-label">Our Companies</span>
+            <span class="contact-value" style="font-size:0.85rem;line-height:1.8;">Eone Exclusive Properties — Real Estate<br><span style="color:var(--gold);">◆</span> Eone Luxury Watches — Watches</span>
+        </div>
+        <div class="contact-item">
+            <span class="contact-label">Property Finder</span>
+            <a href="https://www.propertyfinder.ae" target="_blank" class="contact-value" style="text-decoration:none;border-bottom:1px solid var(--gold);font-size:0.95rem;">View All Listings ↗</a>
+            <span class="contact-sub">All listings verified & live</span>
+        </div>
         <div class="contact-hours">
             <p class="section-pre" style="margin-top:50px">Office Hours</p>
             <div class="hours-row"><span>Monday – Friday</span><span>9:00 – 18:00 GST</span></div>
@@ -80,88 +83,79 @@
         </div>
     </div>
 
-    <!-- FORM -->
     <div class="contact-form-wrap">
         <div class="form-header">
             <p class="section-pre">Private Enquiry Form</p>
             <h2>Tell Us What <em>You're Looking For</em></h2>
         </div>
-
         <form class="enquiry-form" id="enquiryForm">
             <div class="form-row">
                 <div class="form-group">
                     <label for="fname">First Name</label>
-                    <input type="text" id="fname" name="fname" placeholder="Alexandre" required>
+                    <input type="text" id="fname" placeholder="Your first name" required>
                 </div>
                 <div class="form-group">
                     <label for="lname">Last Name</label>
-                    <input type="text" id="lname" name="lname" placeholder="Fontaine" required>
+                    <input type="text" id="lname" placeholder="Your last name" required>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="you@domain.com" required>
+                <input type="email" id="email" placeholder="you@email.com" required>
             </div>
-
             <div class="form-group">
                 <label for="phone">Phone / WhatsApp</label>
-                <input type="tel" id="phone" name="phone" placeholder="+971 50 000 0000">
+                <input type="tel" id="phone" placeholder="04 566 5176">
             </div>
-
             <div class="form-group">
-                <label>Area of Interest</label>
+                <label>I am looking to</label>
                 <div class="interest-toggle">
-                    <button type="button" class="toggle-btn active" data-val="real-estate">Real Estate</button>
-                    <button type="button" class="toggle-btn" data-val="timepieces">Timepieces</button>
+                    <button type="button" class="toggle-btn active" data-val="buy">Buy</button>
+                    <button type="button" class="toggle-btn" data-val="rent">Rent</button>
                     <button type="button" class="toggle-btn" data-val="both">Both</button>
                 </div>
-                <input type="hidden" id="interest" name="interest" value="real-estate">
+                <input type="hidden" id="interest" value="buy">
             </div>
-
             <div class="form-group">
                 <label for="budget">Approximate Budget</label>
-                <select id="budget" name="budget">
+                <select id="budget">
                     <option value="">Select range</option>
-                    <option>AED 5M – 20M</option>
-                    <option>AED 20M – 50M</option>
-                    <option>AED 50M – 100M</option>
-                    <option>AED 100M+</option>
+                    <option>AED 1M – 5M</option>
+                    <option>AED 5M – 15M</option>
+                    <option>AED 15M – 30M</option>
+                    <option>AED 30M – 60M</option>
+                    <option>AED 60M+</option>
                     <option>Prefer not to say</option>
                 </select>
             </div>
-
             <div class="form-group">
                 <label for="message">Your Enquiry</label>
-                <textarea id="message" name="message" rows="5" placeholder="Please describe what you are looking for, any specific requirements, or how we may assist you..."></textarea>
+                <textarea id="message" rows="5" placeholder="Describe what you're looking for — location, size, timeline, or any specific requirements…"></textarea>
             </div>
-
             <div class="form-group form-privacy">
                 <label class="checkbox-label">
                     <input type="checkbox" required>
-                    <span>I confirm that my details will be used only to respond to this enquiry, in line with Maison's privacy policy.</span>
+                    <span>I confirm my details will be used only to respond to this enquiry, in line with Eone's privacy policy.</span>
                 </label>
             </div>
-
             <button type="submit" class="form-submit">Submit Enquiry</button>
             <div class="form-note">All enquiries are acknowledged within 4 business hours. Your information is never shared.</div>
         </form>
-
         <div class="form-success" id="formSuccess" style="display:none">
             <div class="success-icon">✓</div>
             <h3>Thank You</h3>
-            <p>Your enquiry has been received. A member of our private client team will be in touch within 4 hours.</p>
+            <p>Your enquiry has been received. A member of our team will be in touch within 4 hours.</p>
         </div>
     </div>
 </section>
 
-<!-- MAP PLACEHOLDER -->
+<!-- MAP -->
 <section class="map-section">
     <div class="map-placeholder">
         <div class="map-overlay">
             <span class="section-pre">Our Location</span>
-            <h3>Gate Avenue, DIFC<br>Dubai, UAE</h3>
-            <a href="https://maps.google.com" target="_blank" class="btn-ghost">Open in Maps →</a>
+            <h3>Office B1503, The Opus By Omniyat,<br>Business Bay, Dubai, UAE</h3>
+            <a href="https://maps.google.com/?q=Dubai+UAE" target="_blank" class="btn-ghost">Open in Maps →</a>
         </div>
     </div>
 </section>
@@ -169,30 +163,32 @@
 <footer class="luxury-footer">
     <div class="footer-inner">
         <div class="footer-brand">
-            <div class="footer-logo">
-                <span class="brand-mark">M</span>
-                <span class="brand-name">MAISON</span>
-            </div>
-            <p>Exclusive Real Estate & Luxury Timepieces<br>Dubai · Geneva · London</p>
+            <img src="eonelogo.png" alt="Eone Exclusive Properties" class="footer-logo-img">
+            <p style="line-height:2;">
+                Eone Exclusive Properties — Real Estate<br>
+                Eone Luxury Watches — Watches<br>
+                <span style="font-size:9px;letter-spacing:2px;color:#444;">Est. 2026 · Business Bay, Dubai, UAE</span>
+            </p>
         </div>
         <div class="footer-links">
             <div class="footer-col">
                 <h4>Navigation</h4>
                 <a href="index.html">Home</a>
-                <a href="services.html">Services</a>
+                <a href="services.html">Properties</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
             </div>
             <div class="footer-col">
                 <h4>Connect</h4>
-                <a href="tel:+97144000000">+971 4 400 0000</a>
-                <a href="mailto:private@maison.ae">private@maison.ae</a>
+                <a href="tel:+97142566517">04 566 5176</a>
+                <a href="mailto:info@eoneproperties.com">info@eoneproperties.com</a>
+                <a href="https://wa.me/97142566517" target="_blank">WhatsApp ↗</a>
             </div>
         </div>
     </div>
     <div class="footer-bottom">
-        <span>© 2025 Maison. All rights reserved.</span>
-        <span>RERA Registered · DED Licensed</span>
+        <span>© 2026 Eone Exclusive Properties & Eone Luxury Watches. All rights reserved.</span>
+        <span>RERA Registered · DED Licensed · Business Bay, Dubai · Business Bay, Dubai, UAE</span>
     </div>
 </footer>
 
