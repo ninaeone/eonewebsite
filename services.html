@@ -1,455 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Properties — Eone Exclusive Properties</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    <style>
-    :root {
-        --gold:#C5A059; --dark:#111; --border:#e4e4e4; --border-dk:#2a2a2a;
-        --muted:#888; --serif:'Bodoni Moda',serif; --sans:'Inter',sans-serif;
-        --nav-h:100px; --max:1280px;
-    }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
-    body{font-family:var(--sans);background:#fff;color:var(--dark);overflow-x:hidden;}
-
-        /* NAV */
-    :root{--nav-h:70px;}
-    .site-nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);background:#fff;border-bottom:1px solid #e8e8e8;transition:box-shadow .3s;}
-    .site-nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.06);}
-    .site-nav-inner{height:100%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 44px;max-width:1400px;margin:0 auto;}
-    .nav-left{list-style:none;display:flex;gap:36px;align-items:center;}
-    .nav-right{list-style:none;display:flex;gap:32px;align-items:center;justify-content:flex-end;}
-    .snl{text-decoration:none;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#666;font-weight:400;transition:color .25s;white-space:nowrap;}
-    .snl:hover,.snl.active{color:#111;}
-    .snl.active{border-bottom:1px solid #C5A059;padding-bottom:2px;}
-    .site-nav-enquire{font-size:9px;letter-spacing:3.5px;text-transform:uppercase;text-decoration:none;color:#fff;background:#111;padding:10px 22px;transition:background .3s;white-space:nowrap;margin-left:8px;font-family:'Inter',sans-serif;}
-    .site-nav-enquire:hover{background:#C5A059;}
-    .nav-centre{display:flex;align-items:center;justify-content:center;}
-    .nav-logo-link{display:block;text-decoration:none;line-height:0;transition:opacity .3s;}
-    .nav-logo-link:hover{opacity:.7;}
-    .nav-logo-img{display:block;height:46px;width:auto;object-fit:contain;}
-    .site-nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;margin-left:auto;}
-    .site-nav-burger span{display:block;width:22px;height:1px;background:#111;}
-    .mobile-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:#fff;border-bottom:1px solid #e8e8e8;z-index:999;padding:28px 44px 36px;}
-    .mobile-drawer.open{display:block;}
-    .mobile-drawer ul{list-style:none;}
-    .mobile-drawer li{border-bottom:1px solid #e8e8e8;}
-    .mobile-drawer a{display:block;padding:16px 0;text-decoration:none;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#111;}
-    @media(max-width:768px){
-        .nav-left,.nav-right{display:none;}
-        .site-nav-burger{display:flex;}
-        .site-nav-inner{padding:0 20px;}
-        .nav-logo-img{height:36px;}
-    }
-
-    .page-hero{min-height:52vh;display:flex;align-items:flex-end;padding-top:calc(var(--nav-h) + 30px);background-image:radial-gradient(#ddd 1px,transparent 1px);background-size:28px 28px;border-bottom:1px solid var(--border);}
-    .page-hero-inner{max-width:var(--max);margin:0 auto;padding:60px 40px;width:100%;}
-    .eyebrow{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:block;}
-    .page-hero-inner h1{font-family:var(--serif);font-size:clamp(3rem,8vw,6rem);font-weight:400;letter-spacing:-2px;line-height:.92;margin-bottom:16px;}
-    .page-hero-inner h1 em{font-style:italic;color:var(--gold);}
-    .page-hero-inner p{font-size:12px;color:var(--muted);letter-spacing:.5px;line-height:1.8;}
-
-    /* ── FILTER BAR ── */
-    .filter-bar{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:var(--nav-h);z-index:100;box-shadow:0 2px 16px rgba(0,0,0,.04);}
-    .filter-inner{max-width:var(--max);margin:0 auto;padding:0 40px;display:flex;align-items:stretch;flex-wrap:wrap;}
-
-    /* Tab buttons */
-    .filter-tabs{display:flex;border-right:1px solid var(--border);margin-right:24px;flex-shrink:0;}
-    .ftab{background:none;border:none;border-bottom:2px solid transparent;padding:18px 22px;font-size:9px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;color:var(--muted);transition:all .2s;font-family:var(--sans);white-space:nowrap;}
-    .ftab:hover{color:var(--dark);}
-    .ftab.active{color:var(--dark);border-bottom-color:var(--gold);font-weight:500;}
-    .ftab-exclusive{color:var(--gold)!important;}
-    .ftab-exclusive.active{border-bottom-color:var(--gold);}
-
-    /* Filter controls */
-    .filter-controls{display:flex;align-items:center;gap:20px;flex:1;flex-wrap:wrap;padding:14px 0;}
-    .filter-search{flex:1;min-width:180px;border:none;border-bottom:1px solid var(--border);padding:8px 0;font-size:12px;font-family:var(--sans);color:var(--dark);background:transparent;outline:none;transition:border-color .3s;}
-    .filter-search:focus{border-bottom-color:var(--gold);}
-    .filter-search::placeholder{color:#bbb;}
-    .filter-select{border:none;border-bottom:1px solid var(--border);padding:8px 4px;font-size:11px;font-family:var(--sans);color:var(--dark);background:transparent;outline:none;cursor:pointer;min-width:120px;}
-    .filter-count{font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;white-space:nowrap;margin-left:auto;}
-
-    /* ── GRID ── */
-    .props-section{max-width:var(--max);margin:0 auto;padding:50px 40px 80px;}
-    .props-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-bottom:20px;}
-
-    /* ── CARD ── */
-    .prop-card{background:#fff;display:flex;flex-direction:column;text-decoration:none;color:var(--dark);transition:transform .3s,box-shadow .3s;cursor:pointer;}
-    .prop-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,.09);position:relative;z-index:2;}
-    .pc-img{height:230px;position:relative;overflow:hidden;flex-shrink:0;background:linear-gradient(135deg,#f0ede8,#e8e4de);}
-    .pc-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s;}
-    .prop-card:hover .pc-img img{transform:scale(1.04);}
-    .pc-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:40px;opacity:.18;}
-    .pc-badge{position:absolute;font-size:7px;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;}
-    .pc-badge-type{top:10px;left:10px;background:var(--dark);color:#fff;}
-    .pc-badge-type.rent{background:#1565c0;}
-    .pc-badge-excl{top:10px;right:10px;background:var(--gold);color:#111;}
-    .pc-badge-pf{bottom:10px;right:10px;background:rgba(0,0,0,.65);color:var(--gold);}
-    .pc-body{padding:20px 22px 18px;flex:1;display:flex;flex-direction:column;}
-    .pc-ref{font-size:8px;letter-spacing:2px;color:#bbb;text-transform:uppercase;margin-bottom:5px;}
-    .pc-title{font-family:var(--serif);font-size:1.05rem;line-height:1.3;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-    .pc-sub{font-size:10px;color:#bbb;margin-bottom:14px;}
-    .pc-specs{display:flex;gap:14px;margin-bottom:14px;flex-wrap:wrap;}
-    .pc-spec{display:flex;flex-direction:column;gap:2px;}
-    .pc-spec-val{font-size:12px;font-weight:500;color:var(--dark);}
-    .pc-spec-key{font-size:7px;letter-spacing:1.5px;text-transform:uppercase;color:#bbb;}
-    .pc-foot{margin-top:auto;padding-top:12px;border-top:1px solid #f5f5f5;display:flex;justify-content:space-between;align-items:flex-end;}
-    .pc-price{font-family:var(--serif);font-size:1rem;color:var(--dark);}
-    .pc-price-lbl{font-size:7px;letter-spacing:1.5px;text-transform:uppercase;color:#bbb;margin-top:2px;}
-    .pc-arrow{font-size:20px;color:#ddd;transition:color .2s;}
-    .prop-card:hover .pc-arrow{color:var(--gold);}
-
-    /* ── SKELETON ── */
-    .skel-card{background:#fff;}
-    .skel-img{height:230px;background:linear-gradient(90deg,#f2f2f2 25%,#e8e8e8 50%,#f2f2f2 75%);background-size:200% 100%;animation:shim 1.4s infinite;}
-    .skel-body{padding:20px 22px;}
-    .skel-line{height:10px;border-radius:2px;margin-bottom:10px;background:linear-gradient(90deg,#f2f2f2 25%,#e8e8e8 50%,#f2f2f2 75%);background-size:200% 100%;animation:shim 1.4s infinite;}
-    .skel-s{width:35%;}.skel-l{width:85%;}.skel-m{width:60%;}
-    @keyframes shim{0%{background-position:200% 0}100%{background-position:-200% 0}}
-
-    /* ── EMPTY STATE ── */
-    .empty-state{text-align:center;padding:80px 40px;border:1px solid var(--border);display:none;}
-    .empty-state .icon{font-size:2.5rem;margin-bottom:16px;}
-    .empty-state p{font-size:12px;color:var(--muted);margin-bottom:28px;}
-    .btn-ghost{display:inline-block;background:transparent;color:var(--dark);text-decoration:none;padding:14px 32px;font-size:9px;letter-spacing:4px;text-transform:uppercase;border:1px solid #ccc;cursor:pointer;transition:all .3s;font-family:var(--sans);}
-    .btn-ghost:hover{border-color:var(--dark);background:var(--dark);color:#fff;}
-
-    /* ── PF CTA ── */
-    .pf-cta{background:var(--dark);border-top:1px solid var(--border-dk);padding:60px 40px;}
-    .pf-cta-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
-    .pf-cta-inner .pre{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block;}
-    .pf-cta-inner h3{font-family:var(--serif);font-size:1.8rem;font-weight:400;color:#fff;}
-    .pf-cta-inner h3 em{font-style:italic;color:var(--gold);}
-    .btn-primary{display:inline-block;background:#fff;color:var(--dark);text-decoration:none;padding:16px 36px;font-size:9px;letter-spacing:4px;text-transform:uppercase;border:none;cursor:pointer;transition:all .4s;font-family:var(--sans);}
-    .btn-primary:hover{background:var(--gold);color:#111;}
-
-    /* ── FOOTER ── */
-    .site-footer{background:var(--dark);border-top:1px solid var(--border-dk);}
-    .sf-inner{max-width:var(--max);margin:0 auto;padding:64px 40px 48px;display:grid;grid-template-columns:260px 1fr;gap:60px;}
-    .sf-logo{height:44px;width:auto;object-fit:contain;display:block;margin-bottom:16px;filter:brightness(0) invert(1);opacity:.75;}
-    .sf-brand p{font-size:11px;line-height:1.9;color:#555;}
-    .sf-cols{display:grid;grid-template-columns:repeat(2,1fr);gap:36px;}
-    .sf-col h4{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
-    .sf-col a{display:block;font-size:11px;color:#555;text-decoration:none;margin-bottom:11px;letter-spacing:.5px;transition:color .25s;}
-    .sf-col a:hover{color:#fff;}
-    .sf-bottom{max-width:var(--max);margin:0 auto;padding:18px 40px;border-top:1px solid var(--border-dk);display:flex;justify-content:space-between;font-size:8px;letter-spacing:1.5px;color:#3a3a3a;text-transform:uppercase;flex-wrap:wrap;gap:8px;}
-
-    /* ── RESPONSIVE ── */
-    @media(max-width:1024px){.props-grid{grid-template-columns:repeat(2,1fr);}}
-    @media(max-width:768px){
-        .nav-links,.nav-cta{display:none;}.hamburger{display:flex;}
-        .nav-inner{padding:0 20px;}.nav-stamp{margin-right:0;}
-        .props-grid{grid-template-columns:1fr;}
-        .filter-tabs{border-right:none;border-bottom:1px solid var(--border);width:100%;overflow-x:auto;}
-        .ftab{padding:14px 14px;font-size:8px;}
-        .filter-inner{flex-direction:column;align-items:stretch;}
-        .filter-controls{flex-wrap:wrap;padding:12px 0;}
-        .page-hero-inner,.props-section,.pf-cta{padding-left:20px;padding-right:20px;}
-        .sf-inner{grid-template-columns:1fr;padding:40px 20px 30px;}
-        .sf-bottom{padding:16px 20px;flex-direction:column;text-align:center;}
-        .pf-cta-inner{flex-direction:column;text-align:center;}
-    }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Properties — Eone · Dubai</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="eone.css">
 </head>
-<body>
-
-<!-- NAV -->
-<nav class="site-nav" id="navbar">
-    <div class="site-nav-inner">
-        <ul class="nav-left">
-            <li><a href="index.html"    class="snl">Home</a></li>
-            <li><a href="services.html" class="snl active">Properties</a></li>
-            <li><a href="watches.html"  class="snl">Watches</a></li>
-        </ul>
-        <div class="nav-centre">
-            <a href="index.html" class="nav-logo-link">
-                <img src="eonelogo.png" alt="Eone" class="nav-logo-img">
-            </a>
-        </div>
-        <ul class="nav-right">
-            <li><a href="about.html"   class="snl">About</a></li>
-            <li><a href="contact.html" class="snl">Contact</a></li>
-            <li><a href="contact.html" class="site-nav-enquire">Enquire</a></li>
-        </ul>
-        <button class="site-nav-burger" id="burger"><span></span><span></span><span></span></button>
-    </div>
-</nav>
-<div class="mobile-drawer" id="drawer">
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Properties</a></li>
-        <li><a href="watches.html">Watches</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+<body><nav class="nav" id="nav">
+  <div class="nav-inner">
+    <ul class="nav-left">
+      <li><a href="index.html" class="nl">Home</a></li>
+      <li><a href="services.html" class="nl active">Properties</a></li>
+      <li><a href="watches.html" class="nl">Watches</a></li>
     </ul>
+    <a href="index.html" class="nav-logo"><img src="eonelogo.png" alt="Eone"></a>
+    <ul class="nav-right">
+      <li><a href="about.html" class="nl">About</a></li>
+      <li><a href="contact.html" class="nl">Contact</a></li>
+      <li><a href="contact.html" class="nav-enq">Enquire</a></li>
+    </ul>
+    <button class="nav-burger" id="burger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="drawer" id="drawer">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Properties</a></li>
+    <li><a href="watches.html">Watches</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
 </div>
-
-<!-- HERO -->
 <section class="page-hero">
-    <div class="page-hero-inner">
-        <span class="eyebrow">Est. 2026 · Dubai</span>
-        <h1>Our <em>Properties</em></h1>
-        <p>Every listing verified and live on Property Finder. Click any card to view the full listing.</p>
-    </div>
+  <div class="page-hero-inner">
+    <span class="eyebrow">Est. 2026 · Dubai</span>
+    <h1 class="page-h1">Our <em>Properties</em></h1>
+    <p>Every listing verified and live on Property Finder. Click any card to view the full listing.</p>
+  </div>
 </section>
 
-<!-- FILTER BAR -->
 <div class="filter-bar">
-    <div class="filter-inner">
-        <div class="filter-tabs">
-            <button class="ftab active" data-tab="all">All</button>
-            <button class="ftab" data-tab="sale">For Sale</button>
-            <button class="ftab" data-tab="rent">For Rent</button>
-            <button class="ftab ftab-exclusive" data-tab="exclusive">⭑ Exclusive</button>
-        </div>
-        <div class="filter-controls">
-            <input type="text" id="propSearch" class="filter-search" placeholder="Search location, building…">
-            <select id="propBeds" class="filter-select">
-                <option value="">All Beds</option>
-                <option value="Studio">Studio</option>
-                <option value="1">1 Bed</option>
-                <option value="2">2 Beds</option>
-                <option value="3">3 Beds</option>
-                <option value="4">4 Beds</option>
-                <option value="5">5+ Beds</option>
-            </select>
-            <select id="propFurnish" class="filter-select">
-                <option value="">Any Furnishing</option>
-                <option>Furnished</option>
-                <option>Unfurnished</option>
-                <option>Semi-Furnished</option>
-            </select>
-            <span class="filter-count" id="propCount">Loading…</span>
-        </div>
+  <div class="filter-inner">
+    <div class="ftabs">
+      <button class="ftab on" data-tab="all">All</button>
+      <button class="ftab" data-tab="sale">For Sale</button>
+      <button class="ftab" data-tab="rent">For Rent</button>
+      <button class="ftab ftab-excl" data-tab="exclusive">⭑ Exclusive</button>
     </div>
+    <div class="fcontrols">
+      <input type="text" id="fsearch" class="fsearch" placeholder="Search location, building…">
+      <select id="fbeds" class="fsel"><option value="">All Beds</option><option value="Studio">Studio</option><option value="1">1 Bed</option><option value="2">2 Beds</option><option value="3">3 Beds</option><option value="4">4 Beds</option><option value="5">5+ Beds</option></select>
+      <select id="ffurn" class="fsel"><option value="">Any Furnishing</option><option>Furnished</option><option>Unfurnished</option><option>Semi-Furnished</option></select>
+      <span class="fcount" id="fcount">Loading…</span>
+    </div>
+  </div>
 </div>
 
-<!-- GRID -->
-<section class="props-section">
-    <div class="props-grid" id="propsGrid">
-        <!-- Skeletons while loading -->
-        <div class="skel-card"><div class="skel-img"></div><div class="skel-body"><div class="skel-line skel-s"></div><div class="skel-line skel-l"></div><div class="skel-line skel-m"></div></div></div>
-        <div class="skel-card"><div class="skel-img"></div><div class="skel-body"><div class="skel-line skel-s"></div><div class="skel-line skel-l"></div><div class="skel-line skel-m"></div></div></div>
-        <div class="skel-card"><div class="skel-img"></div><div class="skel-body"><div class="skel-line skel-s"></div><div class="skel-line skel-l"></div><div class="skel-line skel-m"></div></div></div>
-    </div>
-    <div class="empty-state" id="propsEmpty">
-        <div class="icon">🔍</div>
-        <p>No properties match your search.</p>
-        <button class="btn-ghost" onclick="resetFilters()">Clear Filters</button>
-    </div>
-</section>
+<div class="props-wrap">
+  <div class="props-grid" id="propsGrid">
+    <div class="card skel"><div class="card-img skel-img"></div><div class="card-body"><div class="sk sk-s"></div><div class="sk sk-l"></div><div class="sk sk-m"></div></div></div>
+    <div class="card skel"><div class="card-img skel-img"></div><div class="card-body"><div class="sk sk-s"></div><div class="sk sk-l"></div><div class="sk sk-m"></div></div></div>
+    <div class="card skel"><div class="card-img skel-img"></div><div class="card-body"><div class="sk sk-s"></div><div class="sk sk-l"></div><div class="sk sk-m"></div></div></div>
+  </div>
+  <div class="empty-state" id="emptyState">
+    <div class="ei">🔍</div>
+    <p>No properties match your search.</p>
+    <button class="btn-outline" onclick="resetFilters()">Clear Filters</button>
+  </div>
+</div>
 
-<!-- PF CTA -->
-<section class="pf-cta">
-    <div class="pf-cta-inner">
-        <div>
-            <span class="pre">All listings verified</span>
-            <h3>View our portfolio on <em>Property Finder</em></h3>
-        </div>
-        <a href="https://www.propertyfinder.ae" target="_blank" class="btn-primary">Open Property Finder ↗</a>
+<div class="pf-cta">
+  <div class="pf-cta-inner">
+    <div><span class="eyebrow">All listings verified</span><h3>View our full portfolio on <em>Property Finder</em></h3></div>
+    <a href="https://www.propertyfinder.ae" target="_blank" class="btn-pf">Open Property Finder ↗</a>
+  </div>
+</div>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="eonelogo.png" alt="Eone" class="footer-logo">
+      <p>Eone Exclusive Properties — Real Estate<br>Eone Luxury Watches — Watches<br><span>Est. 2026 · Business Bay, Dubai, UAE</span></p>
     </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="site-footer">
-    <div class="sf-inner">
-        <div class="sf-brand">
-            <img src="eonelogo.png" alt="Eone" class="sf-logo">
-            <p>Eone Exclusive Properties — Real Estate<br>
-               Eone Luxury Watches — Watches<br>
-               <span style="font-size:9px;color:#444;letter-spacing:1px;">Est. 2026 · Business Bay, Dubai, UAE</span>
-            </p>
-        </div>
-        <div class="sf-cols">
-            <div class="sf-col">
-                <h4>Navigate</h4>
-                <a href="index.html">Home</a>
-                <a href="services.html">Properties</a>
-                <a href="watches.html">Watches</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            <div class="sf-col">
-                <h4>Connect</h4>
-                <a href="tel:+97142566517">04 566 5176</a>
-                <a href="mailto:info@eoneproperties.com">info@eoneproperties.com</a>
-                <a href="https://wa.me/97142566517" target="_blank">WhatsApp ↗</a>
-                <a href="#">Instagram</a>
-            </div>
-        </div>
+    <div class="footer-cols">
+      <div class="fc"><h4>Navigate</h4><a href="index.html">Home</a><a href="services.html">Properties</a><a href="watches.html">Watches</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+      <div class="fc"><h4>Connect</h4><a href="tel:+97142566517">04 566 5176</a><a href="mailto:info@eoneproperties.com">info@eoneproperties.com</a><a href="https://wa.me/97142566517" target="_blank">WhatsApp ↗</a><a href="#">Instagram</a></div>
     </div>
-    <div class="sf-bottom">
-        <span>© 2026 Eone Exclusive Properties & Eone Luxury Watches. All rights reserved.</span>
-        <span>RERA Registered · DED Licensed · Business Bay, Dubai, UAE</span>
-    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Eone Exclusive Properties & Eone Luxury Watches. All rights reserved.</span>
+    <span>RERA Registered · DED Licensed · Business Bay, Dubai, UAE</span>
+  </div>
 </footer>
-
-<script>
-// ── Apps Script URL ─────────────────────────────
-const API = 'https://script.google.com/macros/s/AKfycbyHrwwVKhXNwAV54j051pdQcXRfp7UxcwhB_5L4diCAwmQr8syMR6XD73_ov5lYQUP9/exec';
-
-// ── Nav ─────────────────────────────────────────
-const nav = document.getElementById('navbar');
-window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
-document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.toggle('open'));
-document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open')));
-
-// ── Helpers ─────────────────────────────────────
-function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-function fmt(v){ if(!v) return ''; const n=Number(String(v).replace(/[^0-9.]/g,'')); return n?'AED '+n.toLocaleString('en-US'):String(v); }
-
-// ── Build card ──────────────────────────────────
-function card(r) {
-    const rent  = r._type === 'RENT';
-    const excl  = String(r['Exclusivity']||'').toLowerCase().includes('exclusive');
-    const pf    = r['PF Link'] || '';
-    const href  = pf && pf.startsWith('http') ? pf : 'https://www.propertyfinder.ae';
-    const price = fmt(r['Price']);
-    const bldg  = esc(r['Building'] || r['Location'] || 'Dubai Property');
-    const loc   = esc(r['Location'] || '');
-    const type  = esc(r['Property Type'] || r['Unit Type'] || '');
-    const ref   = esc(r['Reference'] || '');
-    const beds  = r['# Bed']  || '';
-    const baths = r['# Bath'] || '';
-    const size  = r['Size']   || r['Size sqft'] || '';
-    const furn  = r['Furnishing'] || r['Furnishing Type'] || '';
-    const photo = r['Photo URL'] || '';
-
-    const img = photo
-        ? `<img src="${esc(photo)}" alt="${bldg}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-           <div class="pc-placeholder" style="display:none;">🏙️</div>`
-        : `<div class="pc-placeholder">🏙️</div>`;
-
-    return `<a class="prop-card" href="${esc(href)}" target="_blank" rel="noopener">
-        <div class="pc-img">
-            ${img}
-            <div class="pc-badge pc-badge-type${rent?' rent':''}">${rent?'RENT':'SALE'}</div>
-            ${excl?`<div class="pc-badge pc-badge-excl">Exclusive</div>`:''}
-            ${pf?`<div class="pc-badge pc-badge-pf">PF ✓</div>`:''}
-        </div>
-        <div class="pc-body">
-            ${ref?`<div class="pc-ref">${ref}</div>`:''}
-            <div class="pc-title">${bldg}</div>
-            <div class="pc-sub">${loc}${loc&&type?' · ':''}${type}</div>
-            <div class="pc-specs">
-                ${beds ?`<div class="pc-spec"><span class="pc-spec-val">${esc(String(beds))}</span><span class="pc-spec-key">Beds</span></div>`:''}
-                ${baths?`<div class="pc-spec"><span class="pc-spec-val">${esc(String(baths))}</span><span class="pc-spec-key">Baths</span></div>`:''}
-                ${size ?`<div class="pc-spec"><span class="pc-spec-val">${esc(String(size))}</span><span class="pc-spec-key">Sq Ft</span></div>`:''}
-                ${furn ?`<div class="pc-spec"><span class="pc-spec-val" style="font-size:10px;">${esc(furn)}</span><span class="pc-spec-key">Furnish</span></div>`:''}
-            </div>
-            <div class="pc-foot">
-                <div>
-                    <div class="pc-price">${price||'Price on Request'}${rent&&price?'<span style="font-size:.65em;color:#bbb;"> /yr</span>':''}</div>
-                    <div class="pc-price-lbl">${rent?'Per Year':'Asking Price'}</div>
-                </div>
-                <span class="pc-arrow">↗</span>
-            </div>
-        </div>
-    </a>`;
-}
-
-// ── Render ──────────────────────────────────────
-function render(listings) {
-    const grid  = document.getElementById('propsGrid');
-    const empty = document.getElementById('propsEmpty');
-    if (!listings.length) {
-        grid.style.display  = 'none';
-        empty.style.display = 'block';
-        return;
-    }
-    grid.style.display  = 'grid';
-    empty.style.display = 'none';
-    grid.innerHTML = listings.map(card).join('');
-}
-
-// ── State ───────────────────────────────────────
-let all = [], activeTab = 'all';
-
-function filter() {
-    const q    = (document.getElementById('propSearch').value || '').toLowerCase().trim();
-    const beds = document.getElementById('propBeds').value || '';
-    const furn = document.getElementById('propFurnish').value || '';
-    const countEl = document.getElementById('propCount');
-
-    const out = all.filter(r => {
-        const t = r._type || 'SALE';
-        const e = String(r['Exclusivity']||'').toLowerCase();
-        if (activeTab==='sale'      && t!=='SALE') return false;
-        if (activeTab==='rent'      && t!=='RENT') return false;
-        if (activeTab==='exclusive' && !e.includes('exclusive')) return false;
-        if (q) {
-            const hay = [r['Building'],r['Location'],r['Reference'],r['Property Type'],r['Unit Type'],r['View']].join(' ').toLowerCase();
-            if (!hay.includes(q)) return false;
-        }
-        if (beds) {
-            const b = String(r['# Bed']||'').trim();
-            if (beds==='5'){if(parseInt(b)<5) return false;}
-            else if (b!==beds) return false;
-        }
-        if (furn && (r['Furnishing']||r['Furnishing Type']||'') !== furn) return false;
-        return true;
-    });
-
-    countEl.textContent = out.length + ' listing' + (out.length!==1?'s':'');
-    render(out);
-}
-
-window.resetFilters = function() {
-    document.getElementById('propSearch').value = '';
-    document.getElementById('propBeds').value   = '';
-    document.getElementById('propFurnish').value = '';
-    activeTab = 'all';
-    document.querySelectorAll('.ftab').forEach(t => t.classList.toggle('active', t.dataset.tab==='all'));
-    filter();
-};
-
-// Tabs
-document.querySelectorAll('.ftab').forEach(tab => {
-    tab.addEventListener('click', () => {
-        document.querySelectorAll('.ftab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        activeTab = tab.dataset.tab;
-        filter();
-    });
-});
-
-// Inputs
-['propSearch','propBeds','propFurnish'].forEach(id => {
-    document.getElementById(id)?.addEventListener('input',  filter);
-    document.getElementById(id)?.addEventListener('change', filter);
-});
-
-// ── Fetch ────────────────────────────────────────
-async function load() {
-    try {
-        const res  = await fetch(API + '?action=getListings');
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        const data = await res.json();
-        if (!data.ok) throw new Error(data.error || 'API error');
-        all = data.listings || [];
-        document.getElementById('propCount').textContent = all.length + ' listing' + (all.length!==1?'s':'');
-        render(all);
-    } catch(err) {
-        console.error('Failed to load listings:', err.message);
-        document.getElementById('propCount').textContent = 'Error loading';
-        document.getElementById('propsGrid').innerHTML = `
-            <div style="grid-column:1/-1;padding:60px;text-align:center;background:#fff;">
-                <div style="font-size:2rem;margin-bottom:16px;">⚠️</div>
-                <div style="font-size:9px;letter-spacing:2px;color:#bbb;text-transform:uppercase;">Could not load listings — please try again shortly</div>
-            </div>`;
-    }
-}
-
-load();
-</script>
-<script>
-    const _nb = document.getElementById('navbar');
-    window.addEventListener('scroll', () => _nb?.classList.toggle('scrolled', window.scrollY > 40));
-    document.getElementById('burger')?.addEventListener('click', () => document.getElementById('drawer')?.classList.toggle('open'));
-    document.querySelectorAll('.mobile-drawer a').forEach(a => a.addEventListener('click', () => document.getElementById('drawer')?.classList.remove('open')));
-</script>
+<script src="eone.js"></script>
 </body>
 </html>
