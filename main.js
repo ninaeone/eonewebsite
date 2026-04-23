@@ -6,7 +6,7 @@
 // ── IMPORTANT: Replace with your deployed Web App URL ─────────
 // After deploying WebsiteAPI.gs, paste the URL here.
 // It looks like: https://script.google.com/macros/s/AKfy.../exec
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzZbAeBvtUPuZCv6Sf3PQ12RoBmQimWGhzvI04NOckd306y0rA6B41460P7JhOMAYyK/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyHrwwVKhXNwAV54j051pdQcXRfp7UxcwhB_5L4diCAwmQr8syMR6XD73_ov5lYQUP9/exec';
 
 // ── Nav scroll ─────────────────────────────────────────────────
 const navbar = document.getElementById('navbar');
@@ -85,8 +85,8 @@ function renderCard(listing) {
     const ref         = escHtml(listing['Reference'] || '');
     const beds        = listing['# Bed']        || '';
     const baths       = listing['# Bath']       || '';
-    const size        = listing['Size']         || '';
-    const furnish     = listing['Furnishing']   || '';
+    const size        = listing['Size']         || listing['Size sqft'] || '';
+    const furnish     = listing['Furnishing']   || listing['Furnishing Type'] || '';
     const propType    = escHtml(listing['Property Type'] || listing['Unit Type'] || '');
     const photoUrl    = listing['Photo URL']    || '';
 
