@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eone Exclusive Properties — Dubai Luxury Real Estate</title>
+    <title>Eone — Exclusive Properties & Luxury Watches · Dubai</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="home.css">
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -13,15 +13,20 @@
 <!-- ═══ NAVIGATION ═══ -->
 <nav class="site-nav" id="navbar">
     <div class="site-nav-inner">
-        <a href="index.html" class="site-nav-logo">
-            <img src="eonelogo.png" alt="Eone Exclusive Properties">
+
+        <!-- STAMP LOGO -->
+        <a href="index.html" class="nav-stamp">
+            <img src="eonelogo.png" alt="Eone" class="nav-stamp-img">
         </a>
+
         <ul class="site-nav-links">
-            <li><a href="index.html" class="snl active">Home</a></li>
+            <li><a href="index.html"   class="snl active">Home</a></li>
             <li><a href="services.html" class="snl">Properties</a></li>
-            <li><a href="about.html" class="snl">About</a></li>
-            <li><a href="contact.html" class="snl">Contact</a></li>
+            <li><a href="watches.html"  class="snl">Watches</a></li>
+            <li><a href="about.html"    class="snl">About</a></li>
+            <li><a href="contact.html"  class="snl">Contact</a></li>
         </ul>
+
         <a href="contact.html" class="site-nav-enquire">Enquire</a>
         <button class="site-nav-burger" id="burger" aria-label="Menu">
             <span></span><span></span><span></span>
@@ -29,10 +34,12 @@
     </div>
 </nav>
 
+<!-- MOBILE DRAWER -->
 <div class="mobile-drawer" id="drawer">
     <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="services.html">Properties</a></li>
+        <li><a href="watches.html">Watches</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
     </ul>
@@ -56,26 +63,32 @@
             <p class="home-hero-sub">Ultra-prime residential and investment real estate — curated for those who expect more than a listing.</p>
             <div class="home-hero-actions">
                 <a href="services.html" class="hbtn-dark">View All Properties</a>
-                <a href="contact.html" class="hbtn-outline">Private Consultation</a>
-            </div>
-        </div>
-        <div class="home-hero-badge">
-            <div class="badge-ring">
-                <div class="badge-inner">
-                    <span class="badge-num">PF</span>
-                    <span class="badge-label">Verified</span>
-                </div>
+                <a href="contact.html"  class="hbtn-outline">Private Consultation</a>
             </div>
         </div>
     </div>
+
+    <!-- STAT STRIP -->
     <div class="home-hero-strip">
-        <div class="strip-item"><span class="strip-val">Sale &amp; Rent</span><span class="strip-key">Both Markets</span></div>
+        <div class="strip-item">
+            <span class="strip-val">By Invitation</span>
+            <span class="strip-key">Not every client qualifies</span>
+        </div>
         <div class="strip-div"></div>
-        <div class="strip-item"><span class="strip-val">Exclusive</span><span class="strip-key">Off-Market Access</span></div>
+        <div class="strip-item">
+            <span class="strip-val">Off-Market</span>
+            <span class="strip-key">Properties you won't find elsewhere</span>
+        </div>
         <div class="strip-div"></div>
-        <div class="strip-item"><span class="strip-val">PF Listed</span><span class="strip-key">Property Finder Verified</span></div>
+        <div class="strip-item">
+            <span class="strip-val">Two Worlds</span>
+            <span class="strip-key">Real estate & rare timepieces</span>
+        </div>
         <div class="strip-div"></div>
-        <div class="strip-item"><span class="strip-val">Dubai</span><span class="strip-key">Ultra-Prime Locations</span></div>
+        <div class="strip-item">
+            <span class="strip-val">Total Discretion</span>
+            <span class="strip-key">Your name stays private</span>
+        </div>
     </div>
 </section>
 
@@ -89,10 +102,9 @@
         <span>Dubai Hills Estate</span><span class="mdot">◆</span>
         <span>Business Bay</span><span class="mdot">◆</span>
         <span>Jumeirah Bay Island</span><span class="mdot">◆</span>
-        <span>JBR</span><span class="mdot">◆</span>
-        <span>Bluewaters</span><span class="mdot">◆</span>
         <span>District One</span><span class="mdot">◆</span>
-        <!-- duplicate for seamless loop -->
+        <span>Bluewaters</span><span class="mdot">◆</span>
+        <span>JBR</span><span class="mdot">◆</span>
         <span>Palm Jumeirah</span><span class="mdot">◆</span>
         <span>Downtown Dubai</span><span class="mdot">◆</span>
         <span>Emirates Hills</span><span class="mdot">◆</span>
@@ -100,75 +112,60 @@
         <span>Dubai Hills Estate</span><span class="mdot">◆</span>
         <span>Business Bay</span><span class="mdot">◆</span>
         <span>Jumeirah Bay Island</span><span class="mdot">◆</span>
-        <span>JBR</span><span class="mdot">◆</span>
-        <span>Bluewaters</span><span class="mdot">◆</span>
         <span>District One</span><span class="mdot">◆</span>
+        <span>Bluewaters</span><span class="mdot">◆</span>
+        <span>JBR</span><span class="mdot">◆</span>
     </div>
 </div>
 
-<!-- ═══ FEATURED LISTINGS CAROUSEL ═══ -->
-<section class="listings-wrap">
+<!-- ═══ FEATURED PROPERTIES CAROUSEL ═══ -->
+<section class="listings-wrap" id="propertiesSection">
     <div class="listings-head">
         <div>
             <p class="eyebrow-gold">Live on Property Finder</p>
-            <h2 class="listings-title">Featured <em>Listings</em></h2>
+            <h2 class="listings-title">Featured <em>Properties</em></h2>
         </div>
         <div class="listings-head-right">
             <a href="services.html" class="view-all-link">View All →</a>
             <div class="carousel-btns">
-                <button class="cbtn cbtn-prev" id="carPrev" aria-label="Previous">&#8592;</button>
-                <button class="cbtn cbtn-next" id="carNext" aria-label="Next">&#8594;</button>
+                <button class="cbtn" id="carPrev" aria-label="Previous">&#8592;</button>
+                <button class="cbtn" id="carNext" aria-label="Next">&#8594;</button>
             </div>
         </div>
     </div>
-
-    <!-- Carousel track -->
     <div class="carousel-outer" id="carouselOuter">
         <div class="carousel-track" id="carouselTrack">
-            <!-- JS injects cards here -->
-            <!-- Skeleton placeholders while loading -->
-            <div class="listing-card skeleton-card">
-                <div class="lc-img skeleton-img"></div>
-                <div class="lc-body">
-                    <div class="sk-line sk-short"></div>
-                    <div class="sk-line sk-long"></div>
-                    <div class="sk-line sk-medium"></div>
-                    <div class="sk-price"></div>
-                </div>
-            </div>
-            <div class="listing-card skeleton-card">
-                <div class="lc-img skeleton-img"></div>
-                <div class="lc-body">
-                    <div class="sk-line sk-short"></div>
-                    <div class="sk-line sk-long"></div>
-                    <div class="sk-line sk-medium"></div>
-                    <div class="sk-price"></div>
-                </div>
-            </div>
-            <div class="listing-card skeleton-card">
-                <div class="lc-img skeleton-img"></div>
-                <div class="lc-body">
-                    <div class="sk-line sk-short"></div>
-                    <div class="sk-line sk-long"></div>
-                    <div class="sk-line sk-medium"></div>
-                    <div class="sk-price"></div>
-                </div>
-            </div>
-            <div class="listing-card skeleton-card">
-                <div class="lc-img skeleton-img"></div>
-                <div class="lc-body">
-                    <div class="sk-line sk-short"></div>
-                    <div class="sk-line sk-long"></div>
-                    <div class="sk-line sk-medium"></div>
-                    <div class="sk-price"></div>
-                </div>
-            </div>
+            <div class="listing-card skeleton-card"><div class="lc-img skeleton-img"></div><div class="lc-body"><div class="sk-line sk-short"></div><div class="sk-line sk-long"></div><div class="sk-line sk-medium"></div><div class="sk-price"></div></div></div>
+            <div class="listing-card skeleton-card"><div class="lc-img skeleton-img"></div><div class="lc-body"><div class="sk-line sk-short"></div><div class="sk-line sk-long"></div><div class="sk-line sk-medium"></div><div class="sk-price"></div></div></div>
+            <div class="listing-card skeleton-card"><div class="lc-img skeleton-img"></div><div class="lc-body"><div class="sk-line sk-short"></div><div class="sk-line sk-long"></div><div class="sk-line sk-medium"></div><div class="sk-price"></div></div></div>
+            <div class="listing-card skeleton-card"><div class="lc-img skeleton-img"></div><div class="lc-body"><div class="sk-line sk-short"></div><div class="sk-line sk-long"></div><div class="sk-line sk-medium"></div><div class="sk-price"></div></div></div>
         </div>
     </div>
-
     <div class="listings-footer">
-        <a href="services.html" class="hbtn-outline">See All Properties on Property Finder →</a>
+        <a href="https://www.propertyfinder.ae" target="_blank" rel="noopener" class="hbtn-outline">See All Properties on Property Finder →</a>
     </div>
+</section>
+
+<!-- ═══ DUAL WORLD — PROPERTIES + WATCHES ═══ -->
+<section class="dual-world">
+    <a href="services.html" class="world-card world-realestate">
+        <div class="world-overlay"></div>
+        <div class="world-body">
+            <span class="world-idx">01</span>
+            <h2>Exclusive<br><em>Real Estate</em></h2>
+            <p>Ultra-prime Dubai properties — villas, penthouses, and residences that rarely reach the open market.</p>
+            <span class="world-cta">Explore Properties →</span>
+        </div>
+    </a>
+    <a href="watches.html" class="world-card world-watches">
+        <div class="world-overlay"></div>
+        <div class="world-body">
+            <span class="world-idx">02</span>
+            <h2>Luxury<br><em>Timepieces</em></h2>
+            <p>Patek Philippe, Richard Mille, Rolex — authenticated rare watches for the serious collector.</p>
+            <span class="world-cta">Explore Collection →</span>
+        </div>
+    </a>
 </section>
 
 <!-- ═══ PHILOSOPHY ═══ -->
@@ -178,7 +175,7 @@
         <blockquote class="phil-quote">
             "Not every property is for everyone —<br><em>ours are for the few."</em>
         </blockquote>
-        <p class="phil-body">Eone Exclusive Properties was built on one conviction: that the right home is not found — it is curated. We work with a select number of clients and handle every transaction with discretion, precision, and an uncompromising standard.</p>
+        <p class="phil-body">Eone was built on one conviction: that the right home — or the right watch — is not found. It is curated. We work with a select number of clients and handle every transaction with discretion, precision, and an uncompromising standard.</p>
         <a href="about.html" class="phil-link">Our Story →</a>
     </div>
 </section>
@@ -191,10 +188,10 @@
             <h2 class="why-title">A Different <em>Standard</em></h2>
         </div>
         <div class="why-grid">
-            <div class="why-card"><div class="why-idx">01</div><h3>Exclusive Access</h3><p>Off-market and pre-launch properties unavailable anywhere else — through our private network.</p></div>
-            <div class="why-card"><div class="why-idx">02</div><h3>Property Finder Verified</h3><p>Every listing published to Property Finder — transparent, verified, and fully detailed.</p></div>
-            <div class="why-card"><div class="why-idx">03</div><h3>End-to-End Advisory</h3><p>From search to transfer, we manage every step — legal, financial, and logistical.</p></div>
-            <div class="why-card"><div class="why-idx">04</div><h3>Absolute Discretion</h3><p>Your identity, budget, and requirements are never shared without your explicit consent.</p></div>
+            <div class="why-card"><div class="why-idx">01</div><h3>Access Others Don't Have</h3><p>Off-market properties and rare timepieces unavailable through conventional channels — only through us.</p></div>
+            <div class="why-card"><div class="why-idx">02</div><h3>Two Worlds, One Standard</h3><p>Real estate and watches curated under the same philosophy: only what genuinely meets the bar.</p></div>
+            <div class="why-card"><div class="why-idx">03</div><h3>End-to-End Advisory</h3><p>From first conversation to completed transaction — every detail managed on your behalf.</p></div>
+            <div class="why-card"><div class="why-idx">04</div><h3>Total Discretion</h3><p>Your identity, budget, and requirements never shared. Privacy is not a feature — it is a foundation.</p></div>
         </div>
     </div>
 </section>
@@ -222,7 +219,7 @@
 <footer class="site-footer">
     <div class="sf-inner">
         <div class="sf-brand">
-            <img src="eonelogo.png" alt="Eone Exclusive Properties" class="sf-logo">
+            <img src="eonelogo.png" alt="Eone" class="sf-logo">
             <p>
                 Eone Exclusive Properties — Real Estate<br>
                 Eone Luxury Watches — Watches<br>
@@ -234,6 +231,7 @@
                 <h4>Navigate</h4>
                 <a href="index.html">Home</a>
                 <a href="services.html">Properties</a>
+                <a href="watches.html">Watches</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
             </div>
