@@ -24,6 +24,7 @@ body { font-family: var(--sans); background: #fff; color: var(--dark); overflow-
   border-bottom: 1px solid transparent;
   transition: background .5s, border-color .5s, box-shadow .5s;
 }
+/* Solid state — scrolled OR on light-bg pages */
 .nav.solid {
   background: rgba(255,255,255,.98);
   border-bottom-color: var(--border);
@@ -39,34 +40,52 @@ body { font-family: var(--sans); background: #fff; color: var(--dark); overflow-
   list-style: none; display: flex; gap: 36px; align-items: center;
 }
 .nav-right { justify-content: flex-end; }
+
+/* Default: dark links (inner pages with light background) */
 .nl {
   text-decoration: none; font-size: 10px; letter-spacing: 3px;
-  text-transform: uppercase; color: rgba(255,255,255,.8);
+  text-transform: uppercase; color: #666;
   transition: color .3s; white-space: nowrap; font-weight: 400;
 }
-.nl:hover, .nl.active { color: #fff; }
+.nl:hover, .nl.active { color: var(--dark); }
 .nl.active { border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
-/* Dark nav links after scroll */
-.nav.solid .nl { color: #777; }
-.nav.solid .nl:hover, .nav.solid .nl.active { color: var(--dark); }
+
+/* Hero pages: white links when transparent (before scroll) */
+.nav.hero-nav:not(.solid) .nl { color: rgba(255,255,255,.8); }
+.nav.hero-nav:not(.solid) .nl:hover,
+.nav.hero-nav:not(.solid) .nl.active { color: #fff; }
+
+/* Enquire button */
 .nav-enq {
   text-decoration: none; font-size: 9px; letter-spacing: 3px;
   text-transform: uppercase; padding: 9px 20px;
-  border: 1px solid rgba(255,255,255,.6); color: #fff;
+  border: 1px solid var(--dark); color: var(--dark);
   transition: all .3s; white-space: nowrap; font-weight: 400;
+  background: transparent;
 }
-.nav-enq:hover { background: rgba(255,255,255,.15); border-color: #fff; }
-.nav.solid .nav-enq { border-color: var(--dark); color: var(--dark); background: transparent; }
-.nav.solid .nav-enq:hover { background: var(--dark); color: #fff; }
+.nav-enq:hover { background: var(--dark); color: #fff; }
+
+/* Hero pages: ghost button when over dark photo */
+.nav.hero-nav:not(.solid) .nav-enq {
+  border-color: rgba(255,255,255,.6); color: #fff;
+}
+.nav.hero-nav:not(.solid) .nav-enq:hover {
+  background: rgba(255,255,255,.15); border-color: #fff;
+}
+
+/* Logo */
 .nav-logo { display: block; line-height: 0; text-decoration: none; transition: opacity .3s; }
 .nav-logo:hover { opacity: .75; }
 .nav-logo img { height: 44px; width: auto; display: block; }
-/* Tint logo gold when over dark hero */
-.nav:not(.solid) .nav-logo img { filter: brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(5deg) brightness(.9); }
-.nav.solid .nav-logo img { filter: none; }
+/* Logo: normal color on light bg, gold tint over dark hero */
+.nav.hero-nav:not(.solid) .nav-logo img {
+  filter: brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(5deg) brightness(.9);
+}
+
+/* Burger */
 .nav-burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; margin-left: 16px; }
-.nav-burger span { display: block; width: 22px; height: 1px; background: #fff; transition: background .3s; }
-.nav.solid .nav-burger span { background: var(--dark); }
+.nav-burger span { display: block; width: 22px; height: 1px; background: var(--dark); transition: background .3s; }
+.nav.hero-nav:not(.solid) .nav-burger span { background: #fff; }
 
 /* DRAWER */
 .drawer { display: none; position: fixed; top: var(--nav); left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--border); z-index: 999; padding: 24px 48px 32px; }
