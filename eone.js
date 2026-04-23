@@ -5,6 +5,27 @@
 
 const API = 'https://script.google.com/macros/s/AKfycbyHrwwVKhXNwAV54j051pdQcXRfp7UxcwhB_5L4diCAwmQr8syMR6XD73_ov5lYQUP9/exec';
 
+
+// ── WORLD CARD PHOTOS — load reliably ────────
+(function() {
+  const worlds = [
+    { sel: '.world-re', url: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80', fallback: 'https://images.unsplash.com/photo-1582407947304-fd86f28f3e75?auto=format&fit=crop&w=1200&q=80' },
+    { sel: '.world-wa', url: 'https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=1200&q=80', fallback: 'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=1200&q=80' },
+  ];
+  worlds.forEach(({sel, url, fallback}) => {
+    const el = document.querySelector(sel);
+    if (!el) return;
+    const img = new Image();
+    img.onload = () => { el.style.backgroundImage = `url('${url}')`; };
+    img.onerror = () => {
+      const img2 = new Image();
+      img2.onload = () => { el.style.backgroundImage = `url('${fallback}')`; };
+      img2.src = fallback;
+    };
+    img.src = url;
+  });
+})();
+
 // ── NAV ──────────────────────────────────────
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => nav?.classList.toggle('solid', window.scrollY > 60), {passive:true});
@@ -24,7 +45,7 @@ function buildCard(r) {
   const rent  = r._type === 'RENT';
   const excl  = String(r['Exclusivity']||'').toLowerCase().includes('exclusive');
   const pf    = r['PF Link'] || '';
-  const href  = pf && pf.startsWith('http') ? pf : 'https://www.propertyfinder.ae';
+  const href  = pf && pf.startsWith('http') ? pf : 'https://www.propertyfinder.ae/en/broker/eone-prime-properties-l-l-c-s-o-c-v2-179995';
   const price = fmt(r['Price']);
   const bldg  = esc(r['Building'] || r['Location'] || 'Dubai Property');
   const loc   = esc(r['Location'] || '');
@@ -208,12 +229,12 @@ document.querySelectorAll('.ftab').forEach(t => t.addEventListener('click', () =
 // ── DEMO DATA ─────────────────────────────────
 function getDemos() {
   return [
-    {_type:'SALE','Reference':'EXC-001','Building':'Signature Frond Villa','Location':'Palm Jumeirah','Property Type':'Villa','# Bed':'6','# Bath':'7','Size':'12,000','Furnishing':'Furnished','Price':'68000000','Exclusivity':'Exclusive','PF Link':'https://www.propertyfinder.ae'},
-    {_type:'SALE','Reference':'EXC-002','Building':'Burj Khalifa Boulevard','Location':'Downtown Dubai','Property Type':'Penthouse','# Bed':'4','# Bath':'5','Size':'6,800','Furnishing':'Furnished','Price':'42500000','PF Link':'https://www.propertyfinder.ae'},
-    {_type:'RENT','Reference':'EXC-003','Building':'Golf Estate Mansion','Location':'Emirates Hills','Property Type':'Mansion','# Bed':'8','# Bath':'9','Size':'18,000','Furnishing':'Unfurnished','Price':'2500000','Exclusivity':'Exclusive','PF Link':'https://www.propertyfinder.ae'},
-    {_type:'SALE','Reference':'EXC-004','Building':'The Index Tower','Location':'DIFC','Property Type':'Apartment','# Bed':'3','# Bath':'4','Size':'3,400','Furnishing':'Furnished','Price':'18000000','PF Link':'https://www.propertyfinder.ae'},
-    {_type:'RENT','Reference':'EXC-005','Building':'Waterfront Reserve','Location':'Jumeirah Bay','Property Type':'Villa','# Bed':'7','# Bath':'8','Size':'14,500','Furnishing':'Furnished','Price':'800000','Exclusivity':'Exclusive','PF Link':'https://www.propertyfinder.ae'},
-    {_type:'SALE','Reference':'EXC-006','Building':'Cavalli Casa Tower','Location':'Dubai Marina','Property Type':'Apartment','# Bed':'3','# Bath':'4','Size':'2,800','Furnishing':'Furnished','Price':'9800000','Exclusivity':'Exclusive','PF Link':'https://www.propertyfinder.ae'},
+    {_type:'SALE','Reference':'EXC-001','Building':'Signature Frond Villa','Location':'Palm Jumeirah','Property Type':'Villa','# Bed':'6','# Bath':'7','Size':'12,000','Furnishing':'Furnished','Price':'68000000','Exclusivity':'Exclusive','PF Link':'https://www.propertyfinder.ae/en/broker/eone-prime-properties-l-l-c-s-o-c-v2-179995'},
+    {_type:'SALE','Reference':'EXC-002','Building':'Burj Khalifa Boulevard','Location':'Downtown Dubai','Property Type':'Penthouse','# Bed':'4','# Bath':'5','Size':'6,800','Furnishing':'Furnished','Price':'42500000','PF Link':'https://www.propertyfinder.ae/en/broker/eone-prime-properties-l-l-c-s-o-c-v2-179995'},
+    {_type:'RENT','Reference':'EXC-003','Building':'Golf Estate Mansion','Location':'Emirates Hills','Property Type':'Mansion','# Bed':'8','# Bath':'9','Size':'18,000','Furnishing':'Unfurnished','Price':'2500000','Exclusivity':'Exclusive','PF Link':'https://www.propertyfinder.ae/en/broker/eone-prime-properties-l-l-c-s-o-c-v2-179995'},
+    {_type:'SALE','Reference':'EXC-004','Building':'The Index Tower','Location':'DIFC','Property Type':'Apartment','# Bed':'3','# Bath':'4','Size':'3,400','Furnishing':'Furnished','Price':'18000000','PF Link':'https://www.propertyfinder.ae/en/broker/eone-prime-properties-l-l-c-s-o-c-v2-179995'},
+    {_type:'RENT','Reference':'EXC-005','Building':'Waterfront Reserve','Location':'Jumeirah Bay','Property Type':'Villa','# Bed':'7','# Bath':'8','Size':'14,500','Furnishing':'Furnished','Price':'800000','Exclusivity':'Exclusive','PF Link':'https://www.propertyfinder.ae/en/broker/eone-prime-properties-l-l-c-s-o-c-v2-179995'},
+    {_type:'SALE','Reference':'EXC-006','Building':'Cavalli Casa Tower','Location':'Dubai Marina','Property Type':'Apartment','# Bed':'3','# Bath':'4','Size':'2,800','Furnishing':'Furnished','Price':'9800000','Exclusivity':'Exclusive','PF Link':'https://www.propertyfinder.ae/en/broker/eone-prime-properties-l-l-c-s-o-c-v2-179995'},
   ];
 }
 
