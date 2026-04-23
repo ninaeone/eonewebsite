@@ -1,564 +1,208 @@
-/* ═══════════════════════════════════════════════
-   EONE — HOME PAGE CSS
-   Stamp logo · Refined hero · Carousel · Dual world
-   ═══════════════════════════════════════════════ */
+// ═══════════════════════════════════════════════
+// EONE — HOME PAGE JS
+// Loads live listings from Apps Script Web App
+// ═══════════════════════════════════════════════
 
-:root {
-    --gold:      #C5A059;
-    --gold-lt:   #d4b47a;
-    --dark:      #111111;
-    --border:    #e8e8e8;
-    --border-dk: #2a2a2a;
-    --muted:     #888;
-    --serif:     'Bodoni Moda', serif;
-    --sans:      'Inter', sans-serif;
-    --nav-h:     72px;
+// ── Apps Script URL — hardcoded directly ─────────
+const HOME_API = 'https://script.google.com/macros/s/AKfycbyHrwwVKhXNwAV54j051pdQcXRfp7UxcwhB_5L4diCAwmQr8syMR6XD73_ov5lYQUP9/exec';
+
+function getApiUrl() {
+    return HOME_API;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-.home-body { font-family: var(--sans); background: #fff; color: var(--dark); overflow-x: hidden; }
+// ── Nav scroll ──────────────────────────────────
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+    navbar?.classList.toggle('scrolled', window.scrollY > 40);
+});
 
-/* ─── NAV ─────────────────────────────────────── */
-.site-nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 1000;
-    height: var(--nav-h);
-    background: rgba(255,255,255,0.96);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-    transition: box-shadow .3s;
-}
-.site-nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,.06); }
+// ── Mobile drawer ───────────────────────────────
+const burger = document.getElementById('burger');
+const drawer = document.getElementById('drawer');
+burger?.addEventListener('click', () => drawer?.classList.toggle('open'));
+drawer?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => drawer.classList.remove('open')));
 
-.site-nav-inner {
-    max-width: 1280px; margin: 0 auto;
-    padding: 0 40px; height: 100%;
-    display: flex; align-items: center; gap: 0;
+// ── Helpers ─────────────────────────────────────
+function esc(s) {
+    return String(s || '')
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-/* STAMP LOGO */
-.nav-stamp {
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    width: 64px; height: 64px;
-    border: 1.5px solid var(--gold);
-    border-radius: 50%;
-    overflow: hidden;
-    text-decoration: none;
-    transition: border-color .3s, transform .3s;
-    margin-right: 40px;
-    background: #fff;
-    flex-shrink: 0;
-}
-.nav-stamp:hover { border-color: var(--dark); transform: rotate(-3deg) scale(1.04); }
-
-.nav-stamp-img,
-.nav-stamp img {
-    width: 120%;
-    height: 120%;
-    object-fit: contain;
-    object-position: center;
-    display: block;
+function fmtPrice(val) {
+    if (!val) return '';
+    const n = Number(String(val).replace(/[^0-9.]/g, ''));
+    if (!n) return String(val);
+    return 'AED ' + n.toLocaleString('en-US');
 }
 
-/* Nav links */
-.site-nav-links {
-    list-style: none; display: flex; gap: 36px; margin-left: auto;
-}
-.snl {
-    text-decoration: none; font-size: 10px; letter-spacing: 3px;
-    text-transform: uppercase; color: var(--muted);
-    transition: color .25s; padding-bottom: 2px;
-    border-bottom: 1px solid transparent;
-}
-.snl:hover, .snl.active { color: var(--dark); border-bottom-color: var(--gold); }
+// ── Build listing card ──────────────────────────
+function buildCard(r) {
+    const isRent   = (r._type || '').toUpperCase() === 'RENT';
+    const isExcl   = String(r['Exclusivity'] || '').toLowerCase().includes('exclusive');
+    const pfLink   = r['PF Link'] || '';
+    const href     = pfLink && pfLink.startsWith('http') ? pfLink : 'https://www.propertyfinder.ae';
+    const price    = fmtPrice(r['Price']);
+    const building = esc(r['Building'] || r['Location'] || 'Dubai Property');
+    const location = esc(r['Location'] || '');
+    const propType = esc(r['Property Type'] || r['Unit Type'] || '');
+    const ref      = esc(r['Reference'] || '');
+    const beds     = r['# Bed']        || '';
+    const baths    = r['# Bath']       || '';
+    const size     = r['Size']         || r['Size sqft'] || '';
+    const furnish  = r['Furnishing']   || r['Furnishing Type'] || '';
+    const photo    = r['Photo URL']    || '';
 
-.site-nav-enquire {
-    flex-shrink: 0; margin-left: 32px;
-    text-decoration: none; font-size: 9px; letter-spacing: 4px;
-    text-transform: uppercase; border: 1px solid var(--dark);
-    padding: 10px 20px; color: var(--dark); transition: all .3s;
-}
-.site-nav-enquire:hover { background: var(--dark); color: #fff; }
+    const photoHtml = photo
+        ? `<img src="${esc(photo)}" alt="${building}" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+           <div class="lc-img-placeholder" style="display:none;">🏙️</div>`
+        : `<div class="lc-img-placeholder">🏙️</div>`;
 
-.site-nav-burger {
-    display: none; flex-direction: column; gap: 5px;
-    background: none; border: none; cursor: pointer; padding: 4px;
-    margin-left: 20px;
-}
-.site-nav-burger span { display: block; width: 22px; height: 1px; background: var(--dark); }
-
-/* Mobile drawer */
-.mobile-drawer {
-    display: none; position: fixed;
-    top: var(--nav-h); left: 0; right: 0;
-    background: #fff; border-bottom: 1px solid var(--border);
-    z-index: 999; padding: 24px 40px 32px;
-}
-.mobile-drawer.open { display: block; }
-.mobile-drawer ul { list-style: none; }
-.mobile-drawer li { border-bottom: 1px solid var(--border); }
-.mobile-drawer a {
-    display: block; padding: 16px 0;
-    text-decoration: none; font-size: 11px;
-    letter-spacing: 3px; text-transform: uppercase; color: var(--dark);
-}
-.drawer-contact {
-    margin-top: 24px; display: flex; flex-direction: column; gap: 8px;
-}
-.drawer-contact a {
-    font-size: 11px; color: var(--muted); text-decoration: none; letter-spacing: .5px;
-}
-
-/* ─── HERO ────────────────────────────────────── */
-.home-hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: center;
-    position: relative; overflow: hidden;
-    padding-top: var(--nav-h);
+    return `
+    <a class="listing-card" href="${esc(href)}" target="_blank" rel="noopener noreferrer"
+       title="${building} — View on Property Finder">
+        <div class="lc-img">
+            ${photoHtml}
+            <div class="lc-badge lc-badge-type ${isRent ? 'rent' : ''}">${isRent ? 'RENT' : 'SALE'}</div>
+            ${isExcl ? `<div class="lc-badge lc-badge-exclusive">Exclusive</div>` : ''}
+            ${pfLink ? `<div class="lc-badge lc-badge-pf">PF ✓</div>` : ''}
+        </div>
+        <div class="lc-body">
+            ${ref ? `<div class="lc-ref">${ref}</div>` : ''}
+            <div class="lc-title">${building}</div>
+            <div class="lc-location">${location}${location && propType ? ' · ' : ''}${propType}</div>
+            <div class="lc-specs">
+                ${beds    ? `<div class="lc-spec"><span class="lc-spec-val">${esc(String(beds))}</span><span class="lc-spec-key">Beds</span></div>` : ''}
+                ${baths   ? `<div class="lc-spec"><span class="lc-spec-val">${esc(String(baths))}</span><span class="lc-spec-key">Baths</span></div>` : ''}
+                ${size    ? `<div class="lc-spec"><span class="lc-spec-val">${esc(String(size))}</span><span class="lc-spec-key">Sq Ft</span></div>` : ''}
+                ${furnish ? `<div class="lc-spec"><span class="lc-spec-val" style="font-size:10px;">${esc(furnish)}</span><span class="lc-spec-key">Furnish</span></div>` : ''}
+            </div>
+            <div class="lc-footer">
+                <div>
+                    <div class="lc-price">${price || 'Price on Request'}${isRent && price ? '<span style="font-size:.65em;color:#bbb;"> /yr</span>' : ''}</div>
+                    <div class="lc-price-label">${isRent ? 'Per Year' : 'Asking Price'}</div>
+                </div>
+                <span class="lc-arrow">›</span>
+            </div>
+        </div>
+    </a>`;
 }
 
-.home-hero-dot-grid {
-    position: absolute; inset: 0;
-    background-image: radial-gradient(#ddd 1px, transparent 1px);
-    background-size: 28px 28px; opacity: .45; pointer-events: none;
+// ── Carousel ─────────────────────────────────────
+let carIndex = 0;
+let carData  = [];
+
+function getVisible() {
+    const w = window.innerWidth;
+    if (w < 600)  return 1;
+    if (w < 900)  return 2;
+    if (w < 1100) return 3;
+    return 4;
 }
 
-.home-hero-inner {
-    max-width: 1280px; margin: 0 auto;
-    padding: 80px 40px 60px; width: 100%;
-    position: relative; z-index: 1;
+function getCardW() {
+    const card = document.querySelector('#carouselTrack .listing-card');
+    if (!card) return 300;
+    return card.getBoundingClientRect().width + 1;
 }
 
-.home-eyebrow {
-    font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 28px;
+function renderCarousel(listings) {
+    const track = document.getElementById('carouselTrack');
+    if (!track) return;
+    carData  = listings;
+    carIndex = 0;
+    track.innerHTML = listings.map(buildCard).join('');
+    updateCarousel();
 }
 
-.home-h1 {
-    font-family: var(--serif);
-    font-size: clamp(3.8rem, 8.5vw, 8rem);
-    font-weight: 400; line-height: .9;
-    letter-spacing: -3px; margin-bottom: 36px;
-    display: flex; flex-direction: column; gap: 4px;
-}
-.home-h1 em { font-style: italic; color: var(--gold); }
+function updateCarousel() {
+    const track = document.getElementById('carouselTrack');
+    const prev  = document.getElementById('carPrev');
+    const next  = document.getElementById('carNext');
+    if (!track) return;
 
-.home-hero-sub {
-    max-width: 440px; font-size: 13px; line-height: 1.85;
-    color: var(--muted); margin-bottom: 48px; letter-spacing: .3px;
-}
+    const vis    = getVisible();
+    const maxIdx = Math.max(0, carData.length - vis);
+    carIndex     = Math.max(0, Math.min(carIndex, maxIdx));
 
-.home-hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
-
-/* Buttons */
-.hbtn-dark {
-    display: inline-block; background: var(--dark); color: #fff;
-    text-decoration: none; padding: 17px 38px;
-    font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
-    border: 1px solid var(--dark); cursor: pointer;
-    transition: all .4s; font-family: var(--sans);
-}
-.hbtn-dark:hover { background: var(--gold); border-color: var(--gold); letter-spacing: 6px; color: #111; }
-
-.hbtn-outline {
-    display: inline-block; background: transparent; color: var(--dark);
-    text-decoration: none; padding: 17px 38px;
-    font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
-    border: 1px solid #ccc; cursor: pointer;
-    transition: all .3s; font-family: var(--sans);
-}
-.hbtn-outline:hover { border-color: var(--dark); background: var(--dark); color: #fff; }
-
-/* Stat strip */
-.home-hero-strip {
-    position: relative; z-index: 1;
-    background: var(--dark);
-    display: flex; justify-content: center; align-items: center;
-    padding: 28px 40px; gap: 0;
-    flex-wrap: wrap;
-}
-.strip-item {
-    display: flex; flex-direction: column; align-items: center;
-    gap: 6px; padding: 0 48px; text-align: center;
-}
-.strip-val {
-    font-family: var(--serif); font-size: 1.25rem;
-    color: var(--gold); font-weight: 400; letter-spacing: .5px;
-}
-.strip-key {
-    font-size: 8px; letter-spacing: 2.5px;
-    text-transform: uppercase; color: #555;
-}
-.strip-div { width: 1px; height: 38px; background: var(--border-dk); }
-
-/* ─── MARQUEE ─────────────────────────────────── */
-.home-marquee {
-    overflow: hidden; background: #fff;
-    padding: 16px 0; border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-}
-.marquee-inner {
-    display: flex; gap: 36px; white-space: nowrap;
-    animation: marqueeScroll 35s linear infinite;
-}
-.marquee-inner span {
-    font-size: 9px; letter-spacing: 4px;
-    text-transform: uppercase; color: #bbb; flex-shrink: 0;
-}
-.mdot { color: var(--gold) !important; }
-@keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-/* ─── CAROUSEL SECTION ────────────────────────── */
-.listings-wrap {
-    padding: 90px 0 70px;
-    border-bottom: 1px solid var(--border);
+    track.style.transform = `translateX(-${carIndex * getCardW()}px)`;
+    if (prev) prev.disabled = carIndex === 0;
+    if (next) next.disabled = carIndex >= maxIdx;
 }
 
-.listings-head {
-    max-width: 1280px; margin: 0 auto;
-    padding: 0 40px 40px;
-    display: flex; align-items: flex-end; justify-content: space-between;
-    gap: 20px;
+document.getElementById('carPrev')?.addEventListener('click', () => {
+    carIndex = Math.max(0, carIndex - 1);
+    updateCarousel();
+});
+document.getElementById('carNext')?.addEventListener('click', () => {
+    carIndex = Math.min(Math.max(0, carData.length - getVisible()), carIndex + 1);
+    updateCarousel();
+});
+
+// Touch swipe
+let touchX = 0;
+document.getElementById('carouselOuter')?.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+document.getElementById('carouselOuter')?.addEventListener('touchend', e => {
+    const dx = touchX - e.changedTouches[0].clientX;
+    if (Math.abs(dx) > 50) {
+        if (dx > 0) document.getElementById('carNext')?.click();
+        else        document.getElementById('carPrev')?.click();
+    }
+});
+
+window.addEventListener('resize', updateCarousel);
+
+// ── Load listings from Apps Script ───────────────
+async function loadHomeListings() {
+    try {
+        const res  = await fetch(HOME_API + '?action=getListings');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        if (!data.ok) throw new Error(data.error || 'API error');
+
+        const listings = data.listings || [];
+        console.log(`✓ ${listings.length} live listings loaded`);
+
+        if (listings.length) {
+            renderCarousel(listings);
+        } else {
+            renderCarousel(getDemoListings());
+        }
+    } catch (err) {
+        console.error('Listings fetch failed:', err.message);
+        renderCarousel(getDemoListings());
+    }
 }
 
-.eyebrow-gold {
-    font-size: 9px; letter-spacing: 5px;
-    text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
-    display: block;
+// ── Demo listings (real references from your CRM) ─
+function getDemoListings() {
+    return [
+        { _type:'SALE', 'Reference':'EP-SG-LFS-001', 'Building':'Address Residences Tower B', 'Location':'Dubai Hills Estate', 'Property Type':'Apartment', '# Bed':'2','# Bath':'2','Size':'1,250','Furnishing':'Unfurnished','Price':'3499000','PF Link':'https://www.propertyfinder.ae' },
+        { _type:'RENT', 'Reference':'EP-SG-LFR-001', 'Building':'Ellington House',            'Location':'Dubai Hills Estate', 'Property Type':'Apartment', '# Bed':'2','# Bath':'3','Size':'1,273','Furnishing':'Unfurnished','Price':'269000', 'Exclusivity':'Exclusive','PF Link':'https://www.propertyfinder.ae' },
+        { _type:'RENT', 'Reference':'EP-SG-LFR-003', 'Building':'Garden Homes Frond N',       'Location':'Palm Jumeirah',      'Property Type':'Villa',     '# Bed':'5','# Bath':'6','Size':'6,788','Furnishing':'Furnished',  'Price':'3500000','Exclusivity':'Exclusive','PF Link':'https://www.propertyfinder.ae' },
+        { _type:'RENT', 'Reference':'EP-SG-LFR-005', 'Building':'Residences 3',               'Location':'District One',       'Property Type':'Apartment', '# Bed':'1','# Bath':'1','Size':'766',  'Furnishing':'Furnished',  'Price':'120000', 'Exclusivity':'Exclusive','PF Link':'https://www.propertyfinder.ae' },
+        { _type:'SALE', 'Reference':'EP-XX-LFS-002', 'Building':'Bulgari Residences',         'Location':'Jumeirah Bay Island','Property Type':'Villa',     '# Bed':'5','# Bath':'6','Size':'10,500','Furnishing':'Furnished', 'Price':'95000000','Exclusivity':'Exclusive','PF Link':'https://www.propertyfinder.ae' },
+    ];
 }
 
-.listings-title {
-    font-family: var(--serif);
-    font-size: clamp(2rem, 4.5vw, 3.2rem);
-    font-weight: 400;
-}
-.listings-title em { font-style: italic; color: var(--gold); }
+// ── Scroll fade-in ────────────────────────────────
+const fadeObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.style.opacity = '1';
+            e.target.style.transform = 'translateY(0)';
+            fadeObs.unobserve(e.target);
+        }
+    });
+}, { threshold: 0.1 });
 
-.listings-head-right {
-    display: flex; align-items: center; gap: 20px; flex-shrink: 0;
-}
+document.querySelectorAll('.why-card, .phil-inner, .test-inner, .cta-inner, .world-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity .65s ease, transform .65s ease';
+    fadeObs.observe(el);
+});
 
-.view-all-link {
-    font-size: 10px; letter-spacing: 2px; text-decoration: none;
-    color: var(--dark); border-bottom: 1px solid var(--gold);
-    padding-bottom: 2px; white-space: nowrap;
-}
-
-.carousel-btns { display: flex; gap: 8px; }
-.cbtn {
-    width: 44px; height: 44px;
-    background: #fff; border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; font-size: 16px; color: var(--dark);
-    transition: all .25s; font-family: var(--sans);
-}
-.cbtn:hover:not(:disabled) { background: var(--dark); color: #fff; border-color: var(--dark); }
-.cbtn:disabled { opacity: .3; cursor: not-allowed; }
-
-/* Carousel track */
-.carousel-outer {
-    overflow: hidden;
-    padding: 0 40px;
-    max-width: 1280px; margin: 0 auto;
-}
-
-.carousel-track {
-    display: flex; gap: 1px;
-    transition: transform .45s cubic-bezier(.4,0,.2,1);
-    will-change: transform;
-}
-
-/* Listing card */
-.listing-card {
-    flex: 0 0 calc(25% - 1px);
-    min-width: 280px;
-    background: #fff;
-    border: 1px solid var(--border);
-    text-decoration: none; color: var(--dark);
-    display: flex; flex-direction: column;
-    transition: transform .3s, box-shadow .3s;
-    cursor: pointer;
-}
-.listing-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 48px rgba(0,0,0,.09);
-    z-index: 2; position: relative;
-}
-
-.lc-img {
-    height: 220px; position: relative;
-    overflow: hidden; flex-shrink: 0;
-    background: linear-gradient(135deg, #f0ede8, #e8e4de);
-}
-.lc-img img {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform .6s;
-}
-.listing-card:hover .lc-img img { transform: scale(1.04); }
-
-.lc-img-placeholder {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 40px; opacity: .2;
-}
-
-/* Badges */
-.lc-badge {
-    position: absolute;
-    font-size: 7px; letter-spacing: 2px;
-    text-transform: uppercase; padding: 4px 10px;
-}
-.lc-badge-type      { top: 10px; left: 10px; background: var(--dark); color: #fff; }
-.lc-badge-type.rent { background: #1565c0; }
-.lc-badge-exclusive { top: 10px; right: 10px; background: var(--gold); color: #111; }
-.lc-badge-pf        { bottom: 10px; right: 10px; background: rgba(0,0,0,.65); color: var(--gold); }
-
-.lc-body {
-    padding: 20px 20px 18px;
-    flex: 1; display: flex; flex-direction: column;
-}
-.lc-ref      { font-size: 8px; letter-spacing: 2px; color: #bbb; text-transform: uppercase; margin-bottom: 5px; }
-.lc-title    { font-family: var(--serif); font-size: 1.05rem; line-height: 1.3; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.lc-location { font-size: 10px; color: #bbb; margin-bottom: 14px; }
-
-.lc-specs { display: flex; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
-.lc-spec { display: flex; flex-direction: column; gap: 2px; }
-.lc-spec-val { font-size: 12px; color: var(--dark); font-weight: 500; }
-.lc-spec-key { font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; color: #bbb; }
-
-.lc-footer {
-    margin-top: auto; padding-top: 12px;
-    border-top: 1px solid #f5f5f5;
-    display: flex; justify-content: space-between; align-items: flex-end;
-}
-.lc-price       { font-family: var(--serif); font-size: 1rem; color: var(--dark); }
-.lc-price-label { font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; color: #bbb; margin-top: 2px; }
-.lc-arrow       { font-size: 20px; color: #ddd; transition: color .2s; }
-.listing-card:hover .lc-arrow { color: var(--gold); }
-
-/* Skeleton */
-.skeleton-card { pointer-events: none; }
-.skeleton-img  { background: linear-gradient(90deg,#f2f2f2 25%,#e8e8e8 50%,#f2f2f2 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; }
-.sk-line       { height: 10px; background: linear-gradient(90deg,#f2f2f2 25%,#e8e8e8 50%,#f2f2f2 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; border-radius: 2px; margin-bottom: 10px; }
-.sk-short      { width: 35%; }
-.sk-long       { width: 85%; }
-.sk-medium     { width: 60%; }
-.sk-price      { width: 50%; height: 14px; margin-top: 8px; background: linear-gradient(90deg,#f2f2f2 25%,#e8e8e8 50%,#f2f2f2 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; border-radius: 2px; }
-@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-
-.listings-footer {
-    max-width: 1280px; margin: 40px auto 0;
-    padding: 0 40px; text-align: center;
-}
-
-/* ─── DUAL WORLD ──────────────────────────────── */
-.dual-world { display: grid; grid-template-columns: 1fr 1fr; }
-
-.world-card {
-    position: relative; min-height: 560px;
-    display: flex; align-items: flex-end;
-    text-decoration: none; color: #fff;
-    overflow: hidden; cursor: pointer;
-}
-
-.world-realestate {
-    background: linear-gradient(160deg, #0d1b2a 0%, #1a3a5c 50%, #0d1b2a 100%);
-}
-.world-watches {
-    background: linear-gradient(160deg, #1a0f00 0%, #3d2400 50%, #1a0f00 100%);
-}
-
-/* Subtle texture */
-.world-realestate::before {
-    content: '';
-    position: absolute; inset: 0;
-    background-image: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(197,160,89,.03) 40px, rgba(197,160,89,.03) 80px);
-}
-.world-watches::before {
-    content: '';
-    position: absolute; inset: 0;
-    background-image: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(197,160,89,.04) 40px, rgba(197,160,89,.04) 80px);
-}
-
-.world-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.1) 60%);
-    transition: opacity .5s;
-}
-.world-card:hover .world-overlay { opacity: .6; }
-
-.world-body {
-    position: relative; z-index: 1;
-    padding: 50px 48px;
-    transition: transform .5s cubic-bezier(.19,1,.22,1);
-}
-.world-card:hover .world-body { transform: translateY(-8px); }
-
-.world-idx {
-    display: block; font-size: 9px; letter-spacing: 3px;
-    text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
-}
-.world-body h2 {
-    font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem);
-    font-weight: 400; line-height: 1.1; margin-bottom: 16px;
-}
-.world-body h2 em { font-style: italic; color: var(--gold); }
-.world-body p {
-    font-size: 11px; line-height: 1.9; color: rgba(255,255,255,.65);
-    letter-spacing: .5px; margin-bottom: 24px; max-width: 320px;
-}
-.world-cta {
-    font-size: 9px; letter-spacing: 3px;
-    text-transform: uppercase; color: var(--gold);
-}
-
-/* ─── PHILOSOPHY ─────────────────────────────── */
-.home-philosophy {
-    padding: 110px 40px;
-    background: #fafafa; border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-}
-.phil-inner { max-width: 780px; margin: 0 auto; text-align: center; }
-.phil-label {
-    font-size: 9px; letter-spacing: 5px; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 36px;
-}
-.phil-quote {
-    font-family: var(--serif);
-    font-size: clamp(1.7rem, 3.5vw, 2.8rem);
-    font-weight: 400; line-height: 1.35;
-    font-style: normal; margin-bottom: 28px;
-}
-.phil-quote em { font-style: italic; color: var(--gold); }
-.phil-body {
-    font-size: 13px; line-height: 2; color: var(--muted);
-    max-width: 580px; margin: 0 auto 36px;
-}
-.phil-link {
-    display: inline-block; font-size: 10px; letter-spacing: 3px;
-    text-transform: uppercase; text-decoration: none;
-    color: var(--dark); border-bottom: 1px solid var(--gold); padding-bottom: 3px;
-}
-
-/* ─── WHY ─────────────────────────────────────── */
-.home-why { padding: 90px 0; border-bottom: 1px solid var(--border); }
-.why-inner { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
-.why-head  { margin-bottom: 48px; }
-.why-title {
-    font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 400;
-}
-.why-title em { font-style: italic; color: var(--gold); }
-
-.why-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 1px; background: var(--border);
-}
-.why-card { background: #fff; padding: 38px; transition: background .3s; }
-.why-card:hover { background: #fafafa; }
-.why-idx { font-family: var(--serif); font-size: 2.4rem; color: #ececec; margin-bottom: 18px; }
-.why-card h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; margin-bottom: 12px; }
-.why-card p  { font-size: 11px; line-height: 1.9; color: var(--muted); }
-
-/* ─── TESTIMONIAL ────────────────────────────── */
-.home-testimonial {
-    padding: 110px 40px;
-    background: var(--dark); border-top: 1px solid var(--border-dk);
-}
-.test-inner { max-width: 680px; margin: 0 auto; text-align: center; }
-.test-deco  {
-    font-family: var(--serif); font-size: 5.5rem;
-    color: var(--gold); opacity: .3; line-height: .4; margin-bottom: 36px;
-}
-.test-inner blockquote {
-    font-family: var(--serif); font-size: clamp(1.2rem, 2.5vw, 1.7rem);
-    color: #fff; font-style: italic; line-height: 1.6; margin-bottom: 28px;
-    font-weight: 400;
-}
-.test-inner cite {
-    font-size: 10px; letter-spacing: 4px;
-    color: var(--gold); text-transform: uppercase; font-style: normal;
-}
-
-/* ─── CTA ─────────────────────────────────────── */
-.home-cta {
-    padding: 110px 40px;
-    background: #fafafa; border-top: 1px solid var(--border);
-    text-align: center;
-}
-.cta-inner { max-width: 580px; margin: 0 auto; }
-.cta-inner h2 {
-    font-family: var(--serif); font-size: clamp(2rem, 4.5vw, 3.2rem);
-    font-weight: 400; margin: 16px 0 20px;
-}
-.cta-inner h2 em { font-style: italic; color: var(--gold); }
-.cta-inner p { font-size: 12px; color: var(--muted); margin-bottom: 36px; line-height: 1.8; }
-
-/* ─── FOOTER ──────────────────────────────────── */
-.site-footer { background: var(--dark); border-top: 1px solid var(--border-dk); }
-.sf-inner {
-    max-width: 1280px; margin: 0 auto;
-    padding: 64px 40px 48px;
-    display: grid; grid-template-columns: 280px 1fr; gap: 60px;
-}
-.sf-logo {
-    height: 48px; width: auto; object-fit: contain;
-    display: block; margin-bottom: 16px;
-    filter: brightness(0) invert(1); opacity: .75;
-}
-.sf-brand p { font-size: 11px; line-height: 1.9; color: #555; }
-.sf-brand span { font-size: 9px; color: #444; letter-spacing: 1px; }
-
-.sf-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
-.sf-col h4 {
-    font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 18px;
-}
-.sf-col a {
-    display: block; font-size: 11px; color: #555;
-    text-decoration: none; margin-bottom: 11px;
-    letter-spacing: .5px; transition: color .25s;
-}
-.sf-col a:hover { color: #fff; }
-
-.sf-bottom {
-    max-width: 1280px; margin: 0 auto; padding: 18px 40px;
-    border-top: 1px solid var(--border-dk);
-    display: flex; justify-content: space-between;
-    font-size: 8px; letter-spacing: 1.5px;
-    color: #3a3a3a; text-transform: uppercase; flex-wrap: wrap; gap: 8px;
-}
-
-/* ─── RESPONSIVE ──────────────────────────────── */
-@media (max-width: 1100px) {
-    .why-grid { grid-template-columns: repeat(2, 1fr); }
-    .listing-card { flex: 0 0 calc(33.33% - 1px); }
-}
-
-@media (max-width: 900px) {
-    .dual-world { grid-template-columns: 1fr; }
-    .listing-card { flex: 0 0 calc(50% - 1px); }
-    .strip-item { padding: 0 28px; }
-}
-
-@media (max-width: 768px) {
-    .site-nav-links, .site-nav-enquire { display: none; }
-    .site-nav-burger { display: flex; }
-    .nav-stamp { margin-right: 0; }
-    .home-h1 { letter-spacing: -2px; }
-    .home-hero-strip { flex-wrap: wrap; gap: 16px; padding: 24px 20px; }
-    .strip-div { display: none; }
-    .strip-item { flex: 1 1 40%; padding: 10px; }
-    .why-grid { grid-template-columns: 1fr; }
-    .sf-inner { grid-template-columns: 1fr; }
-    .sf-cols  { grid-template-columns: 1fr 1fr; }
-    .sf-bottom { flex-direction: column; text-align: center; }
-    .listing-card { flex: 0 0 calc(100% - 1px); }
-    .carousel-outer { padding: 0 20px; }
-    .listings-head, .listings-footer { padding-left: 20px; padding-right: 20px; }
-    .home-hero-inner { padding: 60px 20px 40px; }
-    .world-body { padding: 36px 28px; }
-    .site-nav-inner { padding: 0 20px; }
-}
+// ── Init ─────────────────────────────────────────
+loadHomeListings();
