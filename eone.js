@@ -28,7 +28,19 @@ const API = 'https://script.google.com/macros/s/AKfycbyHrwwVKhXNwAV54j051pdQcXRf
 
 // ── NAV ──────────────────────────────────────
 const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => nav?.classList.toggle('solid', window.scrollY > 60), {passive:true});
+
+// Homepage: transparent nav over dark hero photo → solid on scroll
+// Inner pages: always solid (light background, needs dark links)
+const isHomePage = document.body.classList.contains('home-page');
+
+if (isHomePage) {
+  nav?.classList.add('hero-nav');
+  window.addEventListener('scroll', () => nav?.classList.toggle('solid', window.scrollY > 60), {passive:true});
+} else {
+  // Inner pages — always solid, always dark links
+  nav?.classList.add('solid');
+}
+
 document.getElementById('burger')?.addEventListener('click', () => document.getElementById('drawer')?.classList.toggle('open'));
 document.querySelectorAll('.drawer a').forEach(a => a.addEventListener('click', () => document.getElementById('drawer')?.classList.remove('open')));
 
