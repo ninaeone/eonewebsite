@@ -35,8 +35,8 @@ html { scroll-behavior: smooth; }
     transition: box-shadow .4s, background .4s;
 }
 .site-nav.scrolled {
-    box-shadow: 0 2px 40px rgba(0,0,0,.07);
-    background: rgba(255,255,255,0.99);
+    box-shadow: 0 1px 0 #e8e8e8, 0 4px 32px rgba(0,0,0,.06);
+    background: #fff;
 }
 
 /* Three-column layout: links | LOGO | links+enquire */
@@ -70,20 +70,22 @@ html { scroll-behavior: smooth; }
 }
 
 .snl {
-    text-decoration: none; font-size: 9px; letter-spacing: 3.5px;
-    text-transform: uppercase; color: #999;
-    transition: color .3s; padding-bottom: 2px;
+    text-decoration: none; font-size: 10px; letter-spacing: 4px;
+    text-transform: uppercase; color: #777;
+    transition: color .3s; padding-bottom: 3px;
     border-bottom: 1px solid transparent;
     white-space: nowrap;
+    font-weight: 400;
 }
-.snl:hover, .snl.active { color: var(--dark); border-bottom-color: var(--gold); }
+.snl:hover, .snl.active { color: var(--dark); border-bottom-color: var(--gold); font-weight: 500; }
 
 /* ENQUIRE BUTTON */
 .site-nav-enquire {
-    text-decoration: none; font-size: 8px; letter-spacing: 4px;
+    text-decoration: none; font-size: 9px; letter-spacing: 4px;
     text-transform: uppercase; border: 1px solid var(--dark);
-    padding: 9px 18px; color: var(--dark); transition: all .3s;
-    white-space: nowrap; margin-left: 8px;
+    padding: 11px 24px; color: var(--dark); transition: all .3s;
+    white-space: nowrap; margin-left: 12px;
+    font-weight: 400;
 }
 .site-nav-enquire:hover { background: var(--dark); color: #fff; }
 
@@ -100,14 +102,14 @@ html { scroll-behavior: smooth; }
     display: block;
     text-decoration: none;
     /* Overlap: push logo down so it bleeds below nav border */
-    transform: translateY(28px);
+    transform: translateY(16px);
     transition: transform .4s cubic-bezier(.19,1,.22,1), opacity .3s;
 }
-.nav-logo-link:hover { opacity: .85; transform: translateY(28px) scale(1.03); }
+.nav-logo-link:hover { opacity: .85; transform: translateY(16px) scale(1.03); }
 
 .nav-logo-img {
     display: block;
-    width: 160px;
+    width: 180px;
     height: auto;
     object-fit: contain;
     /* Drop shadow for depth where it overlaps hero */
@@ -148,7 +150,7 @@ html { scroll-behavior: smooth; }
     min-height: 100vh;
     display: flex; flex-direction: column; justify-content: center;
     position: relative; overflow: hidden;
-    padding-top: calc(var(--nav-h) + 40px); /* extra space for overlapping logo */
+    padding-top: calc(var(--nav-h) + 20px);
 }
 
 .home-hero-dot-grid {
@@ -164,22 +166,22 @@ html { scroll-behavior: smooth; }
 }
 
 .home-eyebrow {
-    font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 28px;
+    font-size: 9px; letter-spacing: 7px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 32px; font-weight: 400;
 }
 
 .home-h1 {
     font-family: var(--serif);
-    font-size: clamp(3.8rem, 8.5vw, 8rem);
-    font-weight: 400; line-height: .9;
-    letter-spacing: -3px; margin-bottom: 36px;
-    display: flex; flex-direction: column; gap: 4px;
+    font-size: clamp(3.5rem, 7.5vw, 7.5rem);
+    font-weight: 400; line-height: .92;
+    letter-spacing: -2px; margin-bottom: 40px;
+    display: flex; flex-direction: column; gap: 2px;
 }
 .home-h1 em { font-style: italic; color: var(--gold); }
 
 .home-hero-sub {
-    max-width: 440px; font-size: 13px; line-height: 1.85;
-    color: var(--muted); margin-bottom: 48px; letter-spacing: .3px;
+    max-width: 420px; font-size: 12px; line-height: 2;
+    color: #aaa; margin-bottom: 52px; letter-spacing: .8px; font-weight: 300;
 }
 
 .home-hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
