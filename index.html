@@ -1,263 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eone — Exclusive Properties & Luxury Watches · Dubai</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="home.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eone — Exclusive Properties & Luxury Watches · Dubai</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="eone.css">
 </head>
-<body class="home-body">
+<body>
 
-<!-- ═══ NAVIGATION ═══ -->
-<nav class="site-nav" id="navbar">
-    <div class="site-nav-inner">
-        <!-- LEFT -->
-        <ul class="nav-left">
-            <li><a href="index.html"    class="snl active">Home</a></li>
-            <li><a href="services.html" class="snl">Properties</a></li>
-            <li><a href="watches.html"  class="snl">Watches</a></li>
-        </ul>
-        <!-- CENTRE LOGO -->
-        <div class="nav-centre">
-            <a href="index.html" class="nav-logo-link">
-                <img src="eonelogo.png" alt="Eone Exclusive Properties" class="nav-logo-img">
-            </a>
-        </div>
-        <!-- RIGHT -->
-        <ul class="nav-right">
-            <li><a href="about.html"   class="snl">About</a></li>
-            <li><a href="contact.html" class="snl">Contact</a></li>
-            <li><a href="contact.html" class="site-nav-enquire">Enquire</a></li>
-        </ul>
-        <button class="site-nav-burger" id="burger"><span></span><span></span><span></span></button>
-    </div>
-</nav>
-<div class="mobile-drawer" id="drawer">
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Properties</a></li>
-        <li><a href="watches.html">Watches</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <ul class="nav-left">
+      <li><a href="index.html" class="nl active">Home</a></li>
+      <li><a href="services.html" class="nl">Properties</a></li>
+      <li><a href="watches.html" class="nl">Watches</a></li>
     </ul>
-    <div class="drawer-contact">
-        <a href="tel:+97142566517">04 566 5176</a>
-        <a href="mailto:info@eoneproperties.com">info@eoneproperties.com</a>
-    </div>
+    <a href="index.html" class="nav-logo"><img src="eonelogo.png" alt="Eone"></a>
+    <ul class="nav-right">
+      <li><a href="about.html" class="nl">About</a></li>
+      <li><a href="contact.html" class="nl">Contact</a></li>
+      <li><a href="contact.html" class="nav-enq">Enquire</a></li>
+    </ul>
+    <button class="nav-burger" id="burger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="drawer" id="drawer">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Properties</a></li>
+    <li><a href="watches.html">Watches</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
 </div>
 
-<!-- ═══ HERO ═══ -->
-<section class="home-hero" id="homeHero">
-    <!-- Background image loaded via JS for reliability -->
-    <div class="hero-bg-img" id="heroBgImg"></div>
-    <div class="home-hero-dot-grid"></div>
-    <div class="home-hero-inner">
-            <div class="home-eyebrow"><span>Est. 2026 &nbsp;·&nbsp; Dubai</span></div>
-            <h1 class="home-h1">
-                <span>Dubai's Most</span>
-                <em>Exclusive</em>
-                <span>Properties</span>
-            </h1>
-            <p class="home-hero-sub">Ultra-prime residential and investment real estate — curated for those who expect more than a listing.</p>
-            <div class="home-hero-actions">
-                <a href="services.html" class="hbtn-dark">View All Properties</a>
-                <a href="contact.html"  class="hbtn-outline">Private Consultation</a>
-            </div>
-        </div>
-    <div class="hero-scroll"><span>Scroll</span><div class="hero-scroll-line"></div></div>
-
-    <!-- STAT STRIP -->
-    <div class="home-hero-strip">
-        <div class="strip-item">
-            <span class="strip-val">By Invitation</span>
-            <span class="strip-key">Not every client qualifies</span>
-        </div>
-        <div class="strip-div"></div>
-        <div class="strip-item">
-            <span class="strip-val">Off-Market</span>
-            <span class="strip-key">Properties you won't find elsewhere</span>
-        </div>
-        <div class="strip-div"></div>
-        <div class="strip-item">
-            <span class="strip-val">Two Worlds</span>
-            <span class="strip-key">Real estate & rare timepieces</span>
-        </div>
-        <div class="strip-div"></div>
-        <div class="strip-item">
-            <span class="strip-val">Total Discretion</span>
-            <span class="strip-key">Your name stays private</span>
-        </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Est. 2026 &nbsp;·&nbsp; Dubai</p>
+    <h1 class="hero-h1">
+      <span>Dubai's Most</span>
+      <em>Exclusive</em>
+      <span>Properties</span>
+    </h1>
+    <p class="hero-sub">Ultra-prime residential and investment real estate — curated for those who expect more than a listing.</p>
+    <div class="hero-btns">
+      <a href="services.html" class="btn-dark">View All Properties</a>
+      <a href="contact.html" class="btn-ghost">Private Consultation</a>
     </div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="hero-scroll-line"></div></div>
 </section>
 
-<!-- ═══ MARQUEE ═══ -->
-<div class="home-marquee">
-    <div class="marquee-inner">
-        <span>Palm Jumeirah</span><span class="mdot">◆</span>
-        <span>Downtown Dubai</span><span class="mdot">◆</span>
-        <span>Emirates Hills</span><span class="mdot">◆</span>
-        <span>DIFC</span><span class="mdot">◆</span>
-        <span>Dubai Hills Estate</span><span class="mdot">◆</span>
-        <span>Business Bay</span><span class="mdot">◆</span>
-        <span>Jumeirah Bay Island</span><span class="mdot">◆</span>
-        <span>District One</span><span class="mdot">◆</span>
-        <span>Bluewaters</span><span class="mdot">◆</span>
-        <span>JBR</span><span class="mdot">◆</span>
-        <span>Palm Jumeirah</span><span class="mdot">◆</span>
-        <span>Downtown Dubai</span><span class="mdot">◆</span>
-        <span>Emirates Hills</span><span class="mdot">◆</span>
-        <span>DIFC</span><span class="mdot">◆</span>
-        <span>Dubai Hills Estate</span><span class="mdot">◆</span>
-        <span>Business Bay</span><span class="mdot">◆</span>
-        <span>Jumeirah Bay Island</span><span class="mdot">◆</span>
-        <span>District One</span><span class="mdot">◆</span>
-        <span>Bluewaters</span><span class="mdot">◆</span>
-        <span>JBR</span><span class="mdot">◆</span>
-    </div>
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item"><span class="sv">By Invitation</span><span class="sk">Not every client qualifies</span></div>
+  <div class="strip-item"><span class="sv">Off-Market</span><span class="sk">Properties you won't find elsewhere</span></div>
+  <div class="strip-item"><span class="sv">Two Worlds</span><span class="sk">Real estate & rare timepieces</span></div>
+  <div class="strip-item"><span class="sv">Total Discretion</span><span class="sk">Your name stays private</span></div>
 </div>
 
-<!-- ═══ FEATURED PROPERTIES CAROUSEL ═══ -->
-<section class="listings-wrap" id="propertiesSection">
-    <div class="listings-head">
-        <div>
-            <p class="eyebrow-gold">Live on Property Finder</p>
-            <h2 class="listings-title">Featured <em>Properties</em></h2>
-        </div>
-        <div class="listings-head-right">
-            <a href="services.html" class="view-all-link">View All →</a>
-            <div class="carousel-btns">
-                <button class="cbtn" id="carPrev" aria-label="Previous">&#8592;</button>
-                <button class="cbtn" id="carNext" aria-label="Next">&#8594;</button>
-            </div>
-        </div>
+<!-- MARQUEE -->
+<div class="marquee"><div class="marquee-track">
+  <span>Palm Jumeirah</span><span class="dot">◆</span>
+  <span>Downtown Dubai</span><span class="dot">◆</span>
+  <span>Emirates Hills</span><span class="dot">◆</span>
+  <span>DIFC</span><span class="dot">◆</span>
+  <span>Dubai Hills Estate</span><span class="dot">◆</span>
+  <span>Business Bay</span><span class="dot">◆</span>
+  <span>Jumeirah Bay Island</span><span class="dot">◆</span>
+  <span>District One</span><span class="dot">◆</span>
+  <span>Bluewaters</span><span class="dot">◆</span>
+  <span>Palm Jumeirah</span><span class="dot">◆</span>
+  <span>Downtown Dubai</span><span class="dot">◆</span>
+  <span>Emirates Hills</span><span class="dot">◆</span>
+  <span>DIFC</span><span class="dot">◆</span>
+  <span>Dubai Hills Estate</span><span class="dot">◆</span>
+  <span>Business Bay</span><span class="dot">◆</span>
+  <span>Jumeirah Bay Island</span><span class="dot">◆</span>
+  <span>District One</span><span class="dot">◆</span>
+  <span>Bluewaters</span><span class="dot">◆</span>
+</div></div>
+
+<!-- FEATURED LISTINGS -->
+<section class="listings-section">
+  <div class="ls-head">
+    <div>
+      <p class="eyebrow">Live on Property Finder</p>
+      <h2 class="sh">Featured <em>Properties</em></h2>
     </div>
-    <div class="carousel-outer" id="carouselOuter">
-        <div class="carousel-track" id="carouselTrack">
-            <div class="listing-card skeleton-card"><div class="lc-img skeleton-img"></div><div class="lc-body"><div class="sk-line sk-short"></div><div class="sk-line sk-long"></div><div class="sk-line sk-medium"></div><div class="sk-price"></div></div></div>
-            <div class="listing-card skeleton-card"><div class="lc-img skeleton-img"></div><div class="lc-body"><div class="sk-line sk-short"></div><div class="sk-line sk-long"></div><div class="sk-line sk-medium"></div><div class="sk-price"></div></div></div>
-            <div class="listing-card skeleton-card"><div class="lc-img skeleton-img"></div><div class="lc-body"><div class="sk-line sk-short"></div><div class="sk-line sk-long"></div><div class="sk-line sk-medium"></div><div class="sk-price"></div></div></div>
-            <div class="listing-card skeleton-card"><div class="lc-img skeleton-img"></div><div class="lc-body"><div class="sk-line sk-short"></div><div class="sk-line sk-long"></div><div class="sk-line sk-medium"></div><div class="sk-price"></div></div></div>
-        </div>
+    <div class="ls-head-right">
+      <a href="services.html" class="view-all">View All →</a>
+      <div class="car-btns">
+        <button class="car-btn" id="carPrev">&#8592;</button>
+        <button class="car-btn" id="carNext">&#8594;</button>
+      </div>
     </div>
-    <div class="listings-footer">
-        <a href="https://www.propertyfinder.ae" target="_blank" rel="noopener" class="hbtn-outline">See All Properties on Property Finder →</a>
+  </div>
+  <div class="car-outer" id="carOuter">
+    <div class="car-track" id="carTrack">
+      <div class="card skel"><div class="card-img skel-img"></div><div class="card-body"><div class="sk sk-s"></div><div class="sk sk-l"></div><div class="sk sk-m"></div></div></div>
+      <div class="card skel"><div class="card-img skel-img"></div><div class="card-body"><div class="sk sk-s"></div><div class="sk sk-l"></div><div class="sk sk-m"></div></div></div>
+      <div class="card skel"><div class="card-img skel-img"></div><div class="card-body"><div class="sk sk-s"></div><div class="sk sk-l"></div><div class="sk sk-m"></div></div></div>
+      <div class="card skel"><div class="card-img skel-img"></div><div class="card-body"><div class="sk sk-s"></div><div class="sk sk-l"></div><div class="sk sk-m"></div></div></div>
     </div>
+  </div>
+  <div class="ls-footer">
+    <a href="https://www.propertyfinder.ae" target="_blank" class="btn-outline">See All on Property Finder →</a>
+  </div>
 </section>
 
-<!-- ═══ DUAL WORLD — PROPERTIES + WATCHES ═══ -->
-<section class="dual-world">
-    <a href="services.html" class="world-card world-realestate">
-        <div class="world-overlay"></div>
-        <div class="world-body">
-            <span class="world-idx">01</span>
-            <h2>Exclusive<br><em>Real Estate</em></h2>
-            <p>Ultra-prime Dubai properties — villas, penthouses, and residences that rarely reach the open market.</p>
-            <span class="world-cta">Explore Properties →</span>
-        </div>
-    </a>
-    <a href="watches.html" class="world-card world-watches">
-        <div class="world-overlay"></div>
-        <div class="world-body">
-            <span class="world-idx">02</span>
-            <h2>Luxury<br><em>Timepieces</em></h2>
-            <p>Patek Philippe, Richard Mille, Rolex — authenticated rare watches for the serious collector.</p>
-            <span class="world-cta">Explore Collection →</span>
-        </div>
-    </a>
+<!-- DUAL WORLD -->
+<section class="dual">
+  <a href="services.html" class="world world-re">
+    <div class="world-fade"></div>
+    <div class="world-body">
+      <span class="world-num">01</span>
+      <h2>Exclusive<br><em>Real Estate</em></h2>
+      <p>Ultra-prime Dubai properties — villas, penthouses, and residences that rarely reach the open market.</p>
+      <span class="world-cta">Explore Properties →</span>
+    </div>
+  </a>
+  <a href="watches.html" class="world world-wa">
+    <div class="world-fade"></div>
+    <div class="world-body">
+      <span class="world-num">02</span>
+      <h2>Luxury<br><em>Timepieces</em></h2>
+      <p>Patek Philippe, Richard Mille, Rolex — authenticated rare watches for the serious collector.</p>
+      <span class="world-cta">Explore Collection →</span>
+    </div>
+  </a>
 </section>
 
-<!-- ═══ PHILOSOPHY ═══ -->
-<section class="home-philosophy">
-    <div class="phil-inner">
-        <div class="phil-label">Our Philosophy</div>
-        <blockquote class="phil-quote">
-            "Not every property is for everyone —<br><em>ours are for the few."</em>
-        </blockquote>
-        <p class="phil-body">Eone was built on one conviction: that the right home — or the right watch — is not found. It is curated. We work with a select number of clients and handle every transaction with discretion, precision, and an uncompromising standard.</p>
-        <a href="about.html" class="phil-link">Our Story →</a>
-    </div>
+<!-- PHILOSOPHY -->
+<section class="phil">
+  <div class="phil-inner">
+    <p class="phil-label">Our Philosophy</p>
+    <blockquote>"Not every property is for everyone —<br><em>ours are for the few."</em></blockquote>
+    <p class="phil-body">Eone was built on one conviction: that the right home — or the right watch — is not found. It is curated. We work with a select number of clients and handle every transaction with discretion, precision, and an uncompromising standard.</p>
+    <a href="about.html" class="link-gold">Our Story →</a>
+  </div>
 </section>
 
-<!-- ═══ WHY EONE ═══ -->
-<section class="home-why">
-    <div class="why-inner">
-        <div class="why-head">
-            <p class="eyebrow-gold">Why Eone</p>
-            <h2 class="why-title">A Different <em>Standard</em></h2>
-        </div>
-        <div class="why-grid">
-            <div class="why-card"><div class="why-idx">01</div><h3>Access Others Don't Have</h3><p>Off-market properties and rare timepieces unavailable through conventional channels — only through us.</p></div>
-            <div class="why-card"><div class="why-idx">02</div><h3>Two Worlds, One Standard</h3><p>Real estate and watches curated under the same philosophy: only what genuinely meets the bar.</p></div>
-            <div class="why-card"><div class="why-idx">03</div><h3>End-to-End Advisory</h3><p>From first conversation to completed transaction — every detail managed on your behalf.</p></div>
-            <div class="why-card"><div class="why-idx">04</div><h3>Total Discretion</h3><p>Your identity, budget, and requirements never shared. Privacy is not a feature — it is a foundation.</p></div>
-        </div>
+<!-- WHY -->
+<section class="why">
+  <div class="why-inner">
+    <p class="eyebrow">Why Eone</p>
+    <h2 class="sh">A Different <em>Standard</em></h2>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-n">01</div><h3>Access Others Don't Have</h3><p>Off-market properties and rare timepieces unavailable through conventional channels.</p></div>
+      <div class="why-card"><div class="why-n">02</div><h3>Two Worlds, One Standard</h3><p>Real estate and watches curated under the same philosophy: only what genuinely meets the bar.</p></div>
+      <div class="why-card"><div class="why-n">03</div><h3>End-to-End Advisory</h3><p>From first conversation to completed transaction — every detail managed on your behalf.</p></div>
+      <div class="why-card"><div class="why-n">04</div><h3>Total Discretion</h3><p>Your identity, budget, and requirements never shared. Privacy is a foundation, not a feature.</p></div>
     </div>
+  </div>
 </section>
 
-<!-- ═══ TESTIMONIAL ═══ -->
-<section class="home-testimonial">
-    <div class="test-inner">
-        <div class="test-deco">❝</div>
-        <blockquote>Eone found us exactly what we were looking for — a Palm Jumeirah villa that never hit the public market. Their access and discretion are unmatched.</blockquote>
-        <cite>— Private Client, Dubai</cite>
-    </div>
+<!-- TESTIMONIAL -->
+<section class="test">
+  <div class="test-inner">
+    <div class="test-q">❝</div>
+    <blockquote>Eone found us exactly what we were looking for — a Palm Jumeirah villa that never hit the public market. Their access and discretion are unmatched.</blockquote>
+    <cite>— Private Client, Dubai</cite>
+  </div>
 </section>
 
-<!-- ═══ CTA ═══ -->
-<section class="home-cta">
-    <div class="cta-inner">
-        <p class="eyebrow-gold">By Appointment Only</p>
-        <h2>Begin Your <em>Private</em> Search</h2>
-        <p>Tell us what you're looking for. We'll handle everything else — discreetly.</p>
-        <a href="contact.html" class="hbtn-dark">Get in Touch</a>
-    </div>
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-inner">
+    <p class="eyebrow">By Appointment Only</p>
+    <h2 class="sh">Begin Your <em>Private</em> Search</h2>
+    <p>Tell us what you're looking for. We'll handle everything else — discreetly.</p>
+    <a href="contact.html" class="btn-dark">Get in Touch</a>
+  </div>
 </section>
 
-<!-- ═══ FOOTER ═══ -->
-<footer class="site-footer">
-    <div class="sf-inner">
-        <div class="sf-brand">
-            <img src="eonelogo.png" alt="Eone" class="sf-logo">
-            <p>
-                Eone Exclusive Properties — Real Estate<br>
-                Eone Luxury Watches — Watches<br>
-                <span>Est. 2026 · Business Bay, Dubai, UAE</span>
-            </p>
-        </div>
-        <div class="sf-cols">
-            <div class="sf-col">
-                <h4>Navigate</h4>
-                <a href="index.html">Home</a>
-                <a href="services.html">Properties</a>
-                <a href="watches.html">Watches</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            <div class="sf-col">
-                <h4>Properties</h4>
-                <a href="services.html">For Sale</a>
-                <a href="services.html">For Rent</a>
-                <a href="services.html">Exclusive</a>
-                <a href="https://www.propertyfinder.ae" target="_blank">Property Finder ↗</a>
-            </div>
-            <div class="sf-col">
-                <h4>Connect</h4>
-                <a href="tel:+97142566517">04 566 5176</a>
-                <a href="mailto:info@eoneproperties.com">info@eoneproperties.com</a>
-                <a href="https://wa.me/97142566517" target="_blank">WhatsApp ↗</a>
-                <a href="#">Instagram</a>
-            </div>
-        </div>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="eonelogo.png" alt="Eone" class="footer-logo">
+      <p>Eone Exclusive Properties — Real Estate<br>Eone Luxury Watches — Watches<br><span>Est. 2026 · Business Bay, Dubai</span></p>
     </div>
-    <div class="sf-bottom">
-        <span>© 2026 Eone Exclusive Properties & Eone Luxury Watches. All rights reserved.</span>
-        <span>RERA Registered · DED Licensed · Business Bay, Dubai, UAE</span>
+    <div class="footer-cols">
+      <div class="fc"><h4>Navigate</h4><a href="index.html">Home</a><a href="services.html">Properties</a><a href="watches.html">Watches</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+      <div class="fc"><h4>Properties</h4><a href="services.html">For Sale</a><a href="services.html">For Rent</a><a href="services.html">Exclusive</a><a href="https://www.propertyfinder.ae" target="_blank">Property Finder ↗</a></div>
+      <div class="fc"><h4>Connect</h4><a href="tel:+97142566517">04 566 5176</a><a href="mailto:info@eoneproperties.com">info@eoneproperties.com</a><a href="https://wa.me/97142566517" target="_blank">WhatsApp ↗</a><a href="#">Instagram</a></div>
     </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Eone Exclusive Properties & Eone Luxury Watches. All rights reserved.</span>
+    <span>RERA Registered · DED Licensed · Business Bay, Dubai, UAE</span>
+  </div>
 </footer>
 
-<script src="main.js"></script>
-<script src="home.js"></script>
+<script src="eone.js"></script>
 </body>
 </html>
