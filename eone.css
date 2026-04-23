@@ -334,8 +334,8 @@ body { font-family: var(--sans); background: #fff; color: var(--dark); overflow-
 .footer-bottom { max-width: var(--max); margin: 0 auto; padding: 18px 48px; border-top: 1px solid #222; display: flex; justify-content: space-between; font-size: 8px; letter-spacing: 1.5px; color: #3a3a3a; text-transform: uppercase; flex-wrap: wrap; gap: 8px; }
 
 /* ── INNER PAGES ── */
-.page-hero { min-height: 52vh; display: flex; align-items: flex-end; padding-top: var(--nav); background-image: radial-gradient(#ddd 1px,transparent 1px); background-size: 28px 28px; border-bottom: 1px solid var(--border); }
-.page-hero-inner { max-width: var(--max); margin: 0 auto; padding: 60px 48px; width: 100%; }
+.page-hero { min-height: 44vh; display: flex; align-items: flex-end; padding-top: var(--nav); background-image: radial-gradient(#ddd 1px,transparent 1px); background-size: 28px 28px; border-bottom: 1px solid var(--border); }
+.page-hero-inner { max-width: var(--max); margin: 0 auto; padding: 48px 48px 52px; width: 100%; }
 .page-h1 { font-family: var(--serif); font-size: clamp(3rem,8vw,6rem); font-weight: 400; letter-spacing: -2px; line-height: .92; margin: 14px 0 16px; }
 .page-h1 em { font-style: italic; color: var(--gold); }
 .page-hero-inner p { font-size: 12px; color: var(--muted); line-height: 1.8; }
