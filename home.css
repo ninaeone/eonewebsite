@@ -37,23 +37,28 @@ html { scroll-behavior: smooth; }
     display: flex; align-items: center; gap: 0;
 }
 
-/* STAMP LOGO — circular, prominent */
+/* STAMP LOGO */
 .nav-stamp {
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
-    width: 58px; height: 58px;
+    width: 52px; height: 52px;
     border: 1.5px solid var(--gold);
     border-radius: 50%;
-    padding: 6px;
+    overflow: hidden;
     text-decoration: none;
     transition: border-color .3s, transform .3s;
     margin-right: 36px;
+    background: #fff;
+    flex-shrink: 0;
 }
 .nav-stamp:hover { border-color: var(--dark); transform: rotate(-3deg) scale(1.04); }
 
-.nav-stamp-img {
-    width: 100%; height: 100%;
+.nav-stamp-img,
+.nav-stamp img {
+    width: 120%;
+    height: 120%;
     object-fit: contain;
+    object-position: center;
     display: block;
 }
 
