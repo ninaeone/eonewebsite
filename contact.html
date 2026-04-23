@@ -4,27 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact — Eone Exclusive Properties</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+    :root{--gold:#C5A059;--dark:#111;--border:#e4e4e4;--border-dk:#2a2a2a;--muted:#888;--serif:'Bodoni Moda',serif;--sans:'Inter',sans-serif;--nav-h:72px;--max:1280px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--sans);background:#fff;color:var(--dark);overflow-x:hidden;}
+
+    /* NAV */
+    .site-nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);background:rgba(255,255,255,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:box-shadow .3s;}
+    .site-nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.06);}
+    .nav-inner{max-width:var(--max);margin:0 auto;padding:0 40px;height:100%;display:flex;align-items:center;}
+    .nav-stamp{display:flex;align-items:center;justify-content:center;flex-shrink:0;width:64px;height:64px;border:1.5px solid var(--gold);border-radius:50%;overflow:hidden;text-decoration:none;transition:border-color .3s,transform .3s;margin-right:40px;background:#fff;}
+    .nav-stamp:hover{border-color:var(--dark);transform:rotate(-3deg) scale(1.04);}
+    .nav-stamp img{width:110%;height:110%;object-fit:contain;object-position:center;display:block;}
+    .nav-links{list-style:none;display:flex;gap:36px;margin-left:auto;}
+    .nav-link{text-decoration:none;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);transition:color .25s;padding-bottom:2px;border-bottom:1px solid transparent;}
+    .nav-link:hover,.nav-link.active{color:var(--dark);border-bottom-color:var(--gold);}
+    .nav-cta{flex-shrink:0;margin-left:32px;text-decoration:none;font-size:9px;letter-spacing:4px;text-transform:uppercase;border:1px solid var(--dark);padding:10px 20px;color:var(--dark);transition:all .3s;}
+    .nav-cta:hover{background:var(--dark);color:#fff;}
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;margin-left:20px;}
+    .hamburger span{display:block;width:22px;height:1px;background:var(--dark);}
+    .mobile-menu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:#fff;border-bottom:1px solid var(--border);z-index:999;padding:24px 40px 32px;}
+    .mobile-menu.open{display:block;}
+    .mobile-menu ul{list-style:none;}
+    .mobile-menu li{border-bottom:1px solid var(--border);}
+    .mobile-menu a{display:block;padding:16px 0;text-decoration:none;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--dark);}
+
+    /* PAGE HERO */
+    .page-hero{min-height:48vh;display:flex;align-items:flex-end;padding-top:var(--nav-h);background-image:radial-gradient(#ddd 1px,transparent 1px);background-size:28px 28px;border-bottom:1px solid var(--border);}
+    .page-hero-inner{max-width:var(--max);margin:0 auto;padding:60px 40px;width:100%;}
+    .eyebrow{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:block;}
+    .page-hero-inner h1{font-family:var(--serif);font-size:clamp(3rem,8vw,6rem);font-weight:400;letter-spacing:-2px;line-height:.92;margin-bottom:16px;}
+    .page-hero-inner h1 em{font-style:italic;color:var(--gold);}
+    .page-hero-inner p{font-size:12px;color:var(--muted);letter-spacing:.5px;}
+
+    /* CONTACT LAYOUT */
+    .contact-layout{max-width:var(--max);margin:0 auto;padding:100px 40px;display:grid;grid-template-columns:380px 1fr;gap:80px;border-bottom:1px solid var(--border);}
+    .section-pre{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block;}
+    .contact-info h2{font-family:var(--serif);font-size:2.4rem;font-weight:400;margin-bottom:40px;}
+    .contact-info h2 em{font-style:italic;color:var(--gold);}
+    .contact-item{display:flex;flex-direction:column;gap:4px;padding:22px 0;border-bottom:1px solid var(--border);}
+    .c-label{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);}
+    .c-value{font-family:var(--serif);font-size:1.05rem;color:var(--dark);font-weight:400;text-decoration:none;}
+    .c-sub{font-size:10px;color:var(--muted);letter-spacing:.5px;}
+    .hours-row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--border);font-size:11px;color:var(--muted);}
+
+    /* FORM */
+    .form-header{margin-bottom:36px;}
+    .form-header h2{font-family:var(--serif);font-size:2rem;font-weight:400;}
+    .form-header h2 em{font-style:italic;color:var(--gold);}
+    .enquiry-form{display:flex;flex-direction:column;gap:22px;}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+    .form-group{display:flex;flex-direction:column;gap:7px;}
+    .form-group label{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--dark);}
+    .form-group input,.form-group select,.form-group textarea{border:none;border-bottom:1px solid var(--border);padding:12px 0;font-family:var(--sans);font-size:13px;color:var(--dark);background:transparent;outline:none;transition:border-color .3s;width:100%;}
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-bottom-color:var(--gold);}
+    .form-group textarea{resize:none;}
+    .toggle-wrap{display:flex;}
+    .toggle-btn{flex:1;background:none;border:1px solid var(--border);padding:11px;font-size:9px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all .3s;margin-right:-1px;color:var(--muted);font-family:var(--sans);}
+    .toggle-btn.active{background:var(--dark);color:#fff;border-color:var(--dark);z-index:1;}
+    .toggle-btn:hover:not(.active){border-color:var(--dark);color:var(--dark);}
+    .check-label{display:flex;align-items:flex-start;gap:12px;cursor:pointer;}
+    .check-label input{margin-top:3px;flex-shrink:0;accent-color:var(--gold);}
+    .check-label span{font-size:10px;color:var(--muted);line-height:1.7;}
+    .form-submit{background:var(--dark);color:#fff;border:none;padding:18px;font-size:9px;letter-spacing:5px;text-transform:uppercase;cursor:pointer;transition:all .4s;font-family:var(--sans);}
+    .form-submit:hover{background:var(--gold);color:#111;}
+    .form-note{font-size:10px;color:var(--muted);text-align:center;line-height:1.7;}
+    .form-success{text-align:center;padding:80px 40px;border:1px solid var(--border);display:none;}
+    .success-icon{font-size:2.5rem;color:var(--gold);margin-bottom:20px;}
+    .form-success h3{font-family:var(--serif);font-size:2rem;font-weight:400;margin-bottom:15px;}
+    .form-success p{font-size:12px;color:var(--muted);line-height:1.9;}
+
+    /* MAP */
+    .map-section{height:340px;position:relative;overflow:hidden;}
+    .map-bg{width:100%;height:100%;background:linear-gradient(135deg,#1a1a1a,#2d2d2d);background-image:linear-gradient(rgba(197,160,89,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(197,160,89,.05) 1px,transparent 1px);background-size:50px 50px;display:flex;align-items:center;justify-content:center;}
+    .map-overlay{text-align:center;color:#fff;padding:40px;border:1px solid var(--border-dk);background:rgba(0,0,0,.6);backdrop-filter:blur(10px);}
+    .map-overlay h3{font-family:var(--serif);font-size:1.7rem;font-weight:400;margin:14px 0 24px;}
+    .btn-ghost{display:inline-block;background:transparent;color:#fff;text-decoration:none;padding:13px 30px;font-size:9px;letter-spacing:4px;text-transform:uppercase;border:1px solid rgba(255,255,255,.4);transition:all .3s;}
+    .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1);}
+
+    /* FOOTER */
+    .site-footer{background:var(--dark);border-top:1px solid var(--border-dk);}
+    .sf-inner{max-width:var(--max);margin:0 auto;padding:64px 40px 48px;display:grid;grid-template-columns:260px 1fr;gap:60px;}
+    .sf-logo{height:44px;width:auto;object-fit:contain;display:block;margin-bottom:16px;filter:brightness(0) invert(1);opacity:.75;}
+    .sf-brand p{font-size:11px;line-height:1.9;color:#555;}
+    .sf-cols{display:grid;grid-template-columns:repeat(2,1fr);gap:36px;}
+    .sf-col h4{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
+    .sf-col a{display:block;font-size:11px;color:#555;text-decoration:none;margin-bottom:11px;letter-spacing:.5px;transition:color .25s;}
+    .sf-col a:hover{color:#fff;}
+    .sf-bottom{max-width:var(--max);margin:0 auto;padding:18px 40px;border-top:1px solid var(--border-dk);display:flex;justify-content:space-between;font-size:8px;letter-spacing:1.5px;color:#3a3a3a;text-transform:uppercase;flex-wrap:wrap;gap:8px;}
+
+    @media(max-width:1024px){.contact-layout{grid-template-columns:1fr;}.sf-inner{grid-template-columns:1fr;}}
+    @media(max-width:768px){.nav-links,.nav-cta{display:none;}.hamburger{display:flex;}.nav-inner{padding:0 20px;}.nav-stamp{width:52px;height:52px;margin-right:0;}.form-row{grid-template-columns:1fr;}.sf-bottom{flex-direction:column;text-align:center;}.page-hero-inner,.contact-layout,.sf-inner,.sf-bottom{padding-left:20px;padding-right:20px;}}
+    </style>
 </head>
 <body>
 
-<nav class="luxury-nav" id="navbar">
+<nav class="site-nav" id="navbar">
     <div class="nav-inner">
-        <a href="index.html" class="nav-brand">
-            <img src="eonelogo.png" alt="Eone Exclusive Properties" class="nav-logo-img">
-        </a>
+        <a href="index.html" class="nav-stamp"><img src="eonelogo.png" alt="Eone"></a>
         <ul class="nav-links">
-            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="index.html"    class="nav-link">Home</a></li>
             <li><a href="services.html" class="nav-link">Properties</a></li>
-            <li><a href="watches.html" class="nav-link">Watches</a></li>
-            <li><a href="about.html" class="nav-link">About</a></li>
-            <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            <li><a href="watches.html"  class="nav-link">Watches</a></li>
+            <li><a href="about.html"    class="nav-link">About</a></li>
+            <li><a href="contact.html"  class="nav-link active">Contact</a></li>
         </ul>
         <a href="contact.html" class="nav-cta">Enquire</a>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
     </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
@@ -38,8 +126,8 @@
 </div>
 
 <section class="page-hero">
-    <div class="page-hero-content">
-        <p class="hero-pre-title">Private Enquiries</p>
+    <div class="page-hero-inner">
+        <span class="eyebrow">Private Enquiries</span>
         <h1>Get in <em>Touch</em></h1>
         <p>All conversations held in strict confidence.</p>
     </div>
@@ -47,103 +135,80 @@
 
 <section class="contact-layout">
     <div class="contact-info">
-        <p class="section-pre">Direct Lines</p>
+        <span class="section-pre">Direct Lines</span>
         <h2>Reach <em>Us</em></h2>
         <div class="contact-item">
-            <span class="contact-label">Address</span>
-            <span class="contact-value" style="font-size:0.95rem;line-height:1.5;">Office B1503, The Opus By Omniyat<br>Al Amaal Street, Business Bay<br>Dubai, UAE</span>
+            <span class="c-label">Address</span>
+            <span class="c-value" style="font-size:.95rem;line-height:1.6;">Office B1503, The Opus By Omniyat<br>Al Amaal Street, Business Bay<br>Dubai, UAE</span>
         </div>
         <div class="contact-item">
-            <span class="contact-label">Phone</span>
-            <span class="contact-value"><a href="tel:+97142566517" style="text-decoration:none;color:inherit;">04 566 5176</a></span>
-            <span class="contact-sub">Sun – Thu, 9:00 – 18:00 GST</span>
+            <span class="c-label">Phone</span>
+            <a href="tel:+97142566517" class="c-value">04 566 5176</a>
+            <span class="c-sub">Sun – Thu, 9:00 – 18:00 GST</span>
         </div>
         <div class="contact-item">
-            <span class="contact-label">Email</span>
-            <span class="contact-value"><a href="mailto:info@eoneproperties.com" style="text-decoration:none;color:inherit;">info@eoneproperties.com</a></span>
-            <span class="contact-sub">Response within 4 hours</span>
+            <span class="c-label">Email</span>
+            <a href="mailto:info@eoneproperties.com" class="c-value">info@eoneproperties.com</a>
+            <span class="c-sub">Response within 4 hours</span>
         </div>
         <div class="contact-item">
-            <span class="contact-label">WhatsApp</span>
-            <span class="contact-value"><a href="https://wa.me/97142566517" target="_blank" style="text-decoration:none;color:inherit;">04 566 5176</a></span>
-            <span class="contact-sub">For urgent enquiries</span>
+            <span class="c-label">WhatsApp</span>
+            <a href="https://wa.me/97142566517" target="_blank" class="c-value">04 566 5176</a>
+            <span class="c-sub">For urgent enquiries</span>
         </div>
         <div class="contact-item">
-            <span class="contact-label">Our Companies</span>
-            <span class="contact-value" style="font-size:0.85rem;line-height:1.8;">Eone Exclusive Properties — Real Estate<br><span style="color:var(--gold);">◆</span> Eone Luxury Watches — Watches</span>
+            <span class="c-label">Our Companies</span>
+            <span class="c-value" style="font-size:.85rem;line-height:1.8;">Eone Exclusive Properties — Real Estate<br><span style="color:var(--gold);">◆</span> Eone Luxury Watches — Watches</span>
         </div>
-        <div class="contact-item">
-            <span class="contact-label">Property Finder</span>
-            <a href="https://www.propertyfinder.ae" target="_blank" class="contact-value" style="text-decoration:none;border-bottom:1px solid var(--gold);font-size:0.95rem;">View All Listings ↗</a>
-            <span class="contact-sub">All listings verified & live</span>
-        </div>
-        <div class="contact-hours">
-            <p class="section-pre" style="margin-top:50px">Office Hours</p>
+        <div style="margin-top:40px;">
+            <span class="section-pre">Office Hours</span>
             <div class="hours-row"><span>Monday – Friday</span><span>9:00 – 18:00 GST</span></div>
             <div class="hours-row"><span>Saturday</span><span>10:00 – 15:00 GST</span></div>
             <div class="hours-row"><span>Sunday</span><span>By Appointment</span></div>
         </div>
     </div>
 
-    <div class="contact-form-wrap">
+    <div>
         <div class="form-header">
-            <p class="section-pre">Private Enquiry Form</p>
+            <span class="section-pre">Private Enquiry Form</span>
             <h2>Tell Us What <em>You're Looking For</em></h2>
         </div>
         <form class="enquiry-form" id="enquiryForm">
             <div class="form-row">
-                <div class="form-group">
-                    <label for="fname">First Name</label>
-                    <input type="text" id="fname" placeholder="Your first name" required>
-                </div>
-                <div class="form-group">
-                    <label for="lname">Last Name</label>
-                    <input type="text" id="lname" placeholder="Your last name" required>
-                </div>
+                <div class="form-group"><label>First Name</label><input type="text" placeholder="Your first name" required></div>
+                <div class="form-group"><label>Last Name</label><input type="text" placeholder="Your last name" required></div>
             </div>
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" placeholder="you@email.com" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone / WhatsApp</label>
-                <input type="tel" id="phone" placeholder="04 566 5176">
-            </div>
+            <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@email.com" required></div>
+            <div class="form-group"><label>Phone / WhatsApp</label><input type="tel" placeholder="+971 00 000 0000"></div>
             <div class="form-group">
                 <label>I am looking to</label>
-                <div class="interest-toggle">
+                <div class="toggle-wrap">
                     <button type="button" class="toggle-btn active" data-val="buy">Buy</button>
                     <button type="button" class="toggle-btn" data-val="rent">Rent</button>
-                    <button type="button" class="toggle-btn" data-val="both">Both</button>
+                    <button type="button" class="toggle-btn" data-val="watches">Watches</button>
+                    <button type="button" class="toggle-btn" data-val="other">Other</button>
                 </div>
-                <input type="hidden" id="interest" value="buy">
             </div>
             <div class="form-group">
-                <label for="budget">Approximate Budget</label>
-                <select id="budget">
+                <label>Approximate Budget</label>
+                <select>
                     <option value="">Select range</option>
-                    <option>AED 1M – 5M</option>
-                    <option>AED 5M – 15M</option>
-                    <option>AED 15M – 30M</option>
-                    <option>AED 30M – 60M</option>
-                    <option>AED 60M+</option>
-                    <option>Prefer not to say</option>
+                    <option>AED 1M – 5M</option><option>AED 5M – 15M</option>
+                    <option>AED 15M – 30M</option><option>AED 30M – 60M</option>
+                    <option>AED 60M+</option><option>Prefer not to say</option>
                 </select>
             </div>
+            <div class="form-group"><label>Your Enquiry</label><textarea rows="5" placeholder="Describe what you're looking for…"></textarea></div>
             <div class="form-group">
-                <label for="message">Your Enquiry</label>
-                <textarea id="message" rows="5" placeholder="Describe what you're looking for — location, size, timeline, or any specific requirements…"></textarea>
-            </div>
-            <div class="form-group form-privacy">
-                <label class="checkbox-label">
+                <label class="check-label">
                     <input type="checkbox" required>
                     <span>I confirm my details will be used only to respond to this enquiry, in line with Eone's privacy policy.</span>
                 </label>
             </div>
             <button type="submit" class="form-submit">Submit Enquiry</button>
-            <div class="form-note">All enquiries are acknowledged within 4 business hours. Your information is never shared.</div>
+            <div class="form-note">All enquiries acknowledged within 4 hours. Your information is never shared.</div>
         </form>
-        <div class="form-success" id="formSuccess" style="display:none">
+        <div class="form-success" id="formSuccess">
             <div class="success-icon">✓</div>
             <h3>Thank You</h3>
             <p>Your enquiry has been received. A member of our team will be in touch within 4 hours.</p>
@@ -151,50 +216,58 @@
     </div>
 </section>
 
-<!-- MAP -->
 <section class="map-section">
-    <div class="map-placeholder">
+    <div class="map-bg">
         <div class="map-overlay">
-            <span class="section-pre">Our Location</span>
-            <h3>Office B1503, The Opus By Omniyat,<br>Business Bay, Dubai, UAE</h3>
-            <a href="https://maps.google.com/?q=Dubai+UAE" target="_blank" class="btn-ghost">Open in Maps →</a>
+            <span class="eyebrow" style="color:var(--gold);">Our Location</span>
+            <h3>The Opus By Omniyat<br>Business Bay, Dubai</h3>
+            <a href="https://maps.google.com/?q=The+Opus+By+Omniyat+Business+Bay+Dubai" target="_blank" class="btn-ghost">Open in Maps →</a>
         </div>
     </div>
 </section>
 
-<footer class="luxury-footer">
-    <div class="footer-inner">
-        <div class="footer-brand">
-            <img src="eonelogo.png" alt="Eone Exclusive Properties" class="footer-logo-img">
-            <p style="line-height:2;">
-                Eone Exclusive Properties — Real Estate<br>
-                Eone Luxury Watches — Watches<br>
-                <span style="font-size:9px;letter-spacing:2px;color:#444;">Est. 2026 · Business Bay, Dubai, UAE</span>
-            </p>
+<footer class="site-footer">
+    <div class="sf-inner">
+        <div class="sf-brand">
+            <img src="eonelogo.png" alt="Eone" class="sf-logo">
+            <p>Eone Exclusive Properties — Real Estate<br>Eone Luxury Watches — Watches<br><span style="font-size:9px;color:#444;letter-spacing:1px;">Est. 2026 · Business Bay, Dubai, UAE</span></p>
         </div>
-        <div class="footer-links">
-            <div class="footer-col">
-                <h4>Navigation</h4>
-                <a href="index.html">Home</a>
-                <a href="services.html">Properties</a>
-                <a href="watches.html">Watches</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
+        <div class="sf-cols">
+            <div class="sf-col">
+                <h4>Navigate</h4>
+                <a href="index.html">Home</a><a href="services.html">Properties</a><a href="watches.html">Watches</a><a href="about.html">About</a><a href="contact.html">Contact</a>
             </div>
-            <div class="footer-col">
+            <div class="sf-col">
                 <h4>Connect</h4>
                 <a href="tel:+97142566517">04 566 5176</a>
                 <a href="mailto:info@eoneproperties.com">info@eoneproperties.com</a>
                 <a href="https://wa.me/97142566517" target="_blank">WhatsApp ↗</a>
+                <a href="#">Instagram</a>
             </div>
         </div>
     </div>
-    <div class="footer-bottom">
+    <div class="sf-bottom">
         <span>© 2026 Eone Exclusive Properties & Eone Luxury Watches. All rights reserved.</span>
-        <span>RERA Registered · DED Licensed · Business Bay, Dubai · Business Bay, Dubai, UAE</span>
+        <span>RERA Registered · DED Licensed · Business Bay, Dubai, UAE</span>
     </div>
 </footer>
 
-<script src="main.js"></script>
+<script>
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+    document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.toggle('open'));
+    document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open')));
+    document.querySelectorAll('.toggle-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.closest('.toggle-wrap').querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        });
+    });
+    document.getElementById('enquiryForm').addEventListener('submit', e => {
+        e.preventDefault();
+        document.getElementById('enquiryForm').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+    });
+</script>
 </body>
 </html>
