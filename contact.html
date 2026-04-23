@@ -32,7 +32,7 @@
     .mobile-menu a{display:block;padding:16px 0;text-decoration:none;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--dark);}
 
     /* PAGE HERO */
-    .page-hero{min-height:48vh;display:flex;align-items:flex-end;padding-top:var(--nav-h);background-image:radial-gradient(#ddd 1px,transparent 1px);background-size:28px 28px;border-bottom:1px solid var(--border);}
+    .page-hero{min-height:48vh;display:flex;align-items:flex-end;padding-top:calc(var(--nav-h) + 36px);background-image:radial-gradient(#ddd 1px,transparent 1px);background-size:28px 28px;border-bottom:1px solid var(--border);}
     .page-hero-inner{max-width:var(--max);margin:0 auto;padding:60px 40px;width:100%;}
     .eyebrow{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:block;}
     .page-hero-inner h1{font-family:var(--serif);font-size:clamp(3rem,8vw,6rem);font-weight:400;letter-spacing:-2px;line-height:.92;margin-bottom:16px;}
@@ -102,20 +102,26 @@
 <body>
 
 <nav class="site-nav" id="navbar">
-    <div class="nav-inner">
-        <a href="index.html" class="nav-stamp"><img src="eonelogo.png" alt="Eone"></a>
-        <ul class="nav-links">
-            <li><a href="index.html"    class="nav-link">Home</a></li>
-            <li><a href="services.html" class="nav-link">Properties</a></li>
-            <li><a href="watches.html"  class="nav-link">Watches</a></li>
-            <li><a href="about.html"    class="nav-link">About</a></li>
-            <li><a href="contact.html"  class="nav-link active">Contact</a></li>
+    <div class="site-nav-inner">
+        <ul class="nav-left">
+            <li><a href="index.html"    class="snl">Home</a></li>
+            <li><a href="services.html" class="snl">Properties</a></li>
+            <li><a href="watches.html"  class="snl">Watches</a></li>
         </ul>
-        <a href="contact.html" class="nav-cta">Enquire</a>
-        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        <div class="nav-logo-centre">
+            <a href="index.html" class="nav-logo-link">
+                <img src="eonelogo.png" alt="Eone Exclusive Properties" class="nav-logo-img">
+            </a>
+        </div>
+        <ul class="nav-right">
+            <li><a href="about.html"   class="snl">About</a></li>
+            <li><a href="contact.html" class="snl active">Contact</a></li>
+            <li><a href="contact.html" class="site-nav-enquire">Enquire</a></li>
+        </ul>
+        <button class="site-nav-burger" id="burger"><span></span><span></span><span></span></button>
     </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
+<div class="mobile-drawer" id="drawer">
     <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="services.html">Properties</a></li>
@@ -124,6 +130,7 @@
         <li><a href="contact.html">Contact</a></li>
     </ul>
 </div>
+
 
 <section class="page-hero">
     <div class="page-hero-inner">
@@ -253,21 +260,10 @@
 </footer>
 
 <script>
-    const nav = document.getElementById('navbar');
-    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
-    document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.toggle('open'));
-    document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open')));
-    document.querySelectorAll('.toggle-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            btn.closest('.toggle-wrap').querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        });
-    });
-    document.getElementById('enquiryForm').addEventListener('submit', e => {
-        e.preventDefault();
-        document.getElementById('enquiryForm').style.display = 'none';
-        document.getElementById('formSuccess').style.display = 'block';
-    });
+    const _nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => _nav.classList.toggle('scrolled', window.scrollY > 40));
+    document.getElementById('burger')?.addEventListener('click', () => document.getElementById('drawer')?.classList.toggle('open'));
+    document.querySelectorAll('.mobile-drawer a').forEach(a => a.addEventListener('click', () => document.getElementById('drawer')?.classList.remove('open')));
 </script>
 </body>
 </html>
