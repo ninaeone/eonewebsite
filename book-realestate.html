@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Property Visit — Eone · Dubai</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="eone.css">
+<style>
+.booking-layout {
+  max-width: 1320px; margin: 0 auto;
+  padding: 100px 48px;
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 80px;
+  border-bottom: 1px solid #e8e8e8;
+}
+.booking-aside {
+  position: sticky; top: calc(var(--nav) + 40px);
+  align-self: start;
+}
+.booking-badge {
+  display: inline-block;
+  font-size: 8px; letter-spacing: 3px;
+  text-transform: uppercase;
+  background: var(--dark); color: var(--gold);
+  padding: 8px 16px; margin-bottom: 28px;
+}
+.booking-aside h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 400; line-height: 1.05;
+  margin-bottom: 24px;
+}
+.booking-aside h1 em { font-style: italic; color: var(--gold); }
+.booking-aside p { font-size: 13px; line-height: 2; color: #888; margin-bottom: 40px; }
+.booking-promise {
+  display: flex; flex-direction: column; gap: 0;
+  border: 1px solid #e8e8e8;
+}
+.bp-item {
+  padding: 18px 22px;
+  border-bottom: 1px solid #e8e8e8;
+  display: flex; align-items: center; gap: 14px;
+}
+.bp-item:last-child { border-bottom: none; }
+.bp-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--gold); flex-shrink: 0;
+}
+.bp-item span { font-size: 11px; color: #666; letter-spacing: .3px; }
+
+.booking-form { display: flex; flex-direction: column; gap: 28px; padding-top: 8px; }
+.bf-section { margin-bottom: 8px; }
+.bf-section-title {
+  font-size: 9px; letter-spacing: 5px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 20px; display: block;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e8e8e8;
+}
+.bf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.bf-group { display: flex; flex-direction: column; gap: 8px; }
+.bf-group label {
+  font-size: 9px; letter-spacing: 3.5px;
+  text-transform: uppercase; color: #999; font-weight: 400;
+}
+.bf-group input,
+.bf-group select,
+.bf-group textarea {
+  border: none;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 12px 0;
+  font-size: 13px; font-family: 'Inter', sans-serif;
+  color: var(--dark); background: transparent;
+  outline: none; width: 100%;
+  transition: border-color .3s;
+}
+.bf-group input:focus,
+.bf-group select:focus,
+.bf-group textarea:focus { border-bottom-color: var(--gold); }
+.bf-group textarea { resize: none; }
+
+.bf-submit {
+  background: var(--dark); color: #fff;
+  border: none; padding: 20px;
+  font-size: 9px; letter-spacing: 5px;
+  text-transform: uppercase; cursor: pointer;
+  transition: all .4s; font-family: 'Inter', sans-serif;
+  width: 100%;
+}
+.bf-submit:hover { background: var(--gold); color: #111; letter-spacing: 6px; }
+.bf-note {
+  font-size: 10px; color: #bbb;
+  text-align: center; line-height: 1.7;
+}
+
+.success-box {
+  display: none;
+  text-align: center;
+  padding: 100px 40px;
+  border: 1px solid #e8e8e8;
+}
+.success-box .si { font-size: 3rem; color: var(--gold); margin-bottom: 24px; }
+.success-box h3 {
+  font-family: var(--serif); font-size: 2.2rem;
+  font-weight: 400; margin-bottom: 16px;
+}
+.success-box p { font-size: 13px; color: #888; line-height: 1.9; max-width: 400px; margin: 0 auto 32px; }
+
+@media(max-width: 1024px) { .booking-layout { grid-template-columns: 1fr; gap: 60px; } .booking-aside { position: static; } }
+@media(max-width: 768px) { .booking-layout { padding: 60px 24px; } .bf-row { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <ul class="nav-left">
+      <li><a href="index.html" class="nl">Home</a></li>
+      <li><a href="services.html" class="nl">Properties</a></li>
+      <li><a href="watches.html" class="nl">Watches</a></li>
+    </ul>
+    <a href="index.html" class="nav-logo"><img src="eonelogo.png" alt="Eone"></a>
+    <ul class="nav-right">
+      <li><a href="about.html" class="nl">About</a></li>
+      <li><a href="contact.html" class="nl">Contact</a></li>
+      <li><a href="book.html" class="nav-enq">Book a Private Visit</a></li>
+    </ul>
+    <button class="nav-burger" id="burger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="drawer" id="drawer">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Properties</a></li>
+    <li><a href="watches.html">Watches</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="book.html">Book a Private Visit</a></li>
+  </ul>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <span class="eyebrow">Real Estate · Private Visit</span>
+    <h1 class="page-h1">Book a <em>Property Visit</em></h1>
+    <p>Tell us what you're looking for. We'll arrange exclusive access.</p>
+  </div>
+</section>
+
+<div class="booking-layout">
+  <!-- ASIDE -->
+  <div class="booking-aside">
+    <span class="booking-badge">By Appointment Only</span>
+    <h1>Private Property<br><em>Viewings</em></h1>
+    <p>We arrange exclusive access to properties that are not publicly listed. Every viewing is prepared in advance and conducted with absolute discretion.</p>
+    <div class="booking-promise">
+      <div class="bp-item"><div class="bp-dot"></div><span>Off-market access to Dubai's finest properties</span></div>
+      <div class="bp-item"><div class="bp-dot"></div><span>Personal advisor throughout the process</span></div>
+      <div class="bp-item"><div class="bp-dot"></div><span>Your requirements handled in strict confidence</span></div>
+      <div class="bp-item"><div class="bp-dot"></div><span>Response within 4 hours to confirm your visit</span></div>
+      <div class="bp-item"><div class="bp-dot"></div><span>No obligation — just an exceptional experience</span></div>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div>
+    <form class="booking-form" id="bookForm">
+
+      <div class="bf-section">
+        <span class="bf-section-title">Your Details</span>
+        <div class="bf-row">
+          <div class="bf-group"><label>First Name</label><input type="text" placeholder="Your first name" required></div>
+          <div class="bf-group"><label>Last Name</label><input type="text" placeholder="Your last name" required></div>
+        </div>
+        <div class="bf-row" style="margin-top:20px;">
+          <div class="bf-group"><label>Email Address</label><input type="email" placeholder="you@email.com" required></div>
+          <div class="bf-group"><label>Phone / WhatsApp</label><input type="tel" placeholder="+971 00 000 0000"></div>
+        </div>
+      </div>
+
+      <div class="bf-section">
+        <span class="bf-section-title">Property Preferences</span>
+        <div class="bf-row">
+          <div class="bf-group">
+            <label>Looking to</label>
+            <select>
+              <option value="">Select</option>
+              <option>Buy</option>
+              <option>Rent</option>
+              <option>Both — not decided yet</option>
+            </select>
+          </div>
+          <div class="bf-group">
+            <label>Property Type</label>
+            <select>
+              <option value="">Select</option>
+              <option>Villa</option>
+              <option>Penthouse</option>
+              <option>Apartment</option>
+              <option>Mansion</option>
+              <option>Any — show me what you have</option>
+            </select>
+          </div>
+        </div>
+        <div class="bf-row" style="margin-top:20px;">
+          <div class="bf-group">
+            <label>Preferred Location</label>
+            <select>
+              <option value="">Select</option>
+              <option>Palm Jumeirah</option>
+              <option>Emirates Hills</option>
+              <option>Downtown Dubai</option>
+              <option>DIFC</option>
+              <option>Dubai Hills Estate</option>
+              <option>Jumeirah Bay Island</option>
+              <option>Business Bay</option>
+              <option>Open to suggestions</option>
+            </select>
+          </div>
+          <div class="bf-group">
+            <label>Budget</label>
+            <select>
+              <option value="">Select range</option>
+              <option>AED 1M – 5M</option>
+              <option>AED 5M – 15M</option>
+              <option>AED 15M – 30M</option>
+              <option>AED 30M – 60M</option>
+              <option>AED 60M+</option>
+              <option>Prefer not to say</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="bf-section">
+        <span class="bf-section-title">Visit Preferences</span>
+        <div class="bf-row">
+          <div class="bf-group">
+            <label>Preferred Date</label>
+            <input type="date">
+          </div>
+          <div class="bf-group">
+            <label>Preferred Time</label>
+            <select>
+              <option value="">Select</option>
+              <option>Morning (9:00 – 12:00)</option>
+              <option>Afternoon (12:00 – 16:00)</option>
+              <option>Evening (16:00 – 19:00)</option>
+              <option>Flexible</option>
+            </select>
+          </div>
+        </div>
+        <div class="bf-group" style="margin-top:20px;">
+          <label>Additional Notes</label>
+          <textarea rows="4" placeholder="Any specific requirements, properties you've seen, or questions for us…"></textarea>
+        </div>
+      </div>
+
+      <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;">
+        <input type="checkbox" required style="margin-top:3px;accent-color:#C5A059;flex-shrink:0;">
+        <span style="font-size:10px;color:#888;line-height:1.7;">I confirm my details will be used only to arrange this visit, in line with Eone's privacy policy. My information will never be shared with third parties.</span>
+      </label>
+
+      <button type="submit" class="bf-submit">Request Private Visit</button>
+      <p class="bf-note">We will confirm your appointment within 4 hours.<br>All visits are by appointment only and conducted with full discretion.</p>
+    </form>
+
+    <div class="success-box" id="bookSuccess">
+      <div class="si">✓</div>
+      <h3>Visit Requested</h3>
+      <p>Thank you. A member of our private client team will contact you within 4 hours to confirm the details of your visit.</p>
+      <a href="services.html" class="btn-dark">Browse Properties</a>
+    </div>
+  </div>
+</div>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="eonelogo.png" alt="Eone" class="footer-logo">
+      <p>Eone Exclusive Properties — Real Estate<br>Eone Luxury Watches — Watches<br><span>Est. 2026 · Business Bay, Dubai, UAE</span></p>
+    </div>
+    <div class="footer-cols">
+      <div class="fc"><h4>Navigate</h4><a href="index.html">Home</a><a href="services.html">Properties</a><a href="watches.html">Watches</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+      <div class="fc"><h4>Connect</h4><a href="tel:+97142566517">04 566 5176</a><a href="mailto:info@eoneproperties.com">info@eoneproperties.com</a><a href="https://wa.me/97142566517" target="_blank">WhatsApp ↗</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Eone Exclusive Properties & Eone Luxury Watches. All rights reserved.</span>
+    <span>RERA Registered · DED Licensed · Business Bay, Dubai, UAE</span>
+  </div>
+</footer>
+<script src="eone.js"></script>
+<script>
+document.getElementById('bookForm')?.addEventListener('submit', e => {
+  e.preventDefault();
+  document.getElementById('bookForm').style.display = 'none';
+  document.getElementById('bookSuccess').style.display = 'block';
+  window.scrollTo({top: document.getElementById('bookSuccess').offsetTop - 100, behavior: 'smooth'});
+});
+</script>
+</body></html>
