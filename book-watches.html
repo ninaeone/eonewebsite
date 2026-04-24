@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Watch Consultation — Eone · Dubai</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="eone.css">
+<style>
+.booking-layout {
+  max-width: 1320px; margin: 0 auto;
+  padding: 100px 48px;
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 80px;
+  border-bottom: 1px solid #e8e8e8;
+}
+.booking-aside {
+  position: sticky; top: calc(var(--nav) + 40px);
+  align-self: start;
+}
+.booking-badge {
+  display: inline-block;
+  font-size: 8px; letter-spacing: 3px;
+  text-transform: uppercase;
+  background: var(--dark); color: var(--gold);
+  padding: 8px 16px; margin-bottom: 28px;
+}
+.booking-aside h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 400; line-height: 1.05;
+  margin-bottom: 24px;
+}
+.booking-aside h1 em { font-style: italic; color: var(--gold); }
+.booking-aside p { font-size: 13px; line-height: 2; color: #888; margin-bottom: 40px; }
+.booking-promise {
+  display: flex; flex-direction: column; gap: 0;
+  border: 1px solid #e8e8e8;
+}
+.bp-item {
+  padding: 18px 22px;
+  border-bottom: 1px solid #e8e8e8;
+  display: flex; align-items: center; gap: 14px;
+}
+.bp-item:last-child { border-bottom: none; }
+.bp-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--gold); flex-shrink: 0;
+}
+.bp-item span { font-size: 11px; color: #666; letter-spacing: .3px; }
+
+.booking-form { display: flex; flex-direction: column; gap: 28px; padding-top: 8px; }
+.bf-section { margin-bottom: 8px; }
+.bf-section-title {
+  font-size: 9px; letter-spacing: 5px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 20px; display: block;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e8e8e8;
+}
+.bf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.bf-group { display: flex; flex-direction: column; gap: 8px; }
+.bf-group label {
+  font-size: 9px; letter-spacing: 3.5px;
+  text-transform: uppercase; color: #999; font-weight: 400;
+}
+.bf-group input,
+.bf-group select,
+.bf-group textarea {
+  border: none;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 12px 0;
+  font-size: 13px; font-family: 'Inter', sans-serif;
+  color: var(--dark); background: transparent;
+  outline: none; width: 100%;
+  transition: border-color .3s;
+}
+.bf-group input:focus,
+.bf-group select:focus,
+.bf-group textarea:focus { border-bottom-color: var(--gold); }
+.bf-group textarea { resize: none; }
+
+.bf-submit {
+  background: var(--dark); color: #fff;
+  border: none; padding: 20px;
+  font-size: 9px; letter-spacing: 5px;
+  text-transform: uppercase; cursor: pointer;
+  transition: all .4s; font-family: 'Inter', sans-serif;
+  width: 100%;
+}
+.bf-submit:hover { background: var(--gold); color: #111; letter-spacing: 6px; }
+.bf-note {
+  font-size: 10px; color: #bbb;
+  text-align: center; line-height: 1.7;
+}
+
+.success-box {
+  display: none;
+  text-align: center;
+  padding: 100px 40px;
+  border: 1px solid #e8e8e8;
+}
+.success-box .si { font-size: 3rem; color: var(--gold); margin-bottom: 24px; }
+.success-box h3 {
+  font-family: var(--serif); font-size: 2.2rem;
+  font-weight: 400; margin-bottom: 16px;
+}
+.success-box p { font-size: 13px; color: #888; line-height: 1.9; max-width: 400px; margin: 0 auto 32px; }
+
+@media(max-width: 1024px) { .booking-layout { grid-template-columns: 1fr; gap: 60px; } .booking-aside { position: static; } }
+@media(max-width: 768px) { .booking-layout { padding: 60px 24px; } .bf-row { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <ul class="nav-left">
+      <li><a href="index.html" class="nl">Home</a></li>
+      <li><a href="services.html" class="nl">Properties</a></li>
+      <li><a href="watches.html" class="nl">Watches</a></li>
+    </ul>
+    <a href="index.html" class="nav-logo"><img src="eonelogo.png" alt="Eone"></a>
+    <ul class="nav-right">
+      <li><a href="about.html" class="nl">About</a></li>
+      <li><a href="contact.html" class="nl">Contact</a></li>
+      <li><a href="book.html" class="nav-enq">Book a Private Visit</a></li>
+    </ul>
+    <button class="nav-burger" id="burger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="drawer" id="drawer">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Properties</a></li>
+    <li><a href="watches.html">Watches</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="book.html">Book a Private Visit</a></li>
+  </ul>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <span class="eyebrow">Eone Luxury Watches · Private Consultation</span>
+    <h1 class="page-h1">Book a Watch <em>Consultation</em></h1>
+    <p>Arrange a private session with our horological specialists.</p>
+  </div>
+</section>
+
+<div class="booking-layout">
+  <!-- ASIDE -->
+  <div class="booking-aside">
+    <span class="booking-badge">By Appointment Only</span>
+    <h1>Private Watch<br><em>Consultation</em></h1>
+    <p>Our watch specialists will prepare a curated selection based on your interests before your visit — ensuring every piece we show you is worth your time.</p>
+    <div class="booking-promise">
+      <div class="bp-item"><div class="bp-dot"></div><span>Curated selection prepared before your arrival</span></div>
+      <div class="bp-item"><div class="bp-dot"></div><span>Full authentication documentation on every piece</span></div>
+      <div class="bp-item"><div class="bp-dot"></div><span>Private viewing room — no distractions</span></div>
+      <div class="bp-item"><div class="bp-dot"></div><span>No pressure — your pace, your decision</span></div>
+      <div class="bp-item"><div class="bp-dot"></div><span>Can't find it? We'll source it for you</span></div>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div>
+    <form class="booking-form" id="bookFormW">
+
+      <div class="bf-section">
+        <span class="bf-section-title">Your Details</span>
+        <div class="bf-row">
+          <div class="bf-group"><label>First Name</label><input type="text" placeholder="Your first name" required></div>
+          <div class="bf-group"><label>Last Name</label><input type="text" placeholder="Your last name" required></div>
+        </div>
+        <div class="bf-row" style="margin-top:20px;">
+          <div class="bf-group"><label>Email Address</label><input type="email" placeholder="you@email.com" required></div>
+          <div class="bf-group"><label>Phone / WhatsApp</label><input type="tel" placeholder="+971 00 000 0000"></div>
+        </div>
+      </div>
+
+      <div class="bf-section">
+        <span class="bf-section-title">Watch Interests</span>
+        <div class="bf-row">
+          <div class="bf-group">
+            <label>Purpose</label>
+            <select>
+              <option value="">Select</option>
+              <option>Buying — I know what I want</option>
+              <option>Buying — I want to explore</option>
+              <option>Selling my collection</option>
+              <option>Valuation only</option>
+              <option>Investment advice</option>
+            </select>
+          </div>
+          <div class="bf-group">
+            <label>Preferred Brand</label>
+            <select>
+              <option value="">Select or leave open</option>
+              <option>Patek Philippe</option>
+              <option>Richard Mille</option>
+              <option>Rolex</option>
+              <option>Audemars Piguet</option>
+              <option>A. Lange &amp; Söhne</option>
+              <option>F.P. Journe</option>
+              <option>Vacheron Constantin</option>
+              <option>Open to suggestions</option>
+            </select>
+          </div>
+        </div>
+        <div class="bf-row" style="margin-top:20px;">
+          <div class="bf-group">
+            <label>Budget Range</label>
+            <select>
+              <option value="">Select</option>
+              <option>AED 50K – 150K</option>
+              <option>AED 150K – 300K</option>
+              <option>AED 300K – 600K</option>
+              <option>AED 600K – 1M</option>
+              <option>AED 1M+</option>
+              <option>Prefer not to say</option>
+            </select>
+          </div>
+          <div class="bf-group">
+            <label>Specific Reference</label>
+            <input type="text" placeholder="e.g. Nautilus 5711, Daytona…">
+          </div>
+        </div>
+      </div>
+
+      <div class="bf-section">
+        <span class="bf-section-title">Appointment Preferences</span>
+        <div class="bf-row">
+          <div class="bf-group">
+            <label>Preferred Date</label>
+            <input type="date">
+          </div>
+          <div class="bf-group">
+            <label>Preferred Time</label>
+            <select>
+              <option value="">Select</option>
+              <option>Morning (9:00 – 12:00)</option>
+              <option>Afternoon (12:00 – 16:00)</option>
+              <option>Evening (16:00 – 19:00)</option>
+              <option>Flexible</option>
+            </select>
+          </div>
+        </div>
+        <div class="bf-group" style="margin-top:20px;">
+          <label>Anything Else We Should Know</label>
+          <textarea rows="4" placeholder="Any specific pieces, references, or questions for our specialists…"></textarea>
+        </div>
+      </div>
+
+      <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;">
+        <input type="checkbox" required style="margin-top:3px;accent-color:#C5A059;flex-shrink:0;">
+        <span style="font-size:10px;color:#888;line-height:1.7;">I confirm my details will be used only to arrange this consultation, in line with Eone's privacy policy. My information will never be shared with third parties.</span>
+      </label>
+
+      <button type="submit" class="bf-submit">Request Watch Consultation</button>
+      <p class="bf-note">We will confirm your appointment within 4 hours.<br>All consultations are private and conducted with full discretion.</p>
+    </form>
+
+    <div class="success-box" id="bookSuccessW">
+      <div class="si">✓</div>
+      <h3>Consultation Requested</h3>
+      <p>Thank you. Our watch specialist will contact you within 4 hours to confirm your private consultation and begin preparing your selection.</p>
+      <a href="watches.html" class="btn-dark">Explore Our Watches</a>
+    </div>
+  </div>
+</div>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="eonelogo.png" alt="Eone" class="footer-logo">
+      <p>Eone Exclusive Properties — Real Estate<br>Eone Luxury Watches — Watches<br><span>Est. 2026 · Business Bay, Dubai, UAE</span></p>
+    </div>
+    <div class="footer-cols">
+      <div class="fc"><h4>Navigate</h4><a href="index.html">Home</a><a href="services.html">Properties</a><a href="watches.html">Watches</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+      <div class="fc"><h4>Connect</h4><a href="tel:+97142566517">04 566 5176</a><a href="mailto:info@eoneproperties.com">info@eoneproperties.com</a><a href="https://wa.me/97142566517" target="_blank">WhatsApp ↗</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Eone Exclusive Properties & Eone Luxury Watches. All rights reserved.</span>
+    <span>RERA Registered · DED Licensed · Business Bay, Dubai, UAE</span>
+  </div>
+</footer>
+<script src="eone.js"></script>
+<script>
+document.getElementById('bookFormW')?.addEventListener('submit', e => {
+  e.preventDefault();
+  document.getElementById('bookFormW').style.display = 'none';
+  document.getElementById('bookSuccessW').style.display = 'block';
+  window.scrollTo({top: document.getElementById('bookSuccessW').offsetTop - 100, behavior: 'smooth'});
+});
+</script>
+</body></html>
