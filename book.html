@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Private Visit — Eone · Dubai</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="eone.css">
+<style>
+/* ── BOOKING PAGE SPECIFIC ── */
+.book-hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: var(--nav);
+}
+
+.book-side {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 64px 56px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: flex .6s cubic-bezier(.19,1,.22,1);
+  text-decoration: none;
+  color: #fff;
+  flex: 1;
+}
+.book-side:hover { flex: 1.08; }
+
+/* Real Estate side */
+.book-re {
+  background: #0c1015;
+  background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=85');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Watches side */
+.book-wa {
+  background: #0c0a06;
+  background-image: url('https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=1400&q=85');
+  background-size: cover;
+  background-position: center;
+}
+
+.book-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.4) 50%, rgba(0,0,0,.15) 100%);
+  transition: opacity .5s;
+}
+.book-side:hover .book-overlay { opacity: .7; }
+
+/* Divider line */
+.book-divider {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(197,160,89,.4) 20%, rgba(197,160,89,.4) 80%, transparent);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.book-content {
+  position: relative; z-index: 2;
+  transition: transform .5s cubic-bezier(.19,1,.22,1);
+}
+.book-side:hover .book-content { transform: translateY(-10px); }
+
+.book-num {
+  font-size: 9px; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 20px; display: block;
+}
+
+.book-title {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  font-weight: 400; line-height: 1.05;
+  margin-bottom: 18px;
+}
+.book-title em { font-style: italic; color: var(--gold); }
+
+.book-desc {
+  font-size: 12px; line-height: 1.9;
+  color: rgba(255,255,255,.6);
+  max-width: 340px;
+  margin-bottom: 36px;
+}
+
+.book-cta {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 9px; letter-spacing: 4px;
+  text-transform: uppercase; color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,.3);
+  padding-bottom: 6px;
+  transition: all .3s;
+}
+.book-side:hover .book-cta {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+  gap: 18px;
+}
+
+/* Centre label — shown on desktop between the two sides */
+.book-centre-label {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  text-align: center;
+  pointer-events: none;
+}
+.book-centre-label span {
+  display: block;
+  font-size: 8px; letter-spacing: 5px;
+  text-transform: uppercase;
+  color: rgba(197,160,89,.7);
+  background: rgba(0,0,0,.4);
+  padding: 8px 16px;
+  backdrop-filter: blur(4px);
+}
+
+/* MOBILE — stack vertically */
+@media(max-width: 768px) {
+  .book-hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    min-height: calc(100vh - var(--nav));
+  }
+  .book-side { padding: 48px 28px; }
+  .book-divider { display: none; }
+  .book-centre-label { display: none; }
+  .book-title { font-size: 2.4rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <ul class="nav-left">
+      <li><a href="index.html" class="nl">Home</a></li>
+      <li><a href="services.html" class="nl">Properties</a></li>
+      <li><a href="watches.html" class="nl">Watches</a></li>
+    </ul>
+    <a href="index.html" class="nav-logo"><img src="eonelogo.png" alt="Eone"></a>
+    <ul class="nav-right">
+      <li><a href="about.html" class="nl">About</a></li>
+      <li><a href="contact.html" class="nl">Contact</a></li>
+      <li><a href="book.html" class="nav-enq active-enq">Book a Private Visit</a></li>
+    </ul>
+    <button class="nav-burger" id="burger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="drawer" id="drawer">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Properties</a></li>
+    <li><a href="watches.html">Watches</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="book.html">Book a Private Visit</a></li>
+  </ul>
+</div>
+
+<!-- SPLIT CHOICE -->
+<div class="book-hero" id="bookHero">
+
+  <!-- REAL ESTATE -->
+  <a href="book-realestate.html" class="book-side book-re">
+    <div class="book-overlay"></div>
+    <div class="book-content">
+      <span class="book-num">01</span>
+      <h2 class="book-title">Exclusive<br><em>Real Estate</em></h2>
+      <p class="book-desc">Schedule a private viewing of our off-market Dubai properties — villas, penthouses, and ultra-prime residences curated for the discerning buyer.</p>
+      <span class="book-cta">Book a Property Visit →</span>
+    </div>
+  </a>
+
+  <!-- Gold divider -->
+  <div class="book-divider"></div>
+  <div class="book-centre-label"><span>Choose your interest</span></div>
+
+  <!-- WATCHES -->
+  <a href="book-watches.html" class="book-side book-wa">
+    <div class="book-overlay"></div>
+    <div class="book-content">
+      <span class="book-num">02</span>
+      <h2 class="book-title">Luxury<br><em>Timepieces</em></h2>
+      <p class="book-desc">Arrange a private consultation with our watch specialists — view authenticated pieces from Patek Philippe, Richard Mille, Rolex, and beyond.</p>
+      <span class="book-cta">Book a Watch Consultation →</span>
+    </div>
+  </a>
+
+</div>
+
+<script src="eone.js"></script>
+<script>
+// Load background images reliably
+(function() {
+  const sides = [
+    { sel: '.book-re', url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=85' },
+    { sel: '.book-wa', url: 'https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=1400&q=85' },
+  ];
+  sides.forEach(({sel, url}) => {
+    const el = document.querySelector(sel);
+    if (!el) return;
+    const img = new Image();
+    img.onload = () => { el.style.backgroundImage = `url('${url}')`; };
+    img.src = url;
+  });
+})();
+</script>
+</body>
+</html>
