@@ -6,8 +6,264 @@
 <title>Contact — Eone · Dubai</title>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="eone.css">
+<style>
+
+/* ── CONTACT HERO ── */
+.contact-hero {
+  min-height: 42vh;
+  display: flex; align-items: flex-end;
+  padding-top: var(--nav);
+  background: var(--dark);
+  position: relative; overflow: hidden;
+}
+.contact-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(197,160,89,.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.contact-hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent);
+  opacity: .4;
+}
+.contact-hero-inner {
+  max-width: 1320px; margin: 0 auto;
+  padding: 56px 48px; width: 100%;
+  position: relative; z-index: 1;
+}
+.contact-hero-inner .eyebrow { color: var(--gold); }
+.contact-hero-inner h1 {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 400; letter-spacing: -2px;
+  line-height: .92; color: #fff; margin: 14px 0 18px;
+}
+.contact-hero-inner h1 em { font-style: italic; color: var(--gold); }
+.contact-hero-inner p { font-size: 12px; color: rgba(255,255,255,.45); letter-spacing: .5px; }
+
+/* ── INFO STRIP ── */
+.contact-strip {
+  background: #fafafa;
+  border-bottom: 1px solid var(--border);
+}
+.contact-strip-inner {
+  max-width: 1320px; margin: 0 auto;
+  padding: 0 48px;
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 0;
+}
+.cs-item {
+  padding: 36px 32px;
+  border-right: 1px solid var(--border);
+  transition: background .3s;
+}
+.cs-item:first-child { border-left: 1px solid var(--border); }
+.cs-item:hover { background: #fff; }
+.cs-label {
+  font-size: 8px; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--gold);
+  display: block; margin-bottom: 10px;
+}
+.cs-val {
+  font-family: var(--serif); font-size: 1.05rem;
+  color: var(--dark); display: block; line-height: 1.5;
+  text-decoration: none;
+}
+.cs-val:hover { color: var(--gold); }
+.cs-sub {
+  font-size: 10px; color: #aaa;
+  display: block; margin-top: 5px; letter-spacing: .3px;
+}
+
+/* ── MAIN LAYOUT ── */
+.contact-main {
+  max-width: 1320px; margin: 0 auto;
+  padding: 0 48px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0;
+  min-height: 600px;
+}
+
+/* ── MAP SIDE ── */
+.contact-map-side {
+  border-right: 1px solid var(--border);
+  display: flex; flex-direction: column;
+}
+.map-embed {
+  flex: 1; min-height: 420px;
+  position: relative; overflow: hidden;
+}
+.map-embed iframe {
+  width: 100%; height: 100%;
+  border: none; display: block;
+  filter: grayscale(20%) contrast(1.05);
+}
+.map-address {
+  padding: 36px 40px;
+  border-top: 1px solid var(--border);
+  background: #fff;
+}
+.map-address-label {
+  font-size: 8px; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--gold);
+  display: block; margin-bottom: 12px;
+}
+.map-address-text {
+  font-family: var(--serif); font-size: 1.1rem;
+  line-height: 1.7; color: var(--dark);
+}
+.map-address-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 16px; font-size: 9px; letter-spacing: 3px;
+  text-transform: uppercase; text-decoration: none;
+  color: var(--dark); border-bottom: 1px solid var(--gold);
+  padding-bottom: 3px; transition: color .3s;
+}
+.map-address-link:hover { color: var(--gold); }
+
+/* ── FORM SIDE ── */
+.contact-form-side {
+  padding: 60px 48px;
+}
+.form-heading {
+  margin-bottom: 44px;
+}
+.form-heading h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 400; line-height: 1.1;
+}
+.form-heading h2 em { font-style: italic; color: var(--gold); }
+.form-heading p {
+  font-size: 12px; color: #aaa;
+  margin-top: 12px; line-height: 1.8; letter-spacing: .3px;
+}
+
+.eform { display: flex; flex-direction: column; gap: 0; }
+
+.ef-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+}
+.ef-group {
+  display: flex; flex-direction: column;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+.ef-group.full { grid-column: 1 / -1; }
+.ef-group label {
+  font-size: 8px; letter-spacing: 3.5px;
+  text-transform: uppercase; color: #bbb;
+  margin-bottom: 10px; font-weight: 400;
+}
+.ef-group input,
+.ef-group select,
+.ef-group textarea {
+  border: none; outline: none; background: transparent;
+  font-family: var(--serif); font-size: 1rem;
+  color: var(--dark); padding: 4px 0;
+  transition: color .3s; width: 100%;
+}
+.ef-group input::placeholder,
+.ef-group textarea::placeholder { color: #ccc; font-family: var(--sans); font-size: .85rem; }
+.ef-group input:focus, .ef-group select:focus, .ef-group textarea:focus { color: var(--dark); }
+.ef-group select { cursor: pointer; }
+.ef-group textarea { resize: none; min-height: 80px; }
+
+/* Interest toggle */
+.ef-toggle { display: flex; gap: 0; margin-top: 4px; }
+.ef-toggle-btn {
+  flex: 1; background: none;
+  border: 1px solid var(--border);
+  padding: 10px 8px;
+  font-size: 8px; letter-spacing: 2.5px;
+  text-transform: uppercase; cursor: pointer;
+  color: #bbb; transition: all .25s;
+  font-family: var(--sans); margin-right: -1px;
+}
+.ef-toggle-btn.on { background: var(--dark); color: var(--gold); border-color: var(--dark); z-index: 1; }
+.ef-toggle-btn:hover:not(.on) { border-color: #aaa; color: #777; }
+
+.ef-privacy {
+  display: flex; align-items: flex-start;
+  gap: 12px; padding: 20px 0;
+  cursor: pointer;
+}
+.ef-privacy input { margin-top: 3px; accent-color: var(--gold); flex-shrink: 0; }
+.ef-privacy span { font-size: 10px; color: #bbb; line-height: 1.7; }
+
+.ef-submit {
+  background: var(--dark); color: #fff;
+  border: none; padding: 20px;
+  font-size: 9px; letter-spacing: 5px;
+  text-transform: uppercase; cursor: pointer;
+  transition: all .45s; font-family: var(--sans);
+  width: 100%; margin-top: 8px;
+  position: relative; overflow: hidden;
+}
+.ef-submit::after {
+  content: ''; position: absolute; inset: 0;
+  background: var(--gold); transform: translateX(-101%);
+  transition: transform .4s cubic-bezier(.19,1,.22,1);
+}
+.ef-submit:hover::after { transform: translateX(0); }
+.ef-submit span { position: relative; z-index: 1; }
+.ef-note { font-size: 9px; color: #ccc; text-align: center; margin-top: 16px; letter-spacing: .5px; }
+
+/* SUCCESS */
+.ef-success {
+  display: none; text-align: center;
+  padding: 80px 20px;
+}
+.ef-success .si { font-size: 3rem; color: var(--gold); margin-bottom: 24px; }
+.ef-success h3 { font-family: var(--serif); font-size: 2rem; font-weight: 400; margin-bottom: 14px; }
+.ef-success p { font-size: 12px; color: #888; line-height: 1.9; max-width: 360px; margin: 0 auto 32px; }
+
+/* HOURS FOOTER */
+.contact-hours {
+  background: var(--dark);
+  border-top: 1px solid #1e1e1e;
+}
+.contact-hours-inner {
+  max-width: 1320px; margin: 0 auto;
+  padding: 40px 48px;
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 40px;
+  flex-wrap: wrap;
+}
+.ch-label {
+  font-size: 9px; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--gold);
+}
+.ch-hours {
+  display: flex; gap: 40px; flex-wrap: wrap;
+}
+.ch-item { text-align: center; }
+.ch-day { font-size: 8px; letter-spacing: 3px; text-transform: uppercase; color: #555; margin-bottom: 4px; }
+.ch-time { font-family: var(--serif); font-size: .95rem; color: #888; }
+
+/* RESPONSIVE */
+@media(max-width: 1024px) {
+  .contact-main { grid-template-columns: 1fr; }
+  .contact-map-side { border-right: none; border-bottom: 1px solid var(--border); }
+  .contact-strip-inner { grid-template-columns: repeat(2,1fr); }
+  .cs-item:nth-child(2) { border-right: none; }
+  .cs-item:nth-child(3) { border-left: 1px solid var(--border); }
+}
+@media(max-width: 768px) {
+  .contact-strip-inner { grid-template-columns: 1fr; }
+  .cs-item { border-right: none !important; border-left: none !important; border-bottom: 1px solid var(--border); }
+  .contact-form-side { padding: 48px 24px; }
+  .ef-row { grid-template-columns: 1fr; }
+  .contact-main, .contact-strip-inner, .contact-hero-inner, .contact-hours-inner { padding-left: 24px; padding-right: 24px; }
+  .ch-hours { gap: 20px; }
+}
+</style>
 </head>
 <body>
+
+<!-- NAV -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <ul class="nav-left">
@@ -31,53 +287,186 @@
     <li><a href="watches.html">Watches</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
+    <li><a href="book.html">Book a Private Visit</a></li>
   </ul>
 </div>
 
-<section class="page-hero">
-  <div class="page-hero-inner">
+<!-- HERO -->
+<section class="contact-hero">
+  <div class="contact-hero-inner">
     <span class="eyebrow">Private Enquiries</span>
-    <h1 class="page-h1">Get in <em>Touch</em></h1>
-    <p>All conversations held in strict confidence.</p>
+    <h1>Let's <em>Connect</em></h1>
+    <p>All conversations held in the strictest confidence.</p>
   </div>
 </section>
 
-<section style="max-width:1320px;margin:0 auto;padding:100px 48px;display:grid;grid-template-columns:360px 1fr;gap:80px;border-bottom:1px solid #e8e8e8;">
-  <!-- INFO -->
-  <div>
-    <span class="eyebrow">Direct Lines</span>
-    <h2 class="sh" style="margin-bottom:36px;">Reach <em>Us</em></h2>
-    <div style="padding:20px 0;border-bottom:1px solid #e8e8e8;"><span style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#C5A059;display:block;margin-bottom:8px;">Address</span><span style="font-family:'Bodoni Moda',serif;font-size:1rem;line-height:1.7;display:block;">Office B1503, The Opus By Omniyat<br>Al Amaal Street, Business Bay<br>Dubai, UAE</span></div>
-    <div style="padding:20px 0;border-bottom:1px solid #e8e8e8;"><span style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#C5A059;display:block;margin-bottom:8px;">Phone</span><a href="tel:+97142566517" style="font-family:'Bodoni Moda',serif;font-size:1.2rem;text-decoration:none;color:#111;display:block;">04 566 5176</a><span style="font-size:10px;color:#888;margin-top:4px;display:block;">Sun – Thu · 9:00 – 18:00 GST</span></div>
-    <div style="padding:20px 0;border-bottom:1px solid #e8e8e8;"><span style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#C5A059;display:block;margin-bottom:8px;">Email</span><a href="mailto:info@eoneproperties.com" style="font-family:'Bodoni Moda',serif;font-size:1rem;text-decoration:none;color:#111;display:block;">info@eoneproperties.com</a></div>
-    <div style="padding:20px 0;border-bottom:1px solid #e8e8e8;"><span style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#C5A059;display:block;margin-bottom:8px;">WhatsApp</span><a href="https://wa.me/97142566517" target="_blank" style="font-family:'Bodoni Moda',serif;font-size:1.2rem;text-decoration:none;color:#111;display:block;">04 566 5176</a></div>
-    <div style="padding:20px 0;"><span style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#C5A059;display:block;margin-bottom:8px;">Our Companies</span><span style="font-size:12px;line-height:1.9;display:block;">Eone Exclusive Properties — Real Estate<br><span style="color:#C5A059;">◆</span> Eone Luxury Watches — Watches</span></div>
-  </div>
-  <!-- FORM -->
-  <div>
-    <span class="eyebrow">Private Enquiry Form</span>
-    <h2 class="sh" style="margin-bottom:36px;">Tell Us What <em>You're Looking For</em></h2>
-    <form id="eForm" style="display:flex;flex-direction:column;gap:22px;">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-        <div style="display:flex;flex-direction:column;gap:7px;"><label style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#111;">First Name</label><input type="text" placeholder="Your first name" style="border:none;border-bottom:1px solid #e8e8e8;padding:12px 0;font-size:13px;font-family:'Inter',sans-serif;outline:none;background:transparent;width:100%;" required></div>
-        <div style="display:flex;flex-direction:column;gap:7px;"><label style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#111;">Last Name</label><input type="text" placeholder="Your last name" style="border:none;border-bottom:1px solid #e8e8e8;padding:12px 0;font-size:13px;font-family:'Inter',sans-serif;outline:none;background:transparent;width:100%;" required></div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:7px;"><label style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#111;">Email</label><input type="email" placeholder="you@email.com" style="border:none;border-bottom:1px solid #e8e8e8;padding:12px 0;font-size:13px;font-family:'Inter',sans-serif;outline:none;background:transparent;width:100%;" required></div>
-      <div style="display:flex;flex-direction:column;gap:7px;"><label style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#111;">Phone / WhatsApp</label><input type="tel" placeholder="+971 00 000 0000" style="border:none;border-bottom:1px solid #e8e8e8;padding:12px 0;font-size:13px;font-family:'Inter',sans-serif;outline:none;background:transparent;width:100%;"></div>
-      <div style="display:flex;flex-direction:column;gap:7px;"><label style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#111;">Budget</label><select style="border:none;border-bottom:1px solid #e8e8e8;padding:12px 0;font-size:13px;font-family:'Inter',sans-serif;outline:none;background:transparent;"><option value="">Select range</option><option>AED 1M – 5M</option><option>AED 5M – 15M</option><option>AED 15M – 30M</option><option>AED 30M – 60M</option><option>AED 60M+</option><option>Prefer not to say</option></select></div>
-      <div style="display:flex;flex-direction:column;gap:7px;"><label style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#111;">Your Enquiry</label><textarea rows="5" placeholder="Describe what you're looking for…" style="border:none;border-bottom:1px solid #e8e8e8;padding:12px 0;font-size:13px;font-family:'Inter',sans-serif;outline:none;background:transparent;resize:none;width:100%;"></textarea></div>
-      <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;"><input type="checkbox" required style="margin-top:3px;accent-color:#C5A059;flex-shrink:0;"><span style="font-size:10px;color:#888;line-height:1.7;">I confirm my details will be used only to respond to this enquiry, in line with Eone's privacy policy.</span></label>
-      <button type="submit" style="background:#111;color:#fff;border:none;padding:18px;font-size:9px;letter-spacing:5px;text-transform:uppercase;cursor:pointer;transition:background .35s;font-family:'Inter',sans-serif;">Submit Enquiry</button>
-      <p style="font-size:10px;color:#aaa;text-align:center;">All enquiries acknowledged within 4 hours. Your information is never shared.</p>
-    </form>
-    <div id="eSuccess" style="display:none;text-align:center;padding:80px 40px;border:1px solid #e8e8e8;">
-      <div style="font-size:2.5rem;color:#C5A059;margin-bottom:20px;">✓</div>
-      <h3 style="font-family:'Bodoni Moda',serif;font-size:2rem;font-weight:400;margin-bottom:15px;">Thank You</h3>
-      <p style="font-size:12px;color:#888;line-height:1.9;">Your enquiry has been received. A member of our team will be in touch within 4 hours.</p>
+<!-- CONTACT INFO STRIP -->
+<div class="contact-strip">
+  <div class="contact-strip-inner">
+    <div class="cs-item">
+      <span class="cs-label">Phone</span>
+      <a href="tel:+97142566517" class="cs-val">04 566 5176</a>
+      <span class="cs-sub">Direct line · Dubai</span>
+    </div>
+    <div class="cs-item">
+      <span class="cs-label">WhatsApp</span>
+      <a href="https://wa.me/97142566517" target="_blank" class="cs-val">04 566 5176</a>
+      <span class="cs-sub">For urgent enquiries</span>
+    </div>
+    <div class="cs-item">
+      <span class="cs-label">Email</span>
+      <a href="mailto:info@eoneproperties.com" class="cs-val">info@eoneproperties.com</a>
+      <span class="cs-sub">Response within 4 hours</span>
+    </div>
+    <div class="cs-item">
+      <span class="cs-label">Property Finder</span>
+      <a href="https://www.propertyfinder.ae/en/broker/eone-prime-properties-l-l-c-s-o-c-v2-179995" target="_blank" class="cs-val">View All Listings ↗</a>
+      <span class="cs-sub">All listings verified & live</span>
     </div>
   </div>
-</section>
+</div>
 
+<!-- MAP + FORM -->
+<div class="contact-main">
+
+  <!-- MAP SIDE -->
+  <div class="contact-map-side">
+    <div class="map-embed">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.178474550449!2d55.26611!3d25.18583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f69e2b0000001%3A0x0!2sThe+Opus+by+Omniyat%2C+Business+Bay%2C+Dubai!5e0!3m2!1sen!2sae!4v1"
+        allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+    <div class="map-address">
+      <span class="map-address-label">Our Office</span>
+      <div class="map-address-text">
+        The Opus By Omniyat<br>
+        Al Amaal Street, Business Bay<br>
+        Dubai, UAE
+      </div>
+      <a href="https://maps.google.com/?q=The+Opus+By+Omniyat+Business+Bay+Dubai" target="_blank" class="map-address-link">
+        Open in Google Maps →
+      </a>
+    </div>
+  </div>
+
+  <!-- FORM SIDE -->
+  <div class="contact-form-side">
+    <div class="form-heading">
+      <h2>Send Us a <em>Private Enquiry</em></h2>
+      <p>Tell us what you're looking for and we'll be in touch personally — no automated responses, no generic replies.</p>
+    </div>
+
+    <form class="eform" id="eForm">
+
+      <div class="ef-row">
+        <div class="ef-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Your first name" required>
+        </div>
+        <div class="ef-group" style="padding-left:24px;border-left:1px solid var(--border);">
+          <label>Last Name</label>
+          <input type="text" placeholder="Your last name" required>
+        </div>
+      </div>
+
+      <div class="ef-row">
+        <div class="ef-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="you@email.com" required>
+        </div>
+        <div class="ef-group" style="padding-left:24px;border-left:1px solid var(--border);">
+          <label>Phone / WhatsApp</label>
+          <input type="tel" placeholder="+971 00 000 0000">
+        </div>
+      </div>
+
+      <div class="ef-group full">
+        <label>I Am Interested In</label>
+        <div class="ef-toggle">
+          <button type="button" class="ef-toggle-btn on" data-v="real-estate">Real Estate</button>
+          <button type="button" class="ef-toggle-btn" data-v="watches">Watches</button>
+          <button type="button" class="ef-toggle-btn" data-v="both">Both</button>
+        </div>
+      </div>
+
+      <div class="ef-row">
+        <div class="ef-group">
+          <label>Budget</label>
+          <select>
+            <option value="">Select range</option>
+            <option>AED 1M – 5M</option>
+            <option>AED 5M – 15M</option>
+            <option>AED 15M – 30M</option>
+            <option>AED 30M – 60M</option>
+            <option>AED 60M+</option>
+            <option>Prefer not to say</option>
+          </select>
+        </div>
+        <div class="ef-group" style="padding-left:24px;border-left:1px solid var(--border);">
+          <label>Preferred Language</label>
+          <select>
+            <option>English</option>
+            <option>Arabic</option>
+            <option>Russian</option>
+            <option>French</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="ef-group full">
+        <label>Your Message</label>
+        <textarea placeholder="Describe what you're looking for — property type, location, requirements, or any questions…"></textarea>
+      </div>
+
+      <label class="ef-privacy">
+        <input type="checkbox" required>
+        <span>I confirm my details will be used only to respond to this enquiry, in line with Eone's privacy policy. My information will never be shared with third parties.</span>
+      </label>
+
+      <button type="submit" class="ef-submit"><span>Send Enquiry</span></button>
+      <p class="ef-note">All enquiries are acknowledged within 4 business hours &nbsp;·&nbsp; Your information is never shared</p>
+
+    </form>
+
+    <div class="ef-success" id="eSuccess">
+      <div class="si">✓</div>
+      <h3>Message Received</h3>
+      <p>Thank you for reaching out. A member of our private client team will be in touch with you personally within 4 hours.</p>
+      <a href="index.html" class="btn-dark">Return Home</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- OFFICE HOURS -->
+<div class="contact-hours">
+  <div class="contact-hours-inner">
+    <span class="ch-label">Office Hours</span>
+    <div class="ch-hours">
+      <div class="ch-item">
+        <div class="ch-day">Sunday – Thursday</div>
+        <div class="ch-time">9:00 – 18:00 GST</div>
+      </div>
+      <div class="ch-item">
+        <div class="ch-day">Saturday</div>
+        <div class="ch-time">10:00 – 15:00 GST</div>
+      </div>
+      <div class="ch-item">
+        <div class="ch-day">Friday</div>
+        <div class="ch-time">By Appointment</div>
+      </div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#555;margin-bottom:6px;">Two Companies</div>
+      <div style="font-size:11px;color:#444;line-height:1.8;">Eone Exclusive Properties<br>Eone Luxury Watches</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
@@ -86,7 +475,7 @@
     </div>
     <div class="footer-cols">
       <div class="fc"><h4>Navigate</h4><a href="index.html">Home</a><a href="services.html">Properties</a><a href="watches.html">Watches</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
-      <div class="fc"><h4>Properties</h4><a href="services.html">For Sale</a><a href="services.html">For Rent</a><a href="services.html">Exclusive</a><a href="https://www.propertyfinder.ae/en/broker/eone-prime-properties-l-l-c-s-o-c-v2-179995" target="_blank">Property Finder ↗</a></div>
+      <div class="fc"><h4>Properties</h4><a href="services.html">For Sale</a><a href="services.html">For Rent</a><a href="https://www.propertyfinder.ae/en/broker/eone-prime-properties-l-l-c-s-o-c-v2-179995" target="_blank">Property Finder ↗</a></div>
       <div class="fc"><h4>Connect</h4><a href="tel:+97142566517">04 566 5176</a><a href="mailto:info@eoneproperties.com">info@eoneproperties.com</a><a href="https://wa.me/97142566517" target="_blank">WhatsApp ↗</a><a href="#">Instagram</a></div>
     </div>
   </div>
@@ -95,12 +484,24 @@
     <span>RERA Registered · DED Licensed · Business Bay, Dubai, UAE</span>
   </div>
 </footer>
+
 <script src="eone.js"></script>
 <script>
+// Toggle interest buttons
+document.querySelectorAll('.ef-toggle-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.ef-toggle-btn').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+  });
+});
+
+// Form submit
 document.getElementById('eForm')?.addEventListener('submit', e => {
   e.preventDefault();
   document.getElementById('eForm').style.display = 'none';
   document.getElementById('eSuccess').style.display = 'block';
+  window.scrollTo({ top: document.querySelector('.contact-form-side').offsetTop - 80, behavior: 'smooth' });
 });
 </script>
-</body></html>
+</body>
+</html>
