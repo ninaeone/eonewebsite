@@ -8,6 +8,43 @@
 <title>About — Eone · Dubai</title>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="eone.css">
+<style>
+.ab-intro-grid {
+  max-width: 1320px; margin: 0 auto; padding: 0 48px;
+  display: grid; grid-template-columns: 1fr 380px; gap: 80px; align-items: start;
+}
+.ab-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #e8e8e8; }
+.ab-stat { background: #fff; padding: 32px; }
+.ab-stat-val { font-family: 'Bodoni Moda', serif; font-size: 2rem; color: #C5A059; margin-bottom: 8px; }
+.ab-stat-key { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: #888; }
+.ab-principles-section { padding: 100px 0; background: #111; }
+.ab-principles-inner { max-width: 1320px; margin: 0 auto; padding: 0 48px; }
+.ab-principles-title { font-family: 'Bodoni Moda', serif; font-size: clamp(2rem,4vw,3rem); font-weight: 400; color: #fff; margin-bottom: 60px; }
+.ab-principles-title em { font-style: italic; color: #C5A059; }
+.ab-principles-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: #2a2a2a; }
+.ab-principle { background: #1a1a1a; padding: 40px; }
+.ab-principle-num { font-family: 'Bodoni Moda', serif; font-size: 2.5rem; color: #C5A059; opacity: .35; margin-bottom: 20px; font-style: italic; }
+.ab-principle h3 { font-family: 'Bodoni Moda', serif; font-size: 1.1rem; color: #fff; font-weight: 400; margin-bottom: 12px; }
+.ab-principle p { font-size: 11px; line-height: 1.9; color: #555; }
+
+@media(max-width:900px) {
+  .ab-intro-grid { grid-template-columns: 1fr; gap: 48px; }
+  .ab-principles-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media(max-width:768px) {
+  .ab-intro-grid { padding: 0 20px; }
+  .ab-principles-inner { padding: 0 20px; }
+  .ab-principles-section { padding: 60px 0; }
+}
+@media(max-width:480px) {
+  .ab-intro-grid { padding: 0 16px; }
+  .ab-principles-inner { padding: 0 16px; }
+  .ab-principles-grid { grid-template-columns: 1fr; }
+  .ab-principle { padding: 28px 20px; }
+  .ab-stat { padding: 20px; }
+  .ab-stat-val { font-size: 1.5rem; }
+}
+</style>
 </head>
 <body>
 <nav class="nav" id="nav">
@@ -44,8 +81,8 @@
   </div>
 </section>
 
-<section style="padding:100px 0;border-bottom:1px solid #e8e8e8;">
-  <div style="max-width:1320px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 380px;gap:80px;align-items:start;">
+<section style="padding:80px 0;border-bottom:1px solid #e8e8e8;">
+  <div class="ab-intro-grid">
     <div>
       <span class="eyebrow">Who We Are</span>
       <h2 class="sh" style="margin-bottom:28px;">Exclusive by <em>Design</em></h2>
@@ -53,23 +90,23 @@
       <p style="font-size:13px;line-height:2;color:#888;margin-bottom:20px;">We are not a volume agency. We curate. We advise. We operate with discretion. And we only take on properties and clients we genuinely believe in.</p>
       <p style="font-size:13px;line-height:2;color:#888;">Every listing we bring to market is published on Property Finder — transparent, verified, and accompanied by full details. Every client relationship is held in absolute confidence.</p>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e8e8e8;align-self:start;">
-      <div style="background:#fff;padding:32px;"><div style="font-family:'Bodoni Moda',serif;font-size:2rem;color:#C5A059;margin-bottom:8px;">2026</div><div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#888;">Founded</div></div>
-      <div style="background:#fff;padding:32px;"><div style="font-family:'Bodoni Moda',serif;font-size:2rem;color:#C5A059;margin-bottom:8px;">100%</div><div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#888;">PF Verified</div></div>
-      <div style="background:#fff;padding:32px;"><div style="font-family:'Bodoni Moda',serif;font-size:1.4rem;color:#C5A059;margin-bottom:8px;">Sale & Rent</div><div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#888;">Full Coverage</div></div>
-      <div style="background:#fff;padding:32px;"><div style="font-family:'Bodoni Moda',serif;font-size:2rem;color:#C5A059;margin-bottom:8px;">Dubai</div><div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#888;">Ultra-Prime</div></div>
+    <div class="ab-stats-grid">
+      <div class="ab-stat"><div class="ab-stat-val">2026</div><div class="ab-stat-key">Founded</div></div>
+      <div class="ab-stat"><div class="ab-stat-val">100%</div><div class="ab-stat-key">PF Verified</div></div>
+      <div class="ab-stat"><div class="ab-stat-val" style="font-size:1.4rem;">Sale & Rent</div><div class="ab-stat-key">Full Coverage</div></div>
+      <div class="ab-stat"><div class="ab-stat-val">Dubai</div><div class="ab-stat-key">Ultra-Prime</div></div>
     </div>
   </div>
 </section>
 
-<section style="padding:100px 0;background:#111;">
-  <div style="max-width:1320px;margin:0 auto;padding:0 48px;">
-    <h2 style="font-family:'Bodoni Moda',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;color:#fff;margin-bottom:60px;">Our <em style="font-style:italic;color:#C5A059;">Principles</em></h2>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#2a2a2a;">
-      <div style="background:#1a1a1a;padding:40px;"><div style="font-family:'Bodoni Moda',serif;font-size:2.5rem;color:#C5A059;opacity:.35;margin-bottom:20px;font-style:italic;">I</div><h3 style="font-family:'Bodoni Moda',serif;font-size:1.1rem;color:#fff;font-weight:400;margin-bottom:12px;">Exclusivity</h3><p style="font-size:11px;line-height:1.9;color:#555;">We represent properties that meet a genuine standard — not everything that walks through the door.</p></div>
-      <div style="background:#1a1a1a;padding:40px;"><div style="font-family:'Bodoni Moda',serif;font-size:2.5rem;color:#C5A059;opacity:.35;margin-bottom:20px;font-style:italic;">II</div><h3 style="font-family:'Bodoni Moda',serif;font-size:1.1rem;color:#fff;font-weight:400;margin-bottom:12px;">Transparency</h3><p style="font-size:11px;line-height:1.9;color:#555;">Every property is verified and live on Property Finder. Our clients always know exactly what they're getting.</p></div>
-      <div style="background:#1a1a1a;padding:40px;"><div style="font-family:'Bodoni Moda',serif;font-size:2.5rem;color:#C5A059;opacity:.35;margin-bottom:20px;font-style:italic;">III</div><h3 style="font-family:'Bodoni Moda',serif;font-size:1.1rem;color:#fff;font-weight:400;margin-bottom:12px;">Discretion</h3><p style="font-size:11px;line-height:1.9;color:#555;">Client identities, budgets, and requirements are never disclosed. Privacy is a foundation, not a feature.</p></div>
-      <div style="background:#1a1a1a;padding:40px;"><div style="font-family:'Bodoni Moda',serif;font-size:2.5rem;color:#C5A059;opacity:.35;margin-bottom:20px;font-style:italic;">IV</div><h3 style="font-family:'Bodoni Moda',serif;font-size:1.1rem;color:#fff;font-weight:400;margin-bottom:12px;">Excellence</h3><p style="font-size:11px;line-height:1.9;color:#555;">From first enquiry to transfer of title, we hold ourselves to a standard that reflects the properties we represent.</p></div>
+<section class="ab-principles-section">
+  <div class="ab-principles-inner">
+    <h2 class="ab-principles-title">Our <em>Principles</em></h2>
+    <div class="ab-principles-grid">
+      <div class="ab-principle"><div class="ab-principle-num">I</div><h3>Exclusivity</h3><p>We represent properties that meet a genuine standard — not everything that walks through the door.</p></div>
+      <div class="ab-principle"><div class="ab-principle-num">II</div><h3>Transparency</h3><p>Every property is verified and live on Property Finder. Our clients always know exactly what they're getting.</p></div>
+      <div class="ab-principle"><div class="ab-principle-num">III</div><h3>Discretion</h3><p>Client identities, budgets, and requirements are never disclosed. Privacy is a foundation, not a feature.</p></div>
+      <div class="ab-principle"><div class="ab-principle-num">IV</div><h3>Excellence</h3><p>From first enquiry to transfer of title, we hold ourselves to a standard that reflects the properties we represent.</p></div>
     </div>
   </div>
 </section>
