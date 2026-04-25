@@ -8,6 +8,52 @@
 <title>Eone Luxury Watches — Eone · Dubai</title>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="eone.css">
+<style>
+.w-intro-grid {
+  max-width: 1320px; margin: 0 auto; padding: 0 48px;
+  display: grid; grid-template-columns: 1fr 380px; gap: 80px; align-items: start;
+}
+.w-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #e8e8e8; }
+.w-stat { background: #fff; padding: 32px; }
+.w-stat-val { font-family: 'Bodoni Moda', serif; font-size: 1.8rem; color: #C5A059; margin-bottom: 8px; }
+.w-stat-key { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: #888; }
+.w-brands-section { padding: 60px 48px; background: #fafafa; border-bottom: 1px solid #e8e8e8; text-align: center; }
+.w-brands-label { font-size: 9px; letter-spacing: 5px; text-transform: uppercase; color: #888; display: block; margin-bottom: 36px; }
+.w-brands-grid { display: flex; flex-wrap: wrap; justify-content: center; max-width: 900px; margin: 0 auto; }
+.w-brand { padding: 18px 36px; border: 1px solid #e8e8e8; margin: -1px 0 0 -1px; font-family: 'Bodoni Moda', serif; font-size: 1.05rem; transition: all .3s; cursor: default; }
+.w-brand:hover { background: #111; color: #C5A059; }
+.w-services-section { padding: 100px 0; background: #111; border-top: 1px solid #222; }
+.w-services-inner { max-width: 1320px; margin: 0 auto; padding: 0 48px; }
+.w-services-title { font-family: 'Bodoni Moda', serif; font-size: clamp(2rem,4vw,3rem); font-weight: 400; color: #fff; margin-bottom: 60px; }
+.w-services-title em { font-style: italic; color: #C5A059; }
+.w-services-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: #2a2a2a; }
+.w-service { background: #1a1a1a; padding: 40px; }
+.w-service-num { font-family: 'Bodoni Moda', serif; font-size: 2rem; color: #C5A059; opacity: .35; margin-bottom: 20px; font-style: italic; }
+.w-service h3 { font-family: 'Bodoni Moda', serif; font-size: 1.1rem; color: #fff; font-weight: 400; margin-bottom: 12px; }
+.w-service p { font-size: 11px; line-height: 1.9; color: #555; }
+
+@media(max-width:900px) {
+  .w-intro-grid { grid-template-columns: 1fr; gap: 48px; }
+  .w-services-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media(max-width:768px) {
+  .w-intro-grid { padding: 0 20px; }
+  .w-brands-section { padding: 48px 20px; }
+  .w-services-inner { padding: 0 20px; }
+  .w-brand { padding: 16px 20px; font-size: .95rem; }
+}
+@media(max-width:480px) {
+  .w-intro-grid { padding: 0 16px; }
+  .w-brands-section { padding: 40px 16px; }
+  .w-services-inner { padding: 0 16px; }
+  .w-services-section { padding: 60px 0; }
+  .w-services-grid { grid-template-columns: 1fr; }
+  .w-service { padding: 28px 20px; }
+  .w-stat { padding: 20px; }
+  .w-stat-val { font-size: 1.4rem; }
+  .w-brand { padding: 14px 16px; font-size: .9rem; }
+}
+</style>
 </head>
 <body>
 <nav class="nav" id="nav">
@@ -36,7 +82,7 @@
   </ul>
 </div>
 
-<section class="page-hero" style="background:#0c0c0c;background-image:url('https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=1920&q=85');background-size:cover;background-position:center;">
+<section class="page-hero" style="background:#0c0c0c;background-image:url('https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=1920&q=85');background-size:cover;background-position:center;position:relative;">
   <div style="position:absolute;inset:0;background:linear-gradient(105deg,rgba(5,5,10,.9) 0%,rgba(5,5,10,.5) 60%,rgba(5,5,10,.2) 100%);"></div>
   <div class="page-hero-inner" style="position:relative;z-index:1;">
     <span class="eyebrow">Eone Luxury Watches · Est. 2026</span>
@@ -45,9 +91,8 @@
   </div>
 </section>
 
-<!-- INTRO -->
-<section style="padding:100px 0;border-bottom:1px solid #e8e8e8;">
-  <div style="max-width:1320px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 380px;gap:80px;align-items:start;">
+<section style="padding:80px 0;border-bottom:1px solid #e8e8e8;">
+  <div class="w-intro-grid">
     <div>
       <span class="eyebrow">Our Watch Division</span>
       <h2 class="sh" style="margin-bottom:28px;">Where <em>Time</em> Holds Value</h2>
@@ -55,44 +100,41 @@
       <p style="font-size:13px;line-height:2;color:#888;margin-bottom:20px;">Every piece we present has been individually sourced, independently verified, and deemed worthy of our collection. We do not list everything. We list what we believe in.</p>
       <a href="contact.html" class="btn-dark" style="margin-top:12px;">Enquire Privately</a>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e8e8e8;">
-      <div style="background:#fff;padding:32px;"><div style="font-family:'Bodoni Moda',serif;font-size:1.8rem;color:#C5A059;margin-bottom:8px;">100%</div><div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#888;">Authenticated</div></div>
-      <div style="background:#fff;padding:32px;"><div style="font-family:'Bodoni Moda',serif;font-size:1.5rem;color:#C5A059;margin-bottom:8px;">Private</div><div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#888;">By Appointment</div></div>
-      <div style="background:#fff;padding:32px;"><div style="font-family:'Bodoni Moda',serif;font-size:1.5rem;color:#C5A059;margin-bottom:8px;">Global</div><div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#888;">Sourcing Network</div></div>
-      <div style="background:#fff;padding:32px;"><div style="font-family:'Bodoni Moda',serif;font-size:1.8rem;color:#C5A059;margin-bottom:8px;">Dubai</div><div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#888;">Based & Licensed</div></div>
+    <div class="w-stats-grid">
+      <div class="w-stat"><div class="w-stat-val">100%</div><div class="w-stat-key">Authenticated</div></div>
+      <div class="w-stat"><div class="w-stat-val" style="font-size:1.5rem;">Private</div><div class="w-stat-key">By Appointment</div></div>
+      <div class="w-stat"><div class="w-stat-val" style="font-size:1.5rem;">Global</div><div class="w-stat-key">Sourcing Network</div></div>
+      <div class="w-stat"><div class="w-stat-val">Dubai</div><div class="w-stat-key">Based & Licensed</div></div>
     </div>
   </div>
 </section>
 
-<!-- BRANDS -->
-<section style="padding:60px 48px;background:#fafafa;border-bottom:1px solid #e8e8e8;text-align:center;">
-  <span style="font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#888;display:block;margin-bottom:36px;">Maisons We Specialise In</span>
-  <div style="display:flex;flex-wrap:wrap;justify-content:center;max-width:900px;margin:0 auto;">
-    <div style="padding:18px 36px;border:1px solid #e8e8e8;margin:-1px 0 0 -1px;font-family:'Bodoni Moda',serif;font-size:1.05rem;transition:all .3s;cursor:default;" onmouseover="this.style.background='#111';this.style.color='#C5A059';" onmouseout="this.style.background='#fff';this.style.color='#111';">Patek Philippe</div>
-    <div style="padding:18px 36px;border:1px solid #e8e8e8;margin:-1px 0 0 -1px;font-family:'Bodoni Moda',serif;font-size:1.05rem;transition:all .3s;cursor:default;" onmouseover="this.style.background='#111';this.style.color='#C5A059';" onmouseout="this.style.background='#fff';this.style.color='#111';">Richard Mille</div>
-    <div style="padding:18px 36px;border:1px solid #e8e8e8;margin:-1px 0 0 -1px;font-family:'Bodoni Moda',serif;font-size:1.05rem;transition:all .3s;cursor:default;" onmouseover="this.style.background='#111';this.style.color='#C5A059';" onmouseout="this.style.background='#fff';this.style.color='#111';">Rolex</div>
-    <div style="padding:18px 36px;border:1px solid #e8e8e8;margin:-1px 0 0 -1px;font-family:'Bodoni Moda',serif;font-size:1.05rem;transition:all .3s;cursor:default;" onmouseover="this.style.background='#111';this.style.color='#C5A059';" onmouseout="this.style.background='#fff';this.style.color='#111';">Audemars Piguet</div>
-    <div style="padding:18px 36px;border:1px solid #e8e8e8;margin:-1px 0 0 -1px;font-family:'Bodoni Moda',serif;font-size:1.05rem;transition:all .3s;cursor:default;" onmouseover="this.style.background='#111';this.style.color='#C5A059';" onmouseout="this.style.background='#fff';this.style.color='#111';">A. Lange &amp; Söhne</div>
-    <div style="padding:18px 36px;border:1px solid #e8e8e8;margin:-1px 0 0 -1px;font-family:'Bodoni Moda',serif;font-size:1.05rem;transition:all .3s;cursor:default;" onmouseover="this.style.background='#111';this.style.color='#C5A059';" onmouseout="this.style.background='#fff';this.style.color='#111';">F.P. Journe</div>
-    <div style="padding:18px 36px;border:1px solid #e8e8e8;margin:-1px 0 0 -1px;font-family:'Bodoni Moda',serif;font-size:1.05rem;transition:all .3s;cursor:default;" onmouseover="this.style.background='#111';this.style.color='#C5A059';" onmouseout="this.style.background='#fff';this.style.color='#111';">Vacheron Constantin</div>
-    <div style="padding:18px 36px;border:1px solid #e8e8e8;margin:-1px 0 0 -1px;font-family:'Bodoni Moda',serif;font-size:1.05rem;transition:all .3s;cursor:default;" onmouseover="this.style.background='#111';this.style.color='#C5A059';" onmouseout="this.style.background='#fff';this.style.color='#111';">Greubel Forsey</div>
+<div class="w-brands-section">
+  <span class="w-brands-label">Maisons We Specialise In</span>
+  <div class="w-brands-grid">
+    <div class="w-brand">Patek Philippe</div>
+    <div class="w-brand">Richard Mille</div>
+    <div class="w-brand">Rolex</div>
+    <div class="w-brand">Audemars Piguet</div>
+    <div class="w-brand">A. Lange &amp; Söhne</div>
+    <div class="w-brand">F.P. Journe</div>
+    <div class="w-brand">Vacheron Constantin</div>
+    <div class="w-brand">Greubel Forsey</div>
   </div>
-</section>
+</div>
 
-<!-- SERVICES -->
-<section style="padding:100px 0;background:#111;border-top:1px solid #222;">
-  <div style="max-width:1320px;margin:0 auto;padding:0 48px;">
-    <h2 style="font-family:'Bodoni Moda',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;color:#fff;margin-bottom:60px;">Our <em style="font-style:italic;color:#C5A059;">Services</em></h2>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#2a2a2a;">
-      <div style="background:#1a1a1a;padding:40px;"><div style="font-family:'Bodoni Moda',serif;font-size:2rem;color:#C5A059;opacity:.35;margin-bottom:20px;font-style:italic;">I</div><h3 style="font-family:'Bodoni Moda',serif;font-size:1.1rem;color:#fff;font-weight:400;margin-bottom:12px;">Acquisition & Sourcing</h3><p style="font-size:11px;line-height:1.9;color:#555;">Looking for a specific reference? We source globally at fair market value with full authentication.</p></div>
-      <div style="background:#1a1a1a;padding:40px;"><div style="font-family:'Bodoni Moda',serif;font-size:2rem;color:#C5A059;opacity:.35;margin-bottom:20px;font-style:italic;">II</div><h3 style="font-family:'Bodoni Moda',serif;font-size:1.1rem;color:#fff;font-weight:400;margin-bottom:12px;">Collection Valuation</h3><p style="font-size:11px;line-height:1.9;color:#555;">Expert valuation reports for existing collections — for insurance, estate planning, or private sale.</p></div>
-      <div style="background:#1a1a1a;padding:40px;"><div style="font-family:'Bodoni Moda',serif;font-size:2rem;color:#C5A059;opacity:.35;margin-bottom:20px;font-style:italic;">III</div><h3 style="font-family:'Bodoni Moda',serif;font-size:1.1rem;color:#fff;font-weight:400;margin-bottom:12px;">Private Brokerage</h3><p style="font-size:11px;line-height:1.9;color:#555;">Discreet peer-to-peer transactions between collectors, without public listing or auction house fees.</p></div>
-      <div style="background:#1a1a1a;padding:40px;"><div style="font-family:'Bodoni Moda',serif;font-size:2rem;color:#C5A059;opacity:.35;margin-bottom:20px;font-style:italic;">IV</div><h3 style="font-family:'Bodoni Moda',serif;font-size:1.1rem;color:#fff;font-weight:400;margin-bottom:12px;">Investment Advisory</h3><p style="font-size:11px;line-height:1.9;color:#555;">Guidance on timepieces as alternative investments — with historical performance data and market insight.</p></div>
+<section class="w-services-section">
+  <div class="w-services-inner">
+    <h2 class="w-services-title">Our <em>Services</em></h2>
+    <div class="w-services-grid">
+      <div class="w-service"><div class="w-service-num">I</div><h3>Acquisition & Sourcing</h3><p>Looking for a specific reference? We source globally at fair market value with full authentication.</p></div>
+      <div class="w-service"><div class="w-service-num">II</div><h3>Collection Valuation</h3><p>Expert valuation reports for existing collections — for insurance, estate planning, or private sale.</p></div>
+      <div class="w-service"><div class="w-service-num">III</div><h3>Private Brokerage</h3><p>Discreet peer-to-peer transactions between collectors, without public listing or auction house fees.</p></div>
+      <div class="w-service"><div class="w-service-num">IV</div><h3>Investment Advisory</h3><p>Guidance on timepieces as alternative investments — with historical performance data and market insight.</p></div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta">
   <div class="cta-inner">
     <span class="eyebrow">Private Enquiries Welcome</span>
