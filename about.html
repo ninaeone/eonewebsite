@@ -6,7 +6,9 @@
 <link rel="icon" type="image/png" href="eonelogo.png">
 <link rel="apple-touch-icon" href="eonelogo.png">
 <title>About — Eone · Dubai</title>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="eone.css">
 <style>
 .ab-intro-grid {
@@ -15,16 +17,16 @@
 }
 .ab-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #e8e8e8; }
 .ab-stat { background: #fff; padding: 32px; }
-.ab-stat-val { font-family: 'Bodoni Moda', serif; font-size: 2rem; color: #C5A059; margin-bottom: 8px; }
+.ab-stat-val { font-family: 'Playfair Display', serif; font-size: 2rem; color: #000; margin-bottom: 8px; }
 .ab-stat-key { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: #888; }
 .ab-principles-section { padding: 100px 0; background: #111; }
 .ab-principles-inner { max-width: 1320px; margin: 0 auto; padding: 0 48px; }
-.ab-principles-title { font-family: 'Bodoni Moda', serif; font-size: clamp(2rem,4vw,3rem); font-weight: 400; color: #fff; margin-bottom: 60px; }
-.ab-principles-title em { font-style: italic; color: #C5A059; }
+.ab-principles-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem,4vw,3rem); font-weight: 400; color: #fff; margin-bottom: 60px; }
+.ab-principles-title em { font-style: italic; color: #000; }
 .ab-principles-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: #2a2a2a; }
 .ab-principle { background: #1a1a1a; padding: 40px; }
-.ab-principle-num { font-family: 'Bodoni Moda', serif; font-size: 2.5rem; color: #C5A059; opacity: .35; margin-bottom: 20px; font-style: italic; }
-.ab-principle h3 { font-family: 'Bodoni Moda', serif; font-size: 1.1rem; color: #fff; font-weight: 400; margin-bottom: 12px; }
+.ab-principle-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #000; opacity: .35; margin-bottom: 20px; font-style: italic; }
+.ab-principle h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #fff; font-weight: 400; margin-bottom: 12px; }
 .ab-principle p { font-size: 11px; line-height: 1.9; color: #555; }
 
 @media(max-width:900px) {
@@ -48,19 +50,18 @@
 </head>
 <body>
 <nav class="nav" id="nav">
-  <div class="nav-inner">
+  <div class="nav-top">
     <ul class="nav-left">
-      <li><a href="index.html" class="nl">Home</a></li>
       <li><a href="services.html" class="nl">Properties</a></li>
       <li><a href="watches.html" class="nl">Watches</a></li>
+      <li><a href="about.html" class="nl">About</a></li>
     </ul>
     <a href="index.html" class="nav-logo"><img src="eonelogo.png" alt="Eone"></a>
     <ul class="nav-right">
-      <li><a href="about.html" class="nl active">About</a></li>
       <li><a href="contact.html" class="nl">Contact</a></li>
       <li><a href="book.html" class="nav-enq">Book a Private Visit</a></li>
     </ul>
-    <button class="nav-burger" id="burger"><span></span><span></span><span></span></button>
+    <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 <div class="drawer" id="drawer">
