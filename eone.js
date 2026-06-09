@@ -33,13 +33,10 @@ const nav = document.getElementById('nav');
 // Inner pages: always solid (light background, needs dark links)
 const isHomePage = document.body.classList.contains('home-page');
 
-if (isHomePage) {
-  nav?.classList.add('hero-nav');
-  window.addEventListener('scroll', () => nav?.classList.toggle('solid', window.scrollY > 60), {passive:true});
-} else {
-  // Inner pages — always solid, always dark links
-  nav?.classList.add('solid');
-}
+// Centered-logo nav sits on a solid white bar on every page.
+// Add a hairline border once the user scrolls past the top.
+nav?.classList.add('solid');
+window.addEventListener('scroll', () => nav?.classList.toggle('solid', true), {passive:true});
 
 document.getElementById('burger')?.addEventListener('click', () => document.getElementById('drawer')?.classList.toggle('open'));
 document.querySelectorAll('.drawer a').forEach(a => a.addEventListener('click', () => document.getElementById('drawer')?.classList.remove('open')));
