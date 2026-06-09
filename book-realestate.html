@@ -6,7 +6,9 @@
 <link rel="icon" type="image/png" href="eonelogo.png">
 <link rel="apple-touch-icon" href="eonelogo.png">
 <title>Book a Property Visit — Eone · Dubai</title>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="eone.css">
 <style>
 .booking-layout {
@@ -73,7 +75,7 @@
   border: none;
   border-bottom: 1px solid #e8e8e8;
   padding: 12px 0;
-  font-size: 13px; font-family: 'Inter', sans-serif;
+  font-size: 13px; font-family: 'Jost', sans-serif;
   color: var(--dark); background: transparent;
   outline: none; width: 100%;
   transition: border-color .3s;
@@ -88,7 +90,7 @@
   border: none; padding: 20px;
   font-size: 9px; letter-spacing: 5px;
   text-transform: uppercase; cursor: pointer;
-  transition: all .4s; font-family: 'Inter', sans-serif;
+  transition: all .4s; font-family: 'Jost', sans-serif;
   width: 100%;
 }
 .bf-submit:hover { background: var(--gold); color: #111; letter-spacing: 6px; }
@@ -116,19 +118,18 @@
 </head>
 <body>
 <nav class="nav" id="nav">
-  <div class="nav-inner">
+  <div class="nav-top">
     <ul class="nav-left">
-      <li><a href="index.html" class="nl">Home</a></li>
       <li><a href="services.html" class="nl">Properties</a></li>
       <li><a href="watches.html" class="nl">Watches</a></li>
+      <li><a href="about.html" class="nl">About</a></li>
     </ul>
     <a href="index.html" class="nav-logo"><img src="eonelogo.png" alt="Eone"></a>
     <ul class="nav-right">
-      <li><a href="about.html" class="nl">About</a></li>
       <li><a href="contact.html" class="nl">Contact</a></li>
       <li><a href="book.html" class="nav-enq">Book a Private Visit</a></li>
     </ul>
-    <button class="nav-burger" id="burger"><span></span><span></span><span></span></button>
+    <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 <div class="drawer" id="drawer">
@@ -260,7 +261,7 @@
       </div>
 
       <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;">
-        <input type="checkbox" required style="margin-top:3px;accent-color:#C5A059;flex-shrink:0;">
+        <input type="checkbox" required style="margin-top:3px;accent-color:#000;flex-shrink:0;">
         <span style="font-size:10px;color:#888;line-height:1.7;">I confirm my details will be used only to arrange this visit, in line with Eone's privacy policy. My information will never be shared with third parties.</span>
       </label>
 
