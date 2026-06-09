@@ -6,25 +6,26 @@
 <link rel="icon" type="image/png" href="eonelogo.png">
 <link rel="apple-touch-icon" href="eonelogo.png">
 <title>Eone — Exclusive Properties & Luxury Watches · Dubai</title>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="eone.css">
 </head>
 <body class="home-page">
 
 <nav class="nav" id="nav">
-  <div class="nav-inner">
+  <div class="nav-top">
     <ul class="nav-left">
-      <li><a href="index.html" class="nl active">Home</a></li>
       <li><a href="services.html" class="nl">Properties</a></li>
       <li><a href="watches.html" class="nl">Watches</a></li>
+      <li><a href="about.html" class="nl">About</a></li>
     </ul>
     <a href="index.html" class="nav-logo"><img src="eonelogo.png" alt="Eone"></a>
     <ul class="nav-right">
-      <li><a href="about.html" class="nl">About</a></li>
       <li><a href="contact.html" class="nl">Contact</a></li>
       <li><a href="book.html" class="nav-enq">Book a Private Visit</a></li>
     </ul>
-    <button class="nav-burger" id="burger"><span></span><span></span><span></span></button>
+    <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
@@ -35,11 +36,13 @@
     <li><a href="watches.html">Watches</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
+    <li><a href="book.html">Book a Private Visit</a></li>
   </ul>
 </div>
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1800&q=80');"></div>
   <div class="hero-overlay"></div>
   <div class="hero-inner">
     <p class="hero-eyebrow">Est. 2026 &nbsp;·&nbsp; Dubai</p>
@@ -54,16 +57,7 @@
       <a href="contact.html" class="btn-ghost">Private Consultation</a>
     </div>
   </div>
-  <div class="hero-scroll"><span>Scroll</span><div class="hero-scroll-line"></div></div>
 </section>
-
-<!-- STRIP -->
-<div class="strip">
-  <div class="strip-item"><span class="sv">By Invitation</span><span class="sk">Not every client qualifies</span></div>
-  <div class="strip-item"><span class="sv">Off-Market</span><span class="sk">Properties you won't find elsewhere</span></div>
-  <div class="strip-item"><span class="sv">Two Worlds</span><span class="sk">Real estate & rare timepieces</span></div>
-  <div class="strip-item"><span class="sv">Total Discretion</span><span class="sk">Your name stays private</span></div>
-</div>
 
 <!-- MARQUEE -->
 <div class="marquee"><div class="marquee-track">
@@ -95,10 +89,10 @@
       <h2 class="sh">Featured <em>Properties</em></h2>
     </div>
     <div class="ls-head-right">
-      <a href="services.html" class="view-all">View All →</a>
+      <a href="services.html" class="view-all">View All</a>
       <div class="car-btns">
-        <button class="car-btn" id="carPrev">&#8592;</button>
-        <button class="car-btn" id="carNext">&#8594;</button>
+        <button class="car-btn" id="carPrev" aria-label="Previous">&#8592;</button>
+        <button class="car-btn" id="carNext" aria-label="Next">&#8594;</button>
       </div>
     </div>
   </div>
@@ -111,7 +105,7 @@
     </div>
   </div>
   <div class="ls-footer">
-    <a href="https://www.propertyfinder.ae/en/broker/eone-prime-properties-l-l-c-s-o-c-v2-179995" target="_blank" class="btn-outline">See All on Property Finder →</a>
+    <a href="https://www.propertyfinder.ae/en/broker/eone-prime-properties-l-l-c-s-o-c-v2-179995" target="_blank" rel="noopener" class="btn-outline">See All on Property Finder</a>
   </div>
 </section>
 
@@ -123,7 +117,7 @@
       <span class="world-num">01</span>
       <h2>Exclusive<br><em>Real Estate</em></h2>
       <p>Ultra-prime Dubai properties — villas, penthouses, and residences that rarely reach the open market.</p>
-      <span class="world-cta">Explore Properties →</span>
+      <span class="world-cta">Explore Properties</span>
     </div>
   </a>
   <a href="watches.html" class="world world-wa">
@@ -132,7 +126,7 @@
       <span class="world-num">02</span>
       <h2>Luxury<br><em>Timepieces</em></h2>
       <p>Patek Philippe, Richard Mille, Rolex — authenticated rare watches for the serious collector.</p>
-      <span class="world-cta">Explore Collection →</span>
+      <span class="world-cta">Explore Collection</span>
     </div>
   </a>
 </section>
@@ -141,9 +135,9 @@
 <section class="phil">
   <div class="phil-inner">
     <p class="phil-label">Our Philosophy</p>
-    <blockquote>"Not every property is for everyone —<br><em>ours are for the few."</em></blockquote>
+    <blockquote>Not every property is for everyone —<br><em>ours are for the few.</em></blockquote>
     <p class="phil-body">Eone was built on one conviction: that the right home — or the right watch — is not found. It is curated. We work with a select number of clients and handle every transaction with discretion, precision, and an uncompromising standard.</p>
-    <a href="about.html" class="link-gold">Our Story →</a>
+    <a href="about.html" class="link-ink">Our Story</a>
   </div>
 </section>
 
@@ -164,7 +158,7 @@
 <!-- TESTIMONIAL -->
 <section class="test">
   <div class="test-inner">
-    <div class="test-q">❝</div>
+    <div class="test-q">&#10078;</div>
     <blockquote>Eone found us exactly what we were looking for — a Palm Jumeirah villa that never hit the public market. Their access and discretion are unmatched.</blockquote>
     <cite>— Private Client, Dubai</cite>
   </div>
@@ -176,7 +170,7 @@
     <p class="eyebrow">By Appointment Only</p>
     <h2 class="sh">Begin Your <em>Private</em> Search</h2>
     <p>Tell us what you're looking for. We'll handle everything else — discreetly.</p>
-    <a href="contact.html" class="btn-dark">Get in Touch</a>
+    <a href="contact.html" class="btn-solid">Get in Touch</a>
   </div>
 </section>
 
@@ -189,8 +183,8 @@
     </div>
     <div class="footer-cols">
       <div class="fc"><h4>Navigate</h4><a href="index.html">Home</a><a href="services.html">Properties</a><a href="watches.html">Watches</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
-      <div class="fc"><h4>Properties</h4><a href="services.html">For Sale</a><a href="services.html">For Rent</a><a href="services.html">Exclusive</a><a href="https://www.propertyfinder.ae/en/broker/eone-prime-properties-l-l-c-s-o-c-v2-179995" target="_blank">Property Finder ↗</a></div>
-      <div class="fc"><h4>Connect</h4><a href="tel:+971501773326">04 566 5176</a><a href="mailto:info@eoneproperties.com">info@eoneproperties.com</a><a href="https://wa.me/971501773326" target="_blank">WhatsApp ↗</a><a href="#">Instagram</a></div>
+      <div class="fc"><h4>Properties</h4><a href="services.html">For Sale</a><a href="services.html">For Rent</a><a href="services.html">Exclusive</a><a href="https://www.propertyfinder.ae/en/broker/eone-prime-properties-l-l-c-s-o-c-v2-179995" target="_blank" rel="noopener">Property Finder</a></div>
+      <div class="fc"><h4>Connect</h4><a href="tel:+971501773326">04 566 5176</a><a href="mailto:info@eoneproperties.com">info@eoneproperties.com</a><a href="https://wa.me/971501773326" target="_blank" rel="noopener">WhatsApp</a><a href="#">Instagram</a></div>
     </div>
   </div>
   <div class="footer-bottom">
