@@ -60,6 +60,9 @@ a{color:inherit}
 .nav.open .nav-burger span:nth-child(2){opacity:0}
 .nav.open .nav-burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
 
+/* while resizing, freeze the menu panel so it can't flash across the breakpoint */
+.nav-resizing .nav-menu,.nav-resizing .nav-menu *{transition:none!important}
+
 /* ── PANELS : full-screen photo collection ── */
 .collection{position:relative}
 .panel{position:relative;height:100vh;min-height:600px;display:flex;align-items:flex-end;justify-content:center;text-align:center;color:#fff;background:#161616;overflow:hidden;scroll-snap-align:start}
@@ -327,7 +330,13 @@ function setMenu(open){
 burger?.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
 document.querySelectorAll('.nav-menu a').forEach(a => a.addEventListener('click', () => setMenu(false)));
 document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
-window.addEventListener('resize', () => { if (window.innerWidth > 900) setMenu(false); }, {passive:true});
+let navResizeTimer;
+window.addEventListener('resize', () => {
+  document.documentElement.classList.add('nav-resizing');
+  if (window.innerWidth > 1260) setMenu(false);
+  clearTimeout(navResizeTimer);
+  navResizeTimer = setTimeout(() => document.documentElement.classList.remove('nav-resizing'), 220);
+}, {passive:true});
 </script>
 </body>
 </html>
