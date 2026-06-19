@@ -95,17 +95,20 @@ a{color:inherit}
 .find button{background:none;border:none;cursor:pointer;font-size:16px;color:var(--ink);padding:0 6px}
 
 /* ── BLACK EONE REVEAL FOOTER ── */
+/* page layer covers the black footer; scrolling up uncovers it (Chanel-style) */
+.page{position:relative;z-index:2;background:var(--paper)}
 .reveal{background:var(--ink);color:var(--paper)}
-.reveal-mark{display:flex;flex-direction:column;align-items:center;gap:30px;padding:108px 24px 90px}
-.reveal-logo{width:96px;height:96px;background:var(--logo) center/contain no-repeat;opacity:0;transform:scale(.78);transition:opacity 1s ease,transform 1.2s cubic-bezier(.22,1,.36,1)}
+body.reveal-on .reveal{position:fixed;left:0;right:0;bottom:0;z-index:1}
+.reveal-mark{display:flex;flex-direction:column;align-items:center;gap:22px;padding:60px 24px 40px}
+.reveal-logo{width:78px;height:78px;background:var(--logo) center/contain no-repeat;opacity:0;transform:scale(.78);transition:opacity 1s ease,transform 1.2s cubic-bezier(.22,1,.36,1)}
 .reveal.in .reveal-logo{opacity:1;transform:none}
 .reveal-word{position:relative;overflow:hidden;padding:2px 0}
-.reveal-word .ink{display:block;font-family:var(--sans);font-weight:400;font-size:clamp(46px,9vw,118px);letter-spacing:.36em;text-indent:.36em;color:#fff;clip-path:inset(0 100% 0 0);transition:clip-path 1.25s cubic-bezier(.66,0,.2,1) .35s}
+.reveal-word .ink{display:block;font-family:var(--sans);font-weight:400;font-size:clamp(46px,8vw,104px);letter-spacing:.36em;text-indent:.36em;color:#fff;clip-path:inset(0 100% 0 0);transition:clip-path 1.25s cubic-bezier(.66,0,.2,1) .35s}
 .reveal.in .reveal-word .ink{clip-path:inset(0 0 0 0)}
 .reveal-word .sweep{position:absolute;top:0;bottom:0;left:0;width:2px;background:var(--gold);opacity:0;box-shadow:0 0 22px 3px rgba(197,160,89,.55)}
 .reveal.in .reveal-word .sweep{animation:sweep 1.6s cubic-bezier(.66,0,.2,1) .35s forwards}
 @keyframes sweep{0%{opacity:1;left:-1%}88%{opacity:1}100%{left:101%;opacity:0}}
-.reveal-cols{max-width:var(--max);margin:0 auto;padding:0 var(--pad) 90px;display:grid;grid-template-columns:repeat(4,1fr);gap:48px}
+.reveal-cols{max-width:var(--max);margin:0 auto;padding:0 var(--pad) 56px;display:grid;grid-template-columns:repeat(4,1fr);gap:48px}
 .rc h5{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;font-weight:500;margin-bottom:26px}
 .rc a{display:block;text-decoration:none;font-size:14px;font-weight:300;color:rgba(255,255,255,.62);margin-bottom:16px;transition:color .3s}
 .rc a:hover{color:#fff}
@@ -169,6 +172,9 @@ a{color:inherit}
   </div>
 </nav>
 
+<!-- ════ PAGE LAYER (covers the black footer, scrolls up to reveal it) ════ -->
+<div class="page" id="page">
+
 <!-- ════ 10 FULL-SCREEN PHOTO PANELS ════ -->
 <main class="collection" id="collection"><!-- panels injected by JS --></main>
 
@@ -191,7 +197,9 @@ a{color:inherit}
   </div>
 </section>
 
-<!-- ════ BLACK EONE REVEAL FOOTER ════ -->
+</div><!-- /.page -->
+
+<!-- ════ BLACK EONE REVEAL FOOTER (fixed behind the page) ════ -->
 <footer class="reveal" id="reveal">
   <div class="reveal-mark">
     <span class="reveal-logo" role="img" aria-label="EONE emblem"></span>
@@ -305,14 +313,41 @@ PANELS.forEach((p, i) => {
   root.appendChild(sec);
 });
 
-/* ── reveal on scroll (panels + black footer) ── */
+/* ── panel entrance animations ── */
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
 }, { threshold: 0.28 });
 document.querySelectorAll('.panel').forEach(el => io.observe(el));
-io.observe(document.getElementById('reveal'));
 // first panel visible immediately
 requestAnimationFrame(() => document.querySelector('.panel')?.classList.add('in'));
+
+/* ── Chanel-style fixed footer reveal: page covers the black footer, scroll uncovers it ── */
+const pageEl = document.getElementById('page');
+const revealEl = document.getElementById('reveal');
+let footerH = 0;
+function setupReveal(){
+  footerH = revealEl.offsetHeight;
+  // only pin the footer when it fits in the viewport (otherwise fall back to a normal footer)
+  if (footerH <= window.innerHeight - 4){
+    document.body.classList.add('reveal-on');
+    pageEl.style.marginBottom = footerH + 'px';
+  } else {
+    document.body.classList.remove('reveal-on');
+    pageEl.style.marginBottom = '';
+  }
+}
+function onRevealScroll(){
+  if (document.body.classList.contains('reveal-on')){
+    const remaining = document.documentElement.scrollHeight - (window.scrollY + window.innerHeight);
+    if (remaining < footerH * 0.55) revealEl.classList.add('in');
+  } else {
+    if (revealEl.getBoundingClientRect().top < window.innerHeight * 0.85) revealEl.classList.add('in');
+  }
+}
+window.addEventListener('load', setupReveal);
+window.addEventListener('resize', setupReveal, {passive:true});
+window.addEventListener('scroll', onRevealScroll, {passive:true});
+setupReveal(); onRevealScroll();
 
 /* ── nav: transparent over photos, solid once past the first panel ── */
 const nav = document.getElementById('nav');
