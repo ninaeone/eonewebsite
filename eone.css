@@ -40,12 +40,12 @@ em { font-style: italic; }
 
 /* menu — horizontal header on wide */
 .nav-menu { flex: 1 1 auto; display: flex; align-items: center; gap: 22px; margin-left: 76px; }
-.nav-links { list-style: none; display: flex; align-items: center; flex-wrap: nowrap; gap: 22px; margin: 0; }
+.nav-links { list-style: none; display: flex; flex: 1 1 auto; justify-content: center; align-items: center; flex-wrap: nowrap; gap: 22px; margin: 0; }
 .nhl { position: relative; text-decoration: none; font-size: 12px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--ink); font-weight: 400; padding: 8px 0; white-space: nowrap; transition: opacity .3s, color .4s; }
 .nhl::after { content: ''; position: absolute; left: 0; bottom: 2px; width: 0; height: 1px; background: currentColor; transition: width .35s ease; }
 .nhl:hover::after, .nhl.active::after { width: 100%; }
 .nhl:hover { opacity: .6; }
-.nav-cta { margin-left: auto; text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 400; background: var(--ink); color: var(--paper); padding: 14px 26px; white-space: nowrap; transition: opacity .3s; }
+.nav-cta { flex: 0 0 auto; text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 400; background: var(--ink); color: var(--paper); padding: 14px 26px; white-space: nowrap; transition: opacity .3s; }
 .nav-cta:hover { opacity: .78; }
 
 /* while the window is being resized, freeze the menu panel so it can't flash across the breakpoint */
@@ -64,7 +64,7 @@ em { font-style: italic; }
   .nav-burger { display: flex; }
   .nav-menu { position: fixed; inset: var(--nav) 0 0 0; margin-left: 0; flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 0; background: var(--paper); padding: 6px var(--pad) 34px; overflow-y: auto; opacity: 0; transform: translateY(-8px); pointer-events: none; transition: opacity .4s ease, transform .45s cubic-bezier(.22,1,.36,1); }
   .nav.open .nav-menu { opacity: 1; transform: none; pointer-events: auto; }
-  .nav-links { flex-direction: column; align-items: stretch; gap: 0; width: 100%; }
+  .nav-links { flex: 0 1 auto; flex-direction: column; justify-content: flex-start; align-items: stretch; gap: 0; width: 100%; }
   .nhl { display: block; padding: 22px 2px; border-bottom: 1px solid var(--line); font-size: 17px; letter-spacing: 2px; }
   .nhl::after { display: none; }
   .nav-cta { margin: 28px 0 0; text-align: center; padding: 18px; font-size: 12px; }
