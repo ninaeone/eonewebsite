@@ -48,7 +48,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(fals
 let navResizeTimer;
 window.addEventListener('resize', () => {
   document.documentElement.classList.add('nav-resizing');
-  if (window.innerWidth > 1260) setMenu(false);
+  if (window.innerWidth > 1280) setMenu(false);
   clearTimeout(navResizeTimer);
   navResizeTimer = setTimeout(() => document.documentElement.classList.remove('nav-resizing'), 220);
 }, {passive:true});
