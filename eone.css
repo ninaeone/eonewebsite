@@ -31,7 +31,7 @@ em { font-style: italic; }
 /* ── NAV : wide = logo-left + horizontal header · narrow = centred logo + burger ── */
 .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var(--paper); border-bottom: 1px solid transparent; transition: border-color .4s; }
 .nav.solid, .nav.open { border-bottom-color: var(--line); }
-.nav-top { position: relative; z-index: 2; max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); height: var(--nav); display: flex; align-items: center; }
+.nav-top { position: relative; z-index: 2; padding: 0 var(--pad); height: var(--nav); display: flex; align-items: center; }
 
 /* logo — absolutely placed so it glides from centre (narrow) to left (wide) */
 .nav-logo { position: absolute; top: 50%; left: var(--pad); transform: translateY(-50%); display: flex; align-items: center; text-decoration: none; line-height: 0; z-index: 3; transition: left .45s cubic-bezier(.22,1,.36,1), transform .45s cubic-bezier(.22,1,.36,1); }
