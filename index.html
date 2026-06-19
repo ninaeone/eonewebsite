@@ -29,11 +29,8 @@ img{max-width:100%;display:block}
 em{font-style:italic}
 a{color:inherit}
 
-/* ── NAV : wide = logo-left + horizontal header · narrow = centred logo + burger ── */
-.nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:background .5s ease,border-color .5s ease}
-.nav::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,0));z-index:-1;opacity:1;transition:opacity .5s ease}
-.nav.solid,.nav.open{background:var(--paper);border-bottom:1px solid var(--line)}
-.nav.solid::after,.nav.open::after{opacity:0}
+/* ── NAV : always solid white (consistent with inner pages) ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--paper);border-bottom:1px solid var(--line)}
 .nav-top{position:relative;z-index:2;padding:0 var(--pad);height:var(--nav);display:flex;align-items:center}
 
 /* logo — absolutely placed so it glides from centre (narrow) to left (wide) */
@@ -44,18 +41,15 @@ a{color:inherit}
 /* menu — horizontal header on wide */
 .nav-menu{flex:1 1 auto;display:flex;align-items:center;gap:22px;margin-left:76px}
 .nav-links{list-style:none;display:flex;align-items:center;flex-wrap:nowrap;gap:22px;margin:0}
-.nhl{position:relative;text-decoration:none;font-size:12px;letter-spacing:1.6px;text-transform:uppercase;font-weight:400;color:#fff;padding:8px 0;white-space:nowrap;transition:opacity .3s,color .5s}
-.nav.solid .nhl,.nav.open .nhl{color:var(--ink)}
+.nhl{position:relative;text-decoration:none;font-size:12px;letter-spacing:1.6px;text-transform:uppercase;font-weight:400;color:var(--ink);padding:8px 0;white-space:nowrap;transition:opacity .3s}
 .nhl::after{content:'';position:absolute;left:0;bottom:2px;width:0;height:1px;background:currentColor;transition:width .35s ease}
 .nhl:hover::after,.nhl.active::after{width:100%}.nhl:hover{opacity:.6}
-.nav-cta{margin-left:auto;text-decoration:none;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:400;background:var(--ink);color:#fff;padding:14px 26px;white-space:nowrap;border:1px solid rgba(255,255,255,.28);transition:opacity .3s,border-color .5s}
-.nav.solid .nav-cta,.nav.open .nav-cta{border-color:var(--ink)}
+.nav-cta{margin-left:auto;text-decoration:none;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:400;background:var(--ink);color:#fff;padding:14px 26px;white-space:nowrap;transition:opacity .3s}
 .nav-cta:hover{opacity:.82}
 
 /* burger — narrow only */
 .nav-burger{display:none;margin-left:auto;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer;padding:6px;width:40px;align-items:center;z-index:3}
-.nav-burger span{display:block;width:26px;height:1.5px;background:#fff;transition:background .5s,transform .4s ease,opacity .3s}
-.nav.solid .nav-burger span,.nav.open .nav-burger span{background:var(--ink)}
+.nav-burger span{display:block;width:26px;height:1.5px;background:var(--ink);transition:transform .4s ease,opacity .3s}
 .nav.open .nav-burger span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
 .nav.open .nav-burger span:nth-child(2){opacity:0}
 .nav.open .nav-burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
@@ -349,11 +343,8 @@ window.addEventListener('resize', setupReveal, {passive:true});
 window.addEventListener('scroll', onRevealScroll, {passive:true});
 setupReveal(); onRevealScroll();
 
-/* ── nav: transparent over photos, solid once past the first panel ── */
+/* ── nav reference (always solid white) ── */
 const nav = document.getElementById('nav');
-const onScroll = () => nav.classList.toggle('solid', window.scrollY > window.innerHeight * 0.72);
-window.addEventListener('scroll', onScroll, { passive:true });
-onScroll();
 
 /* ── burger toggles the full header ── */
 const burger = document.getElementById('burger');
