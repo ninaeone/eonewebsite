@@ -45,7 +45,13 @@ function setMenu(open){
 burger?.addEventListener('click', () => setMenu(!nav?.classList.contains('open')));
 document.querySelectorAll('.nav-menu a').forEach(a => a.addEventListener('click', () => setMenu(false)));
 document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
-window.addEventListener('resize', () => { if (window.innerWidth > 1260) setMenu(false); }, {passive:true});
+let navResizeTimer;
+window.addEventListener('resize', () => {
+  document.documentElement.classList.add('nav-resizing');
+  if (window.innerWidth > 1260) setMenu(false);
+  clearTimeout(navResizeTimer);
+  navResizeTimer = setTimeout(() => document.documentElement.classList.remove('nav-resizing'), 220);
+}, {passive:true});
 
 // ── HELPERS ──────────────────────────────────
 function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
