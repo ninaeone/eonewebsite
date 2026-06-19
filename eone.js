@@ -29,17 +29,22 @@ const API = 'https://script.google.com/macros/s/AKfycbyHrwwVKhXNwAV54j051pdQcXRf
 // ── NAV ──────────────────────────────────────
 const nav = document.getElementById('nav');
 
-// Homepage: transparent nav over dark hero photo → solid on scroll
-// Inner pages: always solid (light background, needs dark links)
-const isHomePage = document.body.classList.contains('home-page');
-
-// Centered-logo nav sits on a solid white bar on every page.
-// Add a hairline border once the user scrolls past the top.
+// Inner pages sit on a solid white bar; add a hairline border on scroll.
 nav?.classList.add('solid');
 window.addEventListener('scroll', () => nav?.classList.toggle('solid', true), {passive:true});
 
-document.getElementById('burger')?.addEventListener('click', () => document.getElementById('drawer')?.classList.toggle('open'));
-document.querySelectorAll('.drawer a').forEach(a => a.addEventListener('click', () => document.getElementById('drawer')?.classList.remove('open')));
+// Burger toggles the full header
+const burger = document.getElementById('burger');
+function setMenu(open){
+  nav?.classList.toggle('open', open);
+  if (burger){
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+}
+burger?.addEventListener('click', () => setMenu(!nav?.classList.contains('open')));
+document.querySelectorAll('.nav-header a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
 
 // ── HELPERS ──────────────────────────────────
 function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
