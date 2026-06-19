@@ -48,6 +48,9 @@ em { font-style: italic; }
 .nav-cta { margin-left: auto; text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 400; background: var(--ink); color: var(--paper); padding: 13px 22px; white-space: nowrap; transition: opacity .3s; }
 .nav-cta:hover { opacity: .78; }
 
+/* while the window is being resized, freeze the menu panel so it can't flash across the breakpoint */
+.nav-resizing .nav-menu, .nav-resizing .nav-menu * { transition: none !important; }
+
 /* burger — narrow only */
 .nav-burger { display: none; margin-left: auto; flex-direction: column; gap: 6px; background: none; border: none; cursor: pointer; padding: 6px; width: 40px; align-items: center; z-index: 3; }
 .nav-burger span { display: block; width: 26px; height: 1.5px; background: var(--ink); transition: transform .4s ease, opacity .3s; }
