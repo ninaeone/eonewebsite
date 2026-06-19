@@ -34,7 +34,7 @@ a{color:inherit}
 .nav::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,0));z-index:-1;opacity:1;transition:opacity .5s ease}
 .nav.solid,.nav.open{background:var(--paper);border-bottom:1px solid var(--line)}
 .nav.solid::after,.nav.open::after{opacity:0}
-.nav-top{position:relative;z-index:2;max-width:var(--max);margin:0 auto;padding:0 var(--pad);height:var(--nav);display:flex;align-items:center}
+.nav-top{position:relative;z-index:2;padding:0 var(--pad);height:var(--nav);display:flex;align-items:center}
 
 /* logo — absolutely placed so it glides from centre (narrow) to left (wide) */
 .nav-logo{position:absolute;top:50%;left:var(--pad);transform:translateY(-50%);display:flex;align-items:center;text-decoration:none;line-height:0;z-index:3;transition:left .45s cubic-bezier(.22,1,.36,1),transform .45s cubic-bezier(.22,1,.36,1)}
