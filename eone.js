@@ -45,7 +45,7 @@ function setMenu(open){
 burger?.addEventListener('click', () => setMenu(!nav?.classList.contains('open')));
 document.querySelectorAll('.nav-menu a').forEach(a => a.addEventListener('click', () => setMenu(false)));
 document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
-window.addEventListener('resize', () => { if (window.innerWidth > 900) setMenu(false); }, {passive:true});
+window.addEventListener('resize', () => { if (window.innerWidth > 1260) setMenu(false); }, {passive:true});
 
 // ── HELPERS ──────────────────────────────────
 function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
