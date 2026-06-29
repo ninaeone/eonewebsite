@@ -36,7 +36,7 @@ em { font-style: italic; }
 
 /* logo — absolutely placed so it glides from centre (narrow) to left (wide) */
 .nav-logo { position: absolute; top: 50%; left: var(--pad); transform: translateY(-50%); display: flex; align-items: center; text-decoration: none; line-height: 0; z-index: 3; transition: left .45s cubic-bezier(.22,1,.36,1), transform .45s cubic-bezier(.22,1,.36,1); }
-.nav-logo .logo-mark { width: 50px; height: 50px; background: url('eonelogo.png') center/contain no-repeat; transition: opacity .3s; }
+.nav-logo .logo-mark { width: 120px; height: 36px; background: url('EONE%20-%20NEUE.svg') center/contain no-repeat; transition: opacity .3s; }
 .nav-logo:hover .logo-mark { opacity: .72; }
 
 /* menu — horizontal header on wide */
@@ -219,7 +219,7 @@ em { font-style: italic; }
 /* ── FOOTER ── */
 .footer { background: var(--ink); color: var(--paper); padding: 80px var(--pad) 0; }
 .footer-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 60px; padding-bottom: 64px; }
-.footer-logo { height: 60px; width: auto; filter: brightness(0) invert(1); margin-bottom: 24px; }
+.footer-logo { height: 42px; width: auto; filter: brightness(0) invert(1); margin-bottom: 24px; }
 .footer-brand p { font-size: 13px; line-height: 2; opacity: .85; font-weight: 300; }
 .footer-brand span { font-size: 11px; letter-spacing: 1px; opacity: .55; }
 .footer-cols { display: grid; grid-template-columns: repeat(3,1fr); gap: 40px; }
