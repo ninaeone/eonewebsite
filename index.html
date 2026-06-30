@@ -18,7 +18,7 @@
   --ink:#000; --paper:#fff; --line:#e2e2e2; --muted:#8a8a8a; --soft:#f6f6f6;
   --display:'Playfair Display','Bodoni Moda',serif;
   --sans:'Jost','Inter',sans-serif;
-  --nav:84px; --max:1500px; --pad:56px;
+  --nav:150px; --max:1500px; --pad:56px;
   --gold:#C5A059;
   --logo:url('EONE%20-%20NEUE.svg');
 }
@@ -30,12 +30,12 @@ em{font-style:italic}
 a{color:inherit}
 
 /* ── NAV : always solid white (consistent with inner pages) ── */
-.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--paper);border-bottom:1px solid var(--line)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--paper);border-bottom:1px solid var(--line);overflow:hidden}
 .nav-top{position:relative;z-index:2;padding:0 var(--pad);height:var(--nav);display:flex;align-items:center}
 
 /* logo — absolutely placed so it glides from centre (narrow) to left (wide) */
 .nav-logo{position:absolute;top:50%;left:var(--pad);transform:translateY(-50%);display:flex;align-items:center;text-decoration:none;line-height:0;z-index:3;transition:left .45s cubic-bezier(.22,1,.36,1),transform .45s cubic-bezier(.22,1,.36,1)}
-.nav-logo .logo-mark{width:120px;height:36px;background:var(--logo) center/contain no-repeat;transition:opacity .3s}
+.nav-logo .logo-mark{width:276px;height:136px;background:url('EONE%20-%20LOCKUP.svg') center/contain no-repeat;transition:opacity .3s}
 .nav-logo:hover .logo-mark{opacity:.72}
 
 /* menu — horizontal header on wide */
@@ -122,12 +122,15 @@ body.reveal-on .reveal{position:fixed;left:0;right:0;bottom:0;z-index:1}
   .nav-cta{margin:28px 0 0;text-align:center;padding:18px;font-size:12px;border-color:var(--ink)}
 }
 @media(max-width:900px){
-  :root{--pad:24px;--nav:72px}
+  :root{--pad:24px;--nav:96px}
+  .nav-logo .logo-mark{width:170px;height:84px}
   .access-inner{grid-template-columns:1fr;gap:48px}
   .reveal-cols{grid-template-columns:1fr 1fr;gap:40px 32px}
   .panel-inner{padding-bottom:16vh}
 }
 @media(max-width:560px){
+  :root{--nav:80px}
+  .nav-logo .logo-mark{width:138px;height:68px}
   .reveal-cols{grid-template-columns:1fr}
   .reveal-bottom{flex-direction:column}
   .panel-title{font-size:clamp(26px,7vw,40px)}
