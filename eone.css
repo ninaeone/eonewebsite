@@ -11,7 +11,7 @@
   --gold: #C5A059;
   --display: 'Playfair Display', 'Bodoni Moda', serif;
   --sans: 'Jost', 'Inter', sans-serif;
-  --nav: 96px;
+  --nav: 150px;
   --max: 1500px;
   --pad: 56px;
 }
@@ -30,13 +30,13 @@ img { max-width: 100%; display: block; }
 em { font-style: italic; }
 
 /* ── NAV : wide = logo-left + horizontal header · narrow = centred logo + burger ── */
-.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var(--paper); border-bottom: 1px solid transparent; transition: border-color .4s; }
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var(--paper); border-bottom: 1px solid transparent; transition: border-color .4s; overflow: hidden; }
 .nav.solid, .nav.open { border-bottom-color: var(--line); }
 .nav-top { position: relative; z-index: 2; padding: 0 var(--pad); height: var(--nav); display: flex; align-items: center; }
 
 /* logo — absolutely placed so it glides from centre (narrow) to left (wide) */
 .nav-logo { position: absolute; top: 50%; left: var(--pad); transform: translateY(-50%); display: flex; align-items: center; text-decoration: none; line-height: 0; z-index: 3; transition: left .45s cubic-bezier(.22,1,.36,1), transform .45s cubic-bezier(.22,1,.36,1); }
-.nav-logo .logo-mark { width: 120px; height: 36px; background: url('EONE%20-%20NEUE.svg') center/contain no-repeat; transition: opacity .3s; }
+.nav-logo .logo-mark { width: 276px; height: 136px; background: url('EONE%20-%20LOCKUP.svg') center/contain no-repeat; transition: opacity .3s; }
 .nav-logo:hover .logo-mark { opacity: .72; }
 
 /* menu — horizontal header on wide */
@@ -312,6 +312,8 @@ em { font-style: italic; }
 .btn-pf:hover { opacity: .82; }
 
 @media (max-width: 900px) {
+  :root { --nav: 96px; }
+  .nav-logo .logo-mark { width: 170px; height: 84px; }
   .filter-inner { flex-direction: column; align-items: stretch; }
   .fcontrols { justify-content: flex-start; }
   .fsearch { flex: 1 1 auto; }
@@ -319,5 +321,7 @@ em { font-style: italic; }
   .pf-cta-inner { flex-direction: column; align-items: flex-start; }
 }
 @media (max-width: 560px) {
+  :root { --nav: 80px; }
+  .nav-logo .logo-mark { width: 138px; height: 68px; }
   .props-grid { grid-template-columns: 1fr; }
 }
