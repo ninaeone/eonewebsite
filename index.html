@@ -64,7 +64,7 @@ a{color:inherit}
 .panel-inner{position:relative;z-index:2;padding:0 24px 12vh;max-width:840px;opacity:0;transform:translateY(26px);transition:opacity 1.1s ease .15s,transform 1.1s cubic-bezier(.22,1,.36,1) .15s}
 .panel.in .panel-inner{opacity:1;transform:none}
 .panel-eyebrow{font-size:11px;letter-spacing:5px;text-transform:uppercase;font-weight:400;opacity:.92;margin-bottom:22px}
-.panel-title{font-family:var(--sans);font-weight:600;text-transform:uppercase;font-size:clamp(28px,3.2vw,54px);line-height:1.14;letter-spacing:.04em;margin-bottom:34px}
+.panel-title{font-family:var(--display);font-weight:100;text-transform:uppercase;font-size:clamp(28px,3.2vw,54px);line-height:1.14;letter-spacing:.04em;margin-bottom:34px}
 .panel-title em{font-style:normal;display:block}
 .panel-cta{display:inline-block;text-decoration:none;background:#fff;color:var(--ink);font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:400;padding:17px 40px;transition:background .35s,color .35s}
 .panel-cta:hover{background:rgba(255,255,255,.0);color:#fff;box-shadow:inset 0 0 0 1px #fff}
@@ -240,45 +240,33 @@ body.reveal-on .reveal{position:fixed;left:0;right:0;bottom:0;z-index:1}
    Each panel: primary image + fallback (fallback guarantees something always shows).
    To use your own photos: replace `img` (and optionally `fallback`) with your URL. */
 const PANELS = [
-  { eyebrow:'Exclusive Properties', t1:'The 2026', t2:'Private Collection', cta:'See the Collection', href:'services.html',
+  { eyebrow:'EONE Head Office', t1:'The 2026', t2:'Private Collection', cta:'See the Collection', href:'about.html',
+    img:'https://images.unsplash.com/photo-1760611656071-a8bef0578874?auto=format&fit=crop&w=2000&q=80',
+    fallback:'https://images.unsplash.com/photo-1760611656071-a8bef0578874?auto=format&fit=crop&w=2000&q=80' },
+
+  { eyebrow:'Exclusive Properties', t1:'Signature', t2:'Real Estate', cta:'Discover', href:'book-realestate.html',
     img:'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2000&q=80',
-    fallback:'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80' },
-
-  { eyebrow:'Palm Jumeirah', t1:'Signature', t2:'Beachfront Villas', cta:'Discover', href:'services.html',
-    img:'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2000&q=80',
-    fallback:'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80' },
-
-  { eyebrow:'Emirates Hills', t1:'The Private', t2:'Mansions', cta:'Discover', href:'services.html',
-    img:'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=80',
-    fallback:'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=2000&q=80' },
-
-  { eyebrow:'Downtown Dubai', t1:'Sky', t2:'Residences', cta:'Discover', href:'services.html',
-    img:'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=2000&q=80',
     fallback:'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2000&q=80' },
 
-  { eyebrow:'Jumeirah Bay Island', t1:'Waterfront', t2:'Estates', cta:'Discover', href:'services.html',
-    img:'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=2000&q=80',
-    fallback:'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2000&q=80' },
+  { eyebrow:'Fine Timepieces', t1:'Curated', t2:'Watches', cta:'Discover', href:'book-watches.html',
+    img:'https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=2000&q=80',
+    fallback:'https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=2000&q=80' },
 
-  { eyebrow:'Dubai Hills Estate', t1:'Garden', t2:'Residences', cta:'Discover', href:'services.html',
-    img:'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=2000&q=80',
-    fallback:'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80' },
+  { eyebrow:'Private Advisory', t1:'Wealth', t2:'Management', cta:'Discover', href:'contact.html',
+    img:'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2000&q=80',
+    fallback:'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2000&q=80' },
 
-  { eyebrow:'DIFC', t1:'Penthouse', t2:'Living', cta:'Discover', href:'services.html',
-    img:'https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=2000&q=80',
-    fallback:'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=2000&q=80' },
+  { eyebrow:'Bespoke Development', t1:'Signature', t2:'Construction', cta:'Discover', href:'contact.html',
+    img:'https://images.unsplash.com/photo-1684497404598-6e844dff9cde?auto=format&fit=crop&w=2000&q=80',
+    fallback:'https://images.unsplash.com/photo-1684497404598-6e844dff9cde?auto=format&fit=crop&w=2000&q=80' },
 
-  { eyebrow:'District One', t1:'Lagoon', t2:'Villas', cta:'Discover', href:'services.html',
-    img:'https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=2000&q=80',
-    fallback:'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80' },
+  { eyebrow:'Refined Living', t1:'Interior', t2:'Design', cta:'Discover', href:'contact.html',
+    img:'https://images.unsplash.com/photo-1621708213101-f58300b196d2?auto=format&fit=crop&w=2000&q=80',
+    fallback:'https://images.unsplash.com/photo-1621708213101-f58300b196d2?auto=format&fit=crop&w=2000&q=80' },
 
-  { eyebrow:'Bluewaters Island', t1:'Island', t2:'Residences', cta:'Discover', href:'services.html',
-    img:'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=2000&q=80',
-    fallback:'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80' },
-
-  { eyebrow:'By Appointment Only', t1:'Off-Market', t2:'Opportunities', cta:'Enquire Privately', href:'contact.html',
-    img:'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2000&q=80',
-    fallback:'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=80' },
+  { eyebrow:'By Invitation Only', t1:'Private', t2:'Membership', cta:'Enquire Privately', href:'contact.html',
+    img:'https://images.unsplash.com/photo-1749841730816-fabf3a4c2e06?auto=format&fit=crop&w=2000&q=80',
+    fallback:'https://images.unsplash.com/photo-1749841730816-fabf3a4c2e06?auto=format&fit=crop&w=2000&q=80' },
 ];
 
 const total = PANELS.length;
