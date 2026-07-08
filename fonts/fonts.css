@@ -1,0 +1,19 @@
+/* ═══════════════════════════════════════════
+   EONE — Local brand typefaces (Commercial Type)
+   ═══════════════════════════════════════════ */
+
+@font-face {
+  font-family: 'canela';
+  src: url('canela-thin.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'neue-haas-grotesk-text';
+  src: url('neuehaas-display-light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
