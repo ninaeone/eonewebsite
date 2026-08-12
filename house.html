@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="eonelogo.png">
+<link rel="apple-touch-icon" href="eonelogo.png">
+<title>A Private Wealth House — EONE Head Office · Dubai</title>
+<meta name="description" content="EONE is a private wealth house based in Dubai, created for individuals who value discretion, expertise and exceptional assets. Located in The Opus by Zaha Hadid.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="eone.css">
+<style>
+/* ── THE HOUSE : editorial photo + caption sequence ── */
+.hs-wrap { max-width: 1320px; margin: 0 auto; padding: 0 var(--pad); }
+
+.hs-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 72px;
+  align-items: center; padding: 86px 0; border-bottom: 1px solid var(--line);
+}
+.hs-row:nth-child(even) .hs-fig { order: 2; }
+.hs-fig { position: relative; overflow: hidden; background: var(--soft); aspect-ratio: 4/5; }
+.hs-fig-img {
+  position: absolute; inset: 0; background-size: cover; background-position: center;
+  filter: grayscale(100%); transform: scale(1.03);
+  transition: transform 1.1s cubic-bezier(.22,1,.36,1), filter .6s ease;
+}
+.hs-row:hover .hs-fig-img { filter: grayscale(0%); transform: scale(1); }
+.hs-fig-n {
+  position: absolute; left: 0; bottom: 0; z-index: 2;
+  background: var(--paper); color: var(--ink);
+  font-family: var(--display); font-size: 13px; letter-spacing: 3px;
+  padding: 12px 18px;
+}
+.hs-cap p { font-size: 15px; line-height: 2.05; color: #444; font-weight: 300; }
+.hs-cap .eyebrow { margin-bottom: 22px; }
+
+/* reveal on scroll */
+.hs-row { opacity: 0; transform: translateY(28px); transition: opacity 1s ease, transform 1.1s cubic-bezier(.22,1,.36,1); }
+.hs-row.in { opacity: 1; transform: none; }
+
+/* ── closing editorial block ── */
+.hs-close { padding: 110px var(--pad); text-align: center; }
+.hs-close-inner { max-width: 720px; margin: 0 auto; }
+.hs-close p { font-size: 15px; line-height: 2.05; color: #444; font-weight: 300; margin-bottom: 26px; }
+
+.hs-creed { padding: 120px var(--pad); background: var(--ink); color: var(--paper); text-align: center; }
+.hs-creed-inner { max-width: 760px; margin: 0 auto; }
+.hs-creed-label { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; opacity: .55; margin-bottom: 36px; }
+.hs-creed blockquote { font-family: var(--display); font-weight: 100; font-size: clamp(26px,3.6vw,44px); line-height: 1.4; }
+.hs-creed blockquote em { font-style: italic; display: block; }
+.hs-creed .rule { width: 40px; height: 1px; background: var(--gold); margin: 40px auto 0; }
+
+/* ── gallery grid ── */
+.hs-gal { max-width: var(--max); margin: 0 auto; padding: 100px var(--pad); }
+.hs-gal-head { text-align: center; margin-bottom: 54px; }
+.hs-gal-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.hs-tile { position: relative; aspect-ratio: 1/1; overflow: hidden; background: var(--soft); }
+.hs-tile-img {
+  position: absolute; inset: 0; background-size: cover; background-position: center;
+  filter: grayscale(100%); transition: transform .9s ease, filter .5s;
+}
+.hs-tile:hover .hs-tile-img { transform: scale(1.06); filter: grayscale(0%); }
+.hs-tile-cap {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+  padding: 18px; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+  color: #fff; background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.62));
+}
+
+@media (max-width: 900px) {
+  .hs-row { grid-template-columns: 1fr; gap: 34px; padding: 56px 0; }
+  .hs-row:nth-child(even) .hs-fig { order: 0; }
+  .hs-fig { aspect-ratio: 4/3; }
+  .hs-gal-grid { grid-template-columns: repeat(2,1fr); gap: 14px; }
+  .hs-close, .hs-creed { padding: 72px var(--pad); }
+}
+@media (max-width: 560px) {
+  .hs-gal-grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hs-row { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-top">
+    <a href="index.html" class="nav-logo"><img src="eonelogo-wordmark.png" alt="EONE" class="logo-mark"></a>
+    <div class="nav-menu" id="navMenu">
+      <ul class="nav-links">
+        <li><a href="properties.html" class="nhl">Properties</a></li>
+        <li><a href="watches.html" class="nhl">Watches</a></li>
+        <li><a href="properties.html" class="nhl">Off-Market</a></li>
+        <li><a href="services.html" class="nhl">Services</a></li>
+        <li><a href="about.html" class="nhl">About Us</a></li>
+        <li><a href="about.html" class="nhl">Careers</a></li>
+        <li><a href="contact.html" class="nhl">Contact</a></li>
+        <li><a href="https://www.propertyfinder.ae/en/broker/eone-prime-properties-l-l-c-s-o-c-v2-179995" target="_blank" rel="noopener" class="nhl">Property Finder</a></li>
+      </ul>
+      <a href="book.html" class="nav-cta">Book a Private Visit</a>
+    </div>
+    <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <span class="eyebrow">EONE Head Office</span>
+    <h1 class="page-h1">A Private <em>Wealth House</em></h1>
+    <p>The Opus by Zaha Hadid · Business Bay, Dubai</p>
+  </div>
+</section>
+
+<!-- ════ PHOTO + CAPTION SEQUENCE (injected by JS from the HOUSE array below) ════ -->
+<section class="hs-wrap" id="hsStory"></section>
+
+<!-- ════ CLOSING EDITORIAL ════ -->
+<section class="hs-close">
+  <div class="hs-close-inner">
+    <span class="eyebrow">The Interior</span>
+    <p>Inspired by traditional private banking houses and editorial interiors, the space combines natural wood, vintage furniture, handcrafted rugs and contemporary design.</p>
+  </div>
+</section>
+
+<section class="hs-creed">
+  <div class="hs-creed-inner">
+    <p class="hs-creed-label">Every detail reflects the same philosophy</p>
+    <blockquote>Nothing unnecessary,<em>everything intentional.</em></blockquote>
+    <div class="rule"></div>
+  </div>
+</section>
+
+<section class="hs-close" style="border-bottom:1px solid var(--line);">
+  <div class="hs-close-inner">
+    <p>Here, clients discuss investments, discover off-market properties, review architectural concepts, explore exceptional watches and meet trusted specialists under one roof.</p>
+    <a href="book.html" class="link-ink">Book a Private Visit</a>
+  </div>
+</section>
+
+<!-- ════ GALLERY GRID (optional — delete this whole section if not wanted) ════ -->
+<section class="hs-gal">
+  <div class="hs-gal-head">
+    <span class="eyebrow">The House</span>
+    <h2 class="sh">Room by <em>Room</em></h2>
+  </div>
+  <div class="hs-gal-grid" id="hsGal"></div>
+</section>
+
+<section class="cta">
+  <div class="cta-inner">
+    <span class="eyebrow">By Appointment</span>
+    <h2 class="sh">Visit the <em>House</em></h2>
+    <p>Introductions are made privately. We look forward to welcoming you.</p>
+    <a href="contact.html" class="btn-outline">Make an Enquiry</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="eonelogo.png" alt="Eone" class="footer-logo">
+      <p>Eone Exclusive Properties<br>Eone Luxury Watches<br><span>Est. 2026 · Business Bay, Dubai, UAE</span></p>
+    </div>
+    <div class="footer-cols">
+      <div class="fc"><h4>Navigate</h4><a href="index.html">Home</a><a href="properties.html">Properties</a><a href="watches.html">Watches</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+      <div class="fc"><h4>Properties</h4><a href="properties.html">Prime Properties</a><a href="properties.html">Off-Market</a><a href="properties.html">Offplan</a><a href="https://www.propertyfinder.ae/en/broker/eone-prime-properties-l-l-c-s-o-c-v2-179995" target="_blank" rel="noopener">Property Finder ↗</a></div>
+      <div class="fc"><h4>Connect</h4><a href="tel:+97145665176">04 566 5176</a><a href="mailto:info@eoneproperties.com">info@eoneproperties.com</a><a href="https://wa.me/971501773326" target="_blank" rel="noopener">WhatsApp ↗</a><a href="#">Instagram</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Eone Exclusive Properties &amp; Eone Luxury Watches. All rights reserved.</span>
+    <span>RERA Registered · DED Licensed · Business Bay, Dubai, UAE</span>
+  </div>
+</footer>
+
+<script src="eone.js"></script>
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   OFFICE PHOTOS — SWAP THESE FOR REAL EONE SHOTS
+   Replace each `img` with your own file, e.g. img:'images/office-01.jpg'
+   `fallback` is only used if the primary image fails to load.
+   ═══════════════════════════════════════════════════════════════ */
+const HOUSE = [
+  { label:'The House',
+    text:'EONE is a private wealth house based in Dubai, created for individuals who value discretion, expertise and exceptional assets.',
+    img:'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80',
+    fallback:'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=80' },
+
+  { label:'One Relationship',
+    text:'From off-market real estate and architectural design to fine watches, construction and wealth management, every service exists to simplify the ownership of extraordinary assets through one trusted relationship.',
+    img:'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1600&q=80',
+    fallback:'https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?auto=format&fit=crop&w=1600&q=80' },
+
+  { label:'Without Interruption',
+    text:'More than an office, EONE was conceived as a private house where conversations happen without interruption.',
+    img:'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80',
+    fallback:'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1600&q=80' },
+
+  { label:'The Opus',
+    text:'Located in The Opus by Zaha Hadid, every room has been designed to encourage trust, discretion and thoughtful decision making.',
+    img:'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80',
+    fallback:'https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?auto=format&fit=crop&w=1600&q=80' },
+];
+
+/* Gallery tiles — same idea, swap freely. Delete entries to shorten the grid. */
+const GALLERY = [
+  { cap:'The Reception',   img:'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=80' },
+  { cap:'The Library',     img:'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1000&q=80' },
+  { cap:'The Meeting Room',img:'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&w=1000&q=80' },
+  { cap:'The Watch Salon', img:'https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?auto=format&fit=crop&w=1000&q=80' },
+  { cap:'The Study',       img:'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=80' },
+  { cap:'The Terrace',     img:'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=1000&q=80' },
+];
+
+/* ── build the photo + caption sequence ── */
+const story = document.getElementById('hsStory');
+HOUSE.forEach((h, i) => {
+  const row = document.createElement('article');
+  row.className = 'hs-row';
+  row.innerHTML = `
+    <figure class="hs-fig">
+      <div class="hs-fig-img"></div>
+      <figcaption class="hs-fig-n">${String(i + 1).padStart(2, '0')}</figcaption>
+    </figure>
+    <div class="hs-cap">
+      <p class="eyebrow">${h.label}</p>
+      <p>${h.text}</p>
+    </div>
+  `;
+  const bg = row.querySelector('.hs-fig-img');
+  const probe = new Image();
+  probe.onload  = () => { bg.style.backgroundImage = `url('${h.img}')`; };
+  probe.onerror = () => { bg.style.backgroundImage = `url('${h.fallback}')`; };
+  probe.src = h.img;
+  story.appendChild(row);
+});
+
+/* ── build the gallery grid ── */
+const gal = document.getElementById('hsGal');
+GALLERY.forEach(g => {
+  const tile = document.createElement('figure');
+  tile.className = 'hs-tile';
+  tile.innerHTML = `<div class="hs-tile-img"></div><figcaption class="hs-tile-cap">${g.cap}</figcaption>`;
+  tile.querySelector('.hs-tile-img').style.backgroundImage = `url('${g.img}')`;
+  gal.appendChild(tile);
+});
+
+/* ── reveal rows on scroll ── */
+const hsIo = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); hsIo.unobserve(e.target); } });
+}, { threshold: 0.18 });
+document.querySelectorAll('.hs-row').forEach(el => hsIo.observe(el));
+requestAnimationFrame(() => document.querySelector('.hs-row')?.classList.add('in'));
+</script>
+</body>
+</html>

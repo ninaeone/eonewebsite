@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="eonelogo.png">
+<link rel="apple-touch-icon" href="eonelogo.png">
+<title>Signature Real Estate — EONE Exclusive Properties · Dubai</title>
+<meta name="description" content="EONE represents buyers, sellers and investors looking for Dubai's most exceptional properties — prime residences, off-market opportunities, offplan launches and development plots.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="eone.css">
+<style>
+/* ── intro ── */
+.pr-intro { max-width: 860px; margin: 0 auto; padding: 84px var(--pad); text-align: center; border-bottom: 1px solid var(--line); }
+.pr-intro p { font-size: 15px; line-height: 2.05; color: #444; font-weight: 300; margin-bottom: 22px; }
+.pr-intro p:last-child { margin-bottom: 0; }
+
+/* ── categories : highlight to reveal ── */
+.pr-cats { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad) 40px; }
+.pr-cats-head { text-align: center; padding: 84px 0 46px; }
+.pr-hint { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-top: 16px; }
+
+.pr-cat {
+  position: relative; border-top: 1px solid var(--line); overflow: hidden;
+  background: var(--paper); transition: background .5s ease;
+}
+.pr-cat:last-of-type { border-bottom: 1px solid var(--line); }
+
+.pr-cat-bg {
+  position: absolute; inset: 0; background-size: cover; background-position: center;
+  filter: grayscale(100%); opacity: 0; transform: scale(1.05);
+  transition: opacity .7s ease, transform 1.2s cubic-bezier(.22,1,.36,1);
+  pointer-events: none;
+}
+.pr-cat-veil { position: absolute; inset: 0; background: rgba(0,0,0,.62); opacity: 0; transition: opacity .7s ease; pointer-events: none; }
+
+/* the clickable header row */
+.pr-cat-head {
+  position: relative; z-index: 2; width: 100%; text-align: left;
+  display: flex; align-items: center; gap: 28px;
+  background: none; border: none; cursor: pointer;
+  font-family: var(--sans); color: var(--ink);
+  padding: 42px 4px; transition: color .5s ease, padding .5s ease;
+}
+.pr-cat-num { font-family: var(--display); font-size: 13px; letter-spacing: 3px; color: var(--muted); flex: 0 0 auto; transition: color .5s; }
+.pr-cat-name {
+  flex: 1 1 auto; font-family: var(--display); font-weight: 100;
+  font-size: clamp(24px,3.4vw,44px); line-height: 1.1; letter-spacing: .03em; text-transform: uppercase;
+}
+.pr-cat-mark { flex: 0 0 auto; font-size: 20px; line-height: 1; transition: transform .5s cubic-bezier(.22,1,.36,1), color .5s; }
+
+/* the revealed body */
+.pr-cat-body {
+  position: relative; z-index: 2;
+  max-height: 0; overflow: hidden;
+  transition: max-height .7s cubic-bezier(.22,1,.36,1);
+}
+.pr-cat-body-inner { padding: 0 4px 46px; max-width: 720px; }
+.pr-cat-body p { font-size: 15px; line-height: 2; font-weight: 300; color: #444; transition: color .5s; margin-bottom: 24px; }
+.pr-cat-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.pr-tag {
+  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+  border: 1px solid var(--line); padding: 7px 12px; color: var(--muted); transition: border-color .5s, color .5s;
+}
+.pr-cat-link {
+  display: inline-block; text-decoration: none; font-size: 11px; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--ink); border-bottom: 1px solid var(--ink);
+  padding-bottom: 4px; transition: color .5s, border-color .5s, opacity .3s;
+}
+.pr-cat-link:hover { opacity: .65; }
+
+/* ── ON state (hover on desktop · tap on touch) ── */
+.pr-cat.on .pr-cat-bg { opacity: 1; transform: scale(1); }
+.pr-cat.on .pr-cat-veil { opacity: 1; }
+.pr-cat.on .pr-cat-head { color: #fff; padding-top: 52px; }
+.pr-cat.on .pr-cat-num { color: var(--gold); }
+.pr-cat.on .pr-cat-mark { transform: rotate(45deg); color: var(--gold); }
+.pr-cat.on .pr-cat-body { max-height: 620px; }
+.pr-cat.on .pr-cat-body p { color: rgba(255,255,255,.88); }
+.pr-cat.on .pr-tag { border-color: rgba(255,255,255,.32); color: rgba(255,255,255,.8); }
+.pr-cat.on .pr-cat-link { color: #fff; border-color: var(--gold); }
+
+@media (max-width: 900px) {
+  .pr-intro { padding: 60px var(--pad); }
+  .pr-cats-head { padding: 60px 0 34px; }
+  .pr-cat-head { gap: 18px; padding: 30px 4px; }
+  .pr-cat.on .pr-cat-head { padding-top: 34px; }
+  .pr-cat.on .pr-cat-body { max-height: 760px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pr-cat-bg, .pr-cat-veil, .pr-cat-body, .pr-cat-head, .pr-cat-mark { transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-top">
+    <a href="index.html" class="nav-logo"><img src="eonelogo-wordmark.png" alt="EONE" class="logo-mark"></a>
+    <div class="nav-menu" id="navMenu">
+      <ul class="nav-links">
+        <li><a href="properties.html" class="nhl active">Properties</a></li>
+        <li><a href="watches.html" class="nhl">Watches</a></li>
+        <li><a href="properties.html" class="nhl">Off-Market</a></li>
+        <li><a href="services.html" class="nhl">Services</a></li>
+        <li><a href="about.html" class="nhl">About Us</a></li>
+        <li><a href="about.html" class="nhl">Careers</a></li>
+        <li><a href="contact.html" class="nhl">Contact</a></li>
+        <li><a href="https://www.propertyfinder.ae/en/broker/eone-prime-properties-l-l-c-s-o-c-v2-179995" target="_blank" rel="noopener" class="nhl">Property Finder</a></li>
+      </ul>
+      <a href="book.html" class="nav-cta">Book a Private Visit</a>
+    </div>
+    <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <span class="eyebrow">Exclusive Properties</span>
+    <h1 class="page-h1">Signature <em>Real Estate</em></h1>
+    <p>Dubai's most exceptional addresses — represented privately.</p>
+  </div>
+</section>
+
+<section class="pr-intro">
+  <p>EONE represents buyers, sellers and investors looking for Dubai's most exceptional properties.</p>
+  <p>From off-market villas and waterfront mansions to premium apartments, investment opportunities and development plots, every search begins with understanding the client's ambitions before identifying the right opportunity.</p>
+</section>
+
+<section class="pr-cats">
+  <div class="pr-cats-head">
+    <span class="eyebrow">The Categories</span>
+    <h2 class="sh">Four Ways to <em>Acquire</em></h2>
+    <p class="pr-hint">Select a category to view details</p>
+  </div>
+  <div id="prCats"></div>
+</section>
+
+<section class="cta">
+  <div class="cta-inner">
+    <span class="eyebrow">Begin the Conversation</span>
+    <h2 class="sh">Tell Us What You're <em>Looking For</em></h2>
+    <p>Every search begins with a private conversation. Share your ambitions and we will identify the opportunity.</p>
+    <a href="contact.html" class="btn-outline">Make an Enquiry</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="eonelogo.png" alt="Eone" class="footer-logo">
+      <p>Eone Exclusive Properties<br>Eone Luxury Watches<br><span>Est. 2026 · Business Bay, Dubai, UAE</span></p>
+    </div>
+    <div class="footer-cols">
+      <div class="fc"><h4>Navigate</h4><a href="index.html">Home</a><a href="house.html">The House</a><a href="watches.html">Watches</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+      <div class="fc"><h4>Properties</h4><a href="properties.html">Prime Properties</a><a href="properties.html">Off-Market</a><a href="properties.html">Offplan</a><a href="https://www.propertyfinder.ae/en/broker/eone-prime-properties-l-l-c-s-o-c-v2-179995" target="_blank" rel="noopener">Property Finder ↗</a></div>
+      <div class="fc"><h4>Connect</h4><a href="tel:+97145665176">04 566 5176</a><a href="mailto:info@eoneproperties.com">info@eoneproperties.com</a><a href="https://wa.me/971501773326" target="_blank" rel="noopener">WhatsApp ↗</a><a href="#">Instagram</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Eone Exclusive Properties &amp; Eone Luxury Watches. All rights reserved.</span>
+    <span>RERA Registered · DED Licensed · Business Bay, Dubai, UAE</span>
+  </div>
+</footer>
+
+<script src="eone.js"></script>
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   PROPERTY CATEGORIES
+   `text` and `tags` are DRAFT COPY — rewrite freely.
+   Swap `img` for real EONE photography when ready.
+   ═══════════════════════════════════════════════════════════════ */
+const CATS = [
+  { name:'Prime Properties',
+    text:'Signature residences in Dubai\u2019s most established addresses. Ready villas, penthouses and branded residences, each selected for architecture, position and long-term value rather than volume.',
+    tags:['Palm Jumeirah','Emirates Hills','Jumeirah Bay','Downtown','Dubai Hills'],
+    link:'contact.html', linkText:'Enquire Privately',
+    img:'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1800&q=80' },
+
+  { name:'Off Market',
+    text:'Properties that are never listed publicly. Represented quietly on behalf of owners who require absolute discretion, and shared only with qualified buyers under confidentiality. Access is by introduction.',
+    tags:['Confidential','By Introduction','Waterfront Mansions','Private Villas'],
+    link:'contact.html', linkText:'Request Access',
+    img:'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1800&q=80' },
+
+  { name:'Offplan',
+    text:'Early access to launches from Dubai\u2019s leading developers, including pre-release allocations and preferred payment structures. Guidance covers developer track record, handover timelines and projected yield.',
+    tags:['Pre-Launch','Payment Plans','Developer Vetting','Yield Analysis'],
+    link:'contact.html', linkText:'View Launches',
+    img:'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1800&q=80' },
+
+  { name:'Plot',
+    text:'Freehold land for private villas and development. Advice on plot ratios, permitted built-up area and master-plan restrictions \u2014 with the architectural and construction team assembled in-house when you are ready to build.',
+    tags:['Freehold Land','Development','GFA & Plot Ratio','Design & Build'],
+    link:'contact.html', linkText:'Discuss a Plot',
+    img:'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=80' },
+];
+
+const wrap = document.getElementById('prCats');
+
+CATS.forEach((c, i) => {
+  const id = 'prCatBody' + i;
+  const sec = document.createElement('section');
+  sec.className = 'pr-cat';
+  sec.innerHTML = `
+    <div class="pr-cat-bg"></div>
+    <div class="pr-cat-veil"></div>
+    <button class="pr-cat-head" type="button" aria-expanded="false" aria-controls="${id}">
+      <span class="pr-cat-num">${String(i + 1).padStart(2, '0')}</span>
+      <span class="pr-cat-name">${c.name}</span>
+      <span class="pr-cat-mark" aria-hidden="true">+</span>
+    </button>
+    <div class="pr-cat-body" id="${id}">
+      <div class="pr-cat-body-inner">
+        <p>${c.text}</p>
+        <div class="pr-cat-tags">${c.tags.map(t => `<span class="pr-tag">${t}</span>`).join('')}</div>
+        <a class="pr-cat-link" href="${c.link}">${c.linkText}</a>
+      </div>
+    </div>
+  `;
+  sec.querySelector('.pr-cat-bg').style.backgroundImage = `url('${c.img}')`;
+  wrap.appendChild(sec);
+});
+
+/* ── highlight behaviour ──
+   Desktop (fine pointer): hover opens, leaving closes — unless pinned by a click.
+   Touch / keyboard: tap or Enter toggles open. Only one open at a time. */
+const cats = [...document.querySelectorAll('.pr-cat')];
+const fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+let pinned = null;
+
+function setOpen(el, open) {
+  el.classList.toggle('on', open);
+  el.querySelector('.pr-cat-head').setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+function openOnly(el) {
+  cats.forEach(c => setOpen(c, c === el));
+}
+
+cats.forEach(el => {
+  const head = el.querySelector('.pr-cat-head');
+
+  head.addEventListener('click', () => {
+    const isOpen = el.classList.contains('on') && pinned === el;
+    if (isOpen) { pinned = null; setOpen(el, false); }
+    else { pinned = el; openOnly(el); }
+  });
+
+  if (fine) {
+    el.addEventListener('mouseenter', () => { if (!pinned) openOnly(el); });
+    el.addEventListener('mouseleave', () => { if (!pinned) setOpen(el, false); });
+  }
+
+  head.addEventListener('focus', () => { if (!pinned) openOnly(el); });
+});
+
+/* clicking away un-pins */
+document.addEventListener('click', e => {
+  if (pinned && !pinned.contains(e.target)) { setOpen(pinned, false); pinned = null; }
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && pinned) { setOpen(pinned, false); pinned = null; }
+});
+</script>
+</body>
+</html>
