@@ -56,12 +56,21 @@
   transition: max-height .7s cubic-bezier(.22,1,.36,1);
 }
 .pr-cat-body-inner { padding: 0 4px 46px; max-width: 720px; }
-.pr-cat-body p { font-size: 15px; line-height: 2; font-weight: 300; color: #444; transition: color .5s; margin-bottom: 24px; }
-.pr-cat-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
-.pr-tag {
-  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
-  border: 1px solid var(--line); padding: 7px 12px; color: var(--muted); transition: border-color .5s, color .5s;
+.pr-cat-body p { font-size: 15px; line-height: 2; font-weight: 300; color: #444; transition: color .5s; margin-bottom: 18px; }
+.pr-cat-body p:last-of-type { margin-bottom: 28px; }
+
+/* community list — Prime Properties */
+.pr-places {
+  list-style: none; margin: 0 0 30px; padding: 0;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px;
 }
+.pr-places li {
+  font-family: var(--display); font-weight: 100;
+  font-size: clamp(16px, 1.5vw, 20px); letter-spacing: .04em;
+  color: #444; padding: 13px 0; border-bottom: 1px solid var(--line);
+  transition: color .5s, border-color .5s;
+}
+.pr-cat.on .pr-places li { color: rgba(255,255,255,.9); border-bottom-color: rgba(255,255,255,.18); }
 .pr-cat-link {
   display: inline-block; text-decoration: none; font-size: 11px; letter-spacing: 2.5px;
   text-transform: uppercase; color: var(--ink); border-bottom: 1px solid var(--ink);
@@ -77,7 +86,6 @@
 .pr-cat.on .pr-cat-mark { transform: rotate(45deg); color: var(--gold); }
 .pr-cat.on .pr-cat-body { max-height: 620px; }
 .pr-cat.on .pr-cat-body p { color: rgba(255,255,255,.88); }
-.pr-cat.on .pr-tag { border-color: rgba(255,255,255,.32); color: rgba(255,255,255,.8); }
 .pr-cat.on .pr-cat-link { color: #fff; border-color: var(--gold); }
 
 @media (max-width: 900px) {
@@ -85,7 +93,8 @@
   .pr-cats-head { padding: 60px 0 34px; }
   .pr-cat-head { gap: 18px; padding: 30px 4px; }
   .pr-cat.on .pr-cat-head { padding-top: 34px; }
-  .pr-cat.on .pr-cat-body { max-height: 760px; }
+  .pr-cat.on .pr-cat-body { max-height: 900px; }
+  .pr-places { grid-template-columns: 1fr; gap: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .pr-cat-bg, .pr-cat-veil, .pr-cat-body, .pr-cat-head, .pr-cat-mark { transition: none !important; }
@@ -166,32 +175,37 @@
 <script src="eone.js"></script>
 <script>
 /* ═══════════════════════════════════════════════════════════════
-   PROPERTY CATEGORIES
-   `text` and `tags` are DRAFT COPY — rewrite freely.
+   PROPERTY CATEGORIES — client copy
+   `lines`  = paragraphs shown on highlight
+   `places` = community list (used by Prime Properties instead of prose)
    Swap `img` for real EONE photography when ready.
    ═══════════════════════════════════════════════════════════════ */
 const CATS = [
   { name:'Prime Properties',
-    text:'Signature residences in Dubai\u2019s most established addresses. Ready villas, penthouses and branded residences, each selected for architecture, position and long-term value rather than volume.',
-    tags:['Palm Jumeirah','Emirates Hills','Jumeirah Bay','Downtown','Dubai Hills'],
+    places:['Palm Jumeirah','Emirates Hills','Jumeirah Bay Island','Dubai Hills Estate','Al Barari','District One','Tilal Al Ghaf','Emirates Living'],
     link:'contact.html', linkText:'Enquire Privately',
     img:'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1800&q=80' },
 
   { name:'Off Market',
-    text:'Properties that are never listed publicly. Represented quietly on behalf of owners who require absolute discretion, and shared only with qualified buyers under confidentiality. Access is by introduction.',
-    tags:['Confidential','By Introduction','Waterfront Mansions','Private Villas'],
+    lines:[
+      'Some of Dubai\u2019s finest properties are never publicly advertised.',
+      'Through long-standing relationships with homeowners, developers and private networks, EONE provides access to discreet opportunities unavailable through traditional property portals.'
+    ],
     link:'contact.html', linkText:'Request Access',
     img:'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1800&q=80' },
 
   { name:'Offplan',
-    text:'Early access to launches from Dubai\u2019s leading developers, including pre-release allocations and preferred payment structures. Guidance covers developer track record, handover timelines and projected yield.',
-    tags:['Pre-Launch','Payment Plans','Developer Vetting','Yield Analysis'],
+    lines:[
+      'We collaborate with Dubai\u2019s leading developers to secure carefully selected off-plan opportunities offering long-term value, architectural quality and investment potential.'
+    ],
     link:'contact.html', linkText:'View Launches',
     img:'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1800&q=80' },
 
   { name:'Plot',
-    text:'Freehold land for private villas and development. Advice on plot ratios, permitted built-up area and master-plan restrictions \u2014 with the architectural and construction team assembled in-house when you are ready to build.',
-    tags:['Freehold Land','Development','GFA & Plot Ratio','Design & Build'],
+    lines:[
+      'Acquiring land is often the first step towards creating a legacy property.',
+      'EONE advises clients searching for residential plots, waterfront land and redevelopment opportunities across Dubai\u2019s most prestigious communities.'
+    ],
     link:'contact.html', linkText:'Discuss a Plot',
     img:'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=80' },
 ];
@@ -212,8 +226,8 @@ CATS.forEach((c, i) => {
     </button>
     <div class="pr-cat-body" id="${id}">
       <div class="pr-cat-body-inner">
-        <p>${c.text}</p>
-        <div class="pr-cat-tags">${c.tags.map(t => `<span class="pr-tag">${t}</span>`).join('')}</div>
+        ${(c.lines || []).map(t => `<p>${t}</p>`).join('')}
+        ${c.places ? `<ul class="pr-places">${c.places.map(pl => `<li>${pl}</li>`).join('')}</ul>` : ''}
         <a class="pr-cat-link" href="${c.link}">${c.linkText}</a>
       </div>
     </div>
