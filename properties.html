@@ -88,6 +88,15 @@
 .pr-cat.on .pr-cat-body p { color: rgba(255,255,255,.88); }
 .pr-cat.on .pr-cat-link { color: #fff; border-color: var(--gold); }
 
+/* ── contact row ── */
+.pr-contact { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 26px; }
+.pr-contact-alt {
+  display: inline-block; text-decoration: none; font-size: 11px; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--muted);
+  border-bottom: 1px solid var(--line); padding-bottom: 4px; transition: color .3s, border-color .3s;
+}
+.pr-contact-alt:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
 @media (max-width: 900px) {
   .pr-intro { padding: 60px var(--pad); }
   .pr-cats-head { padding: 60px 0 34px; }
@@ -95,6 +104,10 @@
   .pr-cat.on .pr-cat-head { padding-top: 34px; }
   .pr-cat.on .pr-cat-body { max-height: 900px; }
   .pr-places { grid-template-columns: 1fr; gap: 0; }
+}
+@media (max-width: 560px) {
+  .pr-contact { flex-direction: column; align-items: stretch; }
+  .pr-contact .btn-solid, .pr-contact .btn-outline { text-align: center; }
 }
 @media (prefers-reduced-motion: reduce) {
   .pr-cat-bg, .pr-cat-veil, .pr-cat-body, .pr-cat-head, .pr-cat-mark { transition: none !important; }
@@ -150,7 +163,12 @@
     <span class="eyebrow">Begin the Conversation</span>
     <h2 class="sh">Tell Us What You're <em>Looking For</em></h2>
     <p>Every search begins with a private conversation. Share your ambitions and we will identify the opportunity.</p>
-    <a href="contact.html" class="btn-outline">Make an Enquiry</a>
+    <div class="pr-contact">
+      <a href="https://wa.me/971501773326?text=Hello%20E%20ONE%2C%20I%20would%20like%20to%20enquire%20about%20a%20property."
+         target="_blank" rel="noopener" class="btn-solid">WhatsApp Us</a>
+      <a href="tel:+971501773326" class="btn-outline">Call +971 50 177 3326</a>
+    </div>
+    <a href="contact.html" class="pr-contact-alt">Or send a written enquiry</a>
   </div>
 </section>
 
