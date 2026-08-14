@@ -76,15 +76,6 @@ a{color:inherit}
 @keyframes cue{0%,100%{transform:scaleY(.4);opacity:.3;transform-origin:top}50%{transform:scaleY(1);opacity:1;transform-origin:top}}
 
 /* ── CONTACT / FIND band (white, Chanel-style) ── */
-.access{background:var(--paper);padding:74px var(--pad);border-bottom:1px solid var(--line)}
-.access-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px}
-.access h4{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;font-weight:500;margin-bottom:16px}
-.access p{font-size:14px;color:var(--muted);font-weight:300;margin-bottom:14px;line-height:1.7}
-.access .link-ink{display:inline-block;font-size:14px;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:2px}
-.find{display:flex;align-items:center;border-bottom:1px solid var(--ink);max-width:460px;padding:8px 2px}
-.find input{flex:1;border:none;outline:none;background:none;font-family:var(--sans);font-size:14px;font-weight:300;color:var(--ink)}
-.find input::placeholder{color:var(--muted)}
-.find button{background:none;border:none;cursor:pointer;font-size:16px;color:var(--ink);padding:0 6px}
 
 /* ── BLACK E ONE REVEAL FOOTER ── */
 /* page layer covers the black footer; scrolling up uncovers it (Chanel-style) */
@@ -121,7 +112,6 @@ body.reveal-on .reveal{position:fixed;left:0;right:0;bottom:0;z-index:1}
 }
 @media(max-width:900px){
   :root{--pad:24px;--nav:84px}
-  .access-inner{grid-template-columns:1fr;gap:48px}
   .reveal-cols{grid-template-columns:1fr 1fr;gap:40px 32px}
   .panel-inner{padding-bottom:16vh}
 }
@@ -133,7 +123,7 @@ body.reveal-on .reveal{position:fixed;left:0;right:0;bottom:0;z-index:1}
 }
 
 /* a11y */
-.panel-cta:focus-visible,.nhl:focus-visible,.nav-cta:focus-visible,.nav-burger:focus-visible,.find button:focus-visible,.rc a:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.panel-cta:focus-visible,.nhl:focus-visible,.nav-cta:focus-visible,.nav-burger:focus-visible,.rc a:focus-visible{outline:2px solid currentColor;outline-offset:3px}
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important}
   html{scroll-snap-type:none}
@@ -170,25 +160,6 @@ body.reveal-on .reveal{position:fixed;left:0;right:0;bottom:0;z-index:1}
 
 <!-- ════ 10 FULL-SCREEN PHOTO PANELS ════ -->
 <main class="collection" id="collection"><!-- panels injected by JS --></main>
-
-<!-- ════ CONTACT / FIND BAND ════ -->
-<section class="access">
-  <div class="access-inner">
-    <div>
-      <h4>Contact Us</h4>
-      <p>Speak with our private client team for off-market access and viewings.</p>
-      <a href="contact.html" class="link-ink">Email</a>
-    </div>
-    <div>
-      <h4>Find a Property</h4>
-      <p>Enter a community to explore E ONE's exclusive listings.</p>
-      <div class="find">
-        <input type="text" placeholder="Community or area — e.g. Palm Jumeirah" aria-label="Search a community">
-        <button type="button" aria-label="Search">&#9906;</button>
-      </div>
-    </div>
-  </div>
-</section>
 
 </div><!-- /.page -->
 
